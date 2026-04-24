@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cetum6xiv4va7"]
+[gd_scene format=3 uid="uid://cnjuj12ylkcyd"]
 
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
+[ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 
@@ -13,3 +14,8 @@ texture = ExtResource("1_edtax")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
 zoom = Vector2(0.635, 0.635)
+
+[node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
+position = Vector2(0, 574)
+
+[connection signal="damage" from="Pollen" to="Player" method="_on_pollen_damage"]

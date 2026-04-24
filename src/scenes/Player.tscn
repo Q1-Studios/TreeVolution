@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://ke7q6souawdw"]
 
 [ext_resource type="Texture2D" uid="uid://cedtdvlqsisu" path="res://src/assets/2D/cherryblob.png" id="1_0wdt2"]
+[ext_resource type="Script" uid="uid://c0tou1pyce784" path="res://src/scripts/player.gd" id="1_v14g5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v14g5"]
 height = 370.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1140108763]
+script = ExtResource("1_v14g5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533103230]
 shape = SubResource("CapsuleShape2D_v14g5")
