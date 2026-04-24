@@ -34,12 +34,12 @@ albedo_texture = ExtResource("4_71pa8")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2wwcf"]
 
-[sub_resource type="Sky" id="Sky_wbpbn"]
+[sub_resource type="Sky" id="Sky_0xnvw"]
 sky_material = SubResource("ProceduralSkyMaterial_2wwcf")
 
 [sub_resource type="Environment" id="Environment_a6rn7"]
 background_mode = 2
-sky = SubResource("Sky_wbpbn")
+sky = SubResource("Sky_0xnvw")
 sky_rotation = Vector3(-0.41887903, 0, 0)
 glow_enabled = true
 

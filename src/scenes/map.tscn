@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
+size = Vector2(2339.8845, 33.612663)
+
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468748651]
@@ -17,5 +20,12 @@ zoom = Vector2(0.635, 0.635)
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
 position = Vector2(0, 574)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=2038121272]
+scale = Vector2(1.73, 1.73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1840679791]
+position = Vector2(-0.5779995, 676.25726)
+shape = SubResource("RectangleShape2D_kyhn7")
 
 [connection signal="damage" from="Pollen" to="Player" method="_on_pollen_damage"]
