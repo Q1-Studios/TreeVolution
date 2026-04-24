@@ -4,11 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_v14g5"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x01q"]
+radius = 31.168884
+height = 753.2468
+
 [node name="Player" type="CharacterBody2D" unique_id=1140108763]
 scale = Vector2(0.385, 0.385)
 script = ExtResource("1_7x01q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
+visible = false
 position = Vector2(3.8146973e-06, -1.1920929e-07)
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(-52.000004, 267, -59.000004, 376, -191, 396, -178, 594, -223, 617, -320, 422, -334, 416, -433, 622, -474, 603, -449, 426, -573, 449, -618, 371, -612, 225, -528, -33, -491, -147, -518, -272, -472, -277, -543, -368, -597, -536, -590, -766, -72, -823, -29.000004, -571, -50.000004, -428, -136, -303, -104, -291, -171, -172)
@@ -22,3 +27,13 @@ texture = ExtResource("1_v14g5")
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643 node_paths=PackedStringArray("player")]
 script = ExtResource("2_v14g5")
 player = NodePath("..")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=147974235]
+position = Vector2(-340.25974, 597.40265)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 32768
+
+[node name="isGrounded" type="CollisionShape2D" parent="StaticBody2D" unique_id=66318307]
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CapsuleShape2D_7x01q")

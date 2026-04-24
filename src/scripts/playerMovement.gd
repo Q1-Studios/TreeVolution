@@ -38,8 +38,13 @@ func _handleInput(delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, autoDeceleration)
 	
 	if Input.is_action_just_pressed("jump"):
+		if player.velocity.y > 0:
+			player.velocity.y = 0
 		player.velocity.y -= jumpForce
 	
 	
 func _simulate_gravity(delta: float) -> void:
 	player.velocity += gravitationalConstant*delta*Vector2.DOWN
+
+func _is_grounded() -> bool:
+	return true
