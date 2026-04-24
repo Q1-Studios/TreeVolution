@@ -1,69 +1,60 @@
-[gd_scene format=3 uid="uid://cnjuj12ylkcyd"]
+[gd_scene format=3 uid="uid://cetum6xiv4va7"]
 
-[ext_resource type="ArrayMesh" uid="uid://m3ksmr53gbfa" path="res://src/assets/3D/mapfirstconcept.obj" id="1_p5pve"]
-[ext_resource type="Texture2D" uid="uid://drhnifrhvuhjd" path="res://src/assets/2D/bastelkleber.png" id="2_urblq"]
-[ext_resource type="Texture2D" uid="uid://5edvuhs5cvjr" path="res://src/assets/2D/sealtext.png" id="3_iw27f"]
-[ext_resource type="Texture2D" uid="uid://cedtdvlqsisu" path="res://src/assets/2D/cherryblob.png" id="4_71pa8"]
+[ext_resource type="ArrayMesh" uid="uid://m3ksmr53gbfa" path="res://src/assets/3D/mapfirstconcept.obj" id="1_cikdb"]
+[ext_resource type="Texture2D" uid="uid://drhnifrhvuhjd" path="res://src/assets/2D/bastelkleber.png" id="2_0igyg"]
+[ext_resource type="Texture2D" uid="uid://5edvuhs5cvjr" path="res://src/assets/2D/sealtext.png" id="3_n87l3"]
+[ext_resource type="Texture2D" uid="uid://cedtdvlqsisu" path="res://src/assets/2D/cherryblob.png" id="4_afg5n"]
 
-[sub_resource type="GDScript" id="GDScript_05x41"]
-resource_name = "genaugh"
-script/source = "extends Node3D
-func _process(delta: float) -> void:
-	rotation.y += 0.1*delta
-"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqbix"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rj586"]
 albedo_color = Color(0.2677903, 0.2677903, 0.2677903, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oysan"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d7sh"]
 albedo_color = Color(0.39101586, 0.47046852, 0.32934532, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb2pt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir8iy"]
 albedo_color = Color(0.45323175, 0.45323175, 0.45323175, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0t07s"]
-albedo_texture = ExtResource("2_urblq")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqns4"]
+albedo_texture = ExtResource("2_0igyg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qsgm"]
-albedo_texture = ExtResource("3_iw27f")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0ka3"]
+albedo_texture = ExtResource("3_n87l3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooc2g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h7mo"]
 transparency = 1
 cull_mode = 2
-albedo_texture = ExtResource("4_71pa8")
+albedo_texture = ExtResource("4_afg5n")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2wwcf"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nr8wp"]
 
 [sub_resource type="Sky" id="Sky_wbpbn"]
-sky_material = SubResource("ProceduralSkyMaterial_2wwcf")
+sky_material = SubResource("ProceduralSkyMaterial_nr8wp")
 
-[sub_resource type="Environment" id="Environment_a6rn7"]
+[sub_resource type="Environment" id="Environment_d2bti"]
 background_mode = 2
 sky = SubResource("Sky_wbpbn")
 sky_rotation = Vector3(-0.41887903, 0, 0)
 glow_enabled = true
 
-[node name="Node3D" type="Node3D" unique_id=606745314]
+[node name="Node2D" type="Node2D" unique_id=1829873154]
+position = Vector2(-31, -24)
 
-[node name="CameraPivot" type="Node3D" parent="." unique_id=124380279]
-script = SubResource("GDScript_05x41")
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1579470187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-fov = 55.1
-
-[node name="Mapfirstconcept" type="MeshInstance3D" parent="." unique_id=754390282]
+[node name="Mapfirstconcept" type="MeshInstance3D" parent="." unique_id=1234022305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27309084, -2.2579925, 0.27019167)
-mesh = ExtResource("1_p5pve")
-surface_material_override/0 = SubResource("StandardMaterial3D_gqbix")
-surface_material_override/1 = SubResource("StandardMaterial3D_oysan")
-surface_material_override/2 = SubResource("StandardMaterial3D_sb2pt")
-surface_material_override/3 = SubResource("StandardMaterial3D_0t07s")
-surface_material_override/4 = SubResource("StandardMaterial3D_6qsgm")
-surface_material_override/5 = SubResource("StandardMaterial3D_ooc2g")
+mesh = ExtResource("1_cikdb")
+surface_material_override/0 = SubResource("StandardMaterial3D_rj586")
+surface_material_override/1 = SubResource("StandardMaterial3D_4d7sh")
+surface_material_override/2 = SubResource("StandardMaterial3D_ir8iy")
+surface_material_override/3 = SubResource("StandardMaterial3D_hqns4")
+surface_material_override/4 = SubResource("StandardMaterial3D_x0ka3")
+surface_material_override/5 = SubResource("StandardMaterial3D_0h7mo")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Mapfirstconcept" unique_id=1436819249]
-environment = SubResource("Environment_a6rn7")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Mapfirstconcept" unique_id=688994088]
+environment = SubResource("Environment_d2bti")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapfirstconcept/WorldEnvironment" unique_id=1245941787]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Mapfirstconcept/WorldEnvironment" unique_id=2025304566]
 transform = Transform3D(-0.7631986, 0.5813111, -0.28214416, 0, 0.4366448, 0.899634, 0.646164, 0.68659943, -0.3332467, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=713086143]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -10, 2, 0)
+fov = 55.1
