@@ -24,4 +24,6 @@ texture = ExtResource("1_t01yt")
 script = ExtResource("4_2o132")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pollenEntered" from="Area2D" to="." method="_on_area_2d_pollen_entered"]
+[connection signal="pollenLeft" from="Area2D" to="." method="_on_area_2d_pollen_left"]

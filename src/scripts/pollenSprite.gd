@@ -1,5 +1,6 @@
 extends Sprite2D
 
+# TODO try to change color of sprite via code, red color for damage, etc.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

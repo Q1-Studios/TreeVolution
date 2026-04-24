@@ -13,10 +13,11 @@ func _ready():
 	pass
 	
 
-func _on_pollen_damage() -> void:
-	health -= 10
-	print(health)
-	
-func _spawn_pollen(): 
-	
-	pass
+
+
+func _on_pollen_start_effect() -> void:
+	print("yes")
+
+
+func _on_pollen_stop_effect() -> void:
+	print("no")

@@ -1,6 +1,7 @@
 extends Node2D
 
-signal damage
+signal start_effect
+signal stop_effect
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -12,4 +13,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_pollen_entered() -> void:
-	emit_signal("damage")
+	emit_signal("start_effect")
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	emit_signal("stop_effect")
