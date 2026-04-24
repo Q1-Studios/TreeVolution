@@ -9,12 +9,6 @@ extends Node
 @export var acceleration := 50.0
 @export var deceleration := 70.0
 
-@export_group("Sprint")
-@export var booooooooooost_acceleration := 5.0
-@export var max_speed_while_boosting := 12.5
-@export var max_stamina = 2.0
-@export var stamina_cooldown = 4.0
-
 @export_group("Jump")
 @export var allowDoubleJump := true
 @export var jumpForce := 12.0
@@ -28,11 +22,6 @@ extends Node
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func _physics_process(delta: float) -> void:
 	_simulate_gravity(delta)
 	

@@ -14,6 +14,7 @@ visibility_layer = 512
 texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
+position = Vector2(0, 800.06)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
 zoom = Vector2(0.635, 0.635)
