@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ke7q6souawdw"]
+
+[ext_resource type="Texture2D" uid="uid://cedtdvlqsisu" path="res://src/assets/2D/cherryblob.png" id="1_0wdt2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v14g5"]
+height = 370.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1140108763]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533103230]
+shape = SubResource("CapsuleShape2D_v14g5")
+
+[node name="ModelContainer" type="Node2D" parent="." unique_id=437818947]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=587143810]
+scale = Vector2(0.445, 11.855)
+texture = ExtResource("1_0wdt2")
