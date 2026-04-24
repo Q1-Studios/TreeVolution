@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36ttnyqin7i"
-path.s3tc="res://.godot/imported/bastelkleber.png-a2750533107789543f87011046054adf.s3tc.ctex"
+uid="uid://drhnifrhvuhjd"
+path.s3tc="res://.godot/imported/bastelkleber.png-9afbabf466da4ace4189339b55e489a3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://bastelkleber.png"
-dest_files=["res://.godot/imported/bastelkleber.png-a2750533107789543f87011046054adf.s3tc.ctex"]
+source_file="res://src/assets/2D/bastelkleber.png"
+dest_files=["res://.godot/imported/bastelkleber.png-9afbabf466da4ace4189339b55e489a3.s3tc.ctex"]
 
 [params]
 

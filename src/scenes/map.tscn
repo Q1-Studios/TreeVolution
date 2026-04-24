@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cnjuj12ylkcyd"]
 
-[ext_resource type="ArrayMesh" uid="uid://ckqspd58vir7c" path="res://mapfirstconcept.obj" id="1_p5pve"]
-[ext_resource type="Texture2D" uid="uid://d36ttnyqin7i" path="res://bastelkleber.png" id="2_urblq"]
-[ext_resource type="Texture2D" uid="uid://cw5aww7knbumy" path="res://sealtext.png" id="3_iw27f"]
-[ext_resource type="Texture2D" uid="uid://q2y4s2vkl2pk" path="res://cherryblob.png" id="4_71pa8"]
+[ext_resource type="ArrayMesh" uid="uid://m3ksmr53gbfa" path="res://src/assets/3D/mapfirstconcept.obj" id="1_p5pve"]
+[ext_resource type="Texture2D" uid="uid://drhnifrhvuhjd" path="res://src/assets/2D/bastelkleber.png" id="2_urblq"]
+[ext_resource type="Texture2D" uid="uid://5edvuhs5cvjr" path="res://src/assets/2D/sealtext.png" id="3_iw27f"]
+[ext_resource type="Texture2D" uid="uid://cedtdvlqsisu" path="res://src/assets/2D/cherryblob.png" id="4_71pa8"]
 
 [sub_resource type="GDScript" id="GDScript_05x41"]
 resource_name = "genaugh"
 script/source = "extends Node3D
 func _process(delta: float) -> void:
-	rotation.y += 1*delta
+	rotation.y += 0.1*delta
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqbix"]
