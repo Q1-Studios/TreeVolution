@@ -13,7 +13,6 @@ var pollen_blocking_unlock:float = min(pollen_heal_upgrade_count, pollen_damage_
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Sprite2D.modulate = Color(pollen_damage_upgrade_count, pollen_heal_upgrade_count, pollen_blocking_unlock)
 	pass
 
 
