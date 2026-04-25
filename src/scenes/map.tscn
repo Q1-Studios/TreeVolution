@@ -12,6 +12,7 @@ size = Vector2(2339.8845, 33.612663)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468748651]
 visibility_layer = 512
+position = Vector2(13, 0)
 texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]

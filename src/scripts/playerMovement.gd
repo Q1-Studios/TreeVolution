@@ -7,23 +7,25 @@ extends Node
 @export var model_container : Node3D 
 
 @export_group("Running")
-@export var max_speed := 450.0            
+@export var max_speed := 900.0           
 @export var acceleration := 2250.0
-@export var deceleration := 3250.0
 @export var autoDeceleration := 900.0
 
 @export_group("Jump")
 @export var allowDoubleJump := true
 @export var jumpForce := 600.0
-@export var airAcceleration := 600.0
-@export var airDeceleration := 400.0
+@export var maxSpeedInAir := 200
+@export var airAcceleration := 25.0
+@export var autoAirDeceleration := 5.0
 
 @export_group("La Physics")
-@export var gravitationalConstant = 9.81
+@export var gravitationalConstant = 20.0
+@export var gravitationalConstantWhenFalling = 50.0
 
 
 var used_double_Jump = false
 var is_grounded = true
+var previous_direction = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,20 +46,34 @@ func handleMovement(player: Player, delta: float) -> void:
 
 
 func _handle_lateral_movement(player: Player, delta: float):
-	var direction = Input.get_axis("moveLeft", "moveRight")
+	var direction = _improved_input_getAxis()
 	
 	if is_grounded:
-		if direction:
-			player.velocity.x = direction * move_toward(player.velocity.x, max_speed, acceleration)
-		else:
-			player.velocity.x = move_toward(player.velocity.x, 0, autoDeceleration)
-	
-	
+		_movement_on_ground(player, direction)
 	else:
-		if direction:
-			player.velocity.x = direction * move_toward(player.velocity.x, max_speed, airAcceleration)
+		_movement_in_air(player, direction)
+
+
+
+
+
+func _movement_on_ground(player: Player, direction: int) -> void:
+	if direction:
+		player.velocity.x =  move_toward(player.velocity.x, direction * max_speed, acceleration)
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, autoDeceleration)
+
+
+func _movement_in_air(player: Player, direction: int) -> void:
+	if direction:
+		if abs(player.velocity.x) > maxSpeedInAir && player.velocity.x * direction > 0:
+			pass
+			# do Nothing
 		else:
-			player.velocity.x = move_toward(player.velocity.x, 0, 0)
+			player.velocity.x =  move_toward(player.velocity.x, direction * maxSpeedInAir, airAcceleration)
+	else:
+		player.velocity.x = move_toward(player.velocity.x, 0, autoAirDeceleration)
+
 
 
 
@@ -74,8 +90,27 @@ func _handle_jump(player: Player, delta: float) -> void:
 		player.velocity.y -= jumpForce
 		
 
-
-
 func _simulate_gravity(player: Player, delta: float) -> void:
-	if not player.is_on_floor():
+	if player.is_on_floor():
+		return
+	
+	if player.velocity.y <= 0:
 		player.velocity += gravitationalConstant*Vector2.DOWN
+	elif player.velocity.y > 0:
+		player.velocity += gravitationalConstantWhenFalling*Vector2.DOWN
+	
+	
+	
+
+
+func _improved_input_getAxis() -> int:
+	var pos: int = Input.is_action_pressed("moveRight")
+	var neg: int = Input.is_action_pressed("moveLeft")
+	
+	if pos && neg:
+		return -previous_direction
+	
+	previous_direction = pos - neg
+	return previous_direction
+		
+	
