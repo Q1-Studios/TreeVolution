@@ -3,11 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://cq5jqcg5aenri" path="res://src/assets/2D/bullet.png" id="1_7jxxo"]
 [ext_resource type="Script" uid="uid://dhn06n2xc3n7s" path="res://src/scripts/bullet.gd" id="1_a4mbi"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4mbi"]
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4mbi"]
 
 [node name="Bullet" type="RigidBody2D" unique_id=371956169]
 collision_layer = 2
 mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_a4mbi")
 script = ExtResource("1_a4mbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281310408]

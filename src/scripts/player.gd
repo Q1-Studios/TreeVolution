@@ -12,7 +12,6 @@ var damage_amount = 10
 var heal_amount = 1
 var pollen_attributes = {"damageBuff": [false, damage_amount], "healing": [false, heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
-	
 
 func pollen_healing(healing_array):
 	var new_health

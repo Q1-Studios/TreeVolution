@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0tou1pyce784" path="res://src/scripts/player.gd" id="1_7x01q"]
 [ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_v14g5"]
+[ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x01q"]
@@ -24,6 +25,10 @@ polygon = PackedVector2Array(-52.000004, 267, -59.000004, 376, -191, 396, -178, 
 position = Vector2(43.999996, -0.99999994)
 texture = ExtResource("1_v14g5")
 
+[node name="THE_PISS_STREAM" parent="." unique_id=399179884 instance=ExtResource("2_qfal1")]
+position = Vector2(-335.06494, 410.38962)
+scale = Vector2(0.9999999, 0.9999999)
+
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643 node_paths=PackedStringArray("player")]
 script = ExtResource("2_v14g5")
 player = NodePath("..")
@@ -37,4 +42,5 @@ collision_layer = 32768
 [node name="isGrounded" type="CollisionShape2D" parent="StaticBody2D" unique_id=66318307]
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CapsuleShape2D_7x01q")
+
 [node name="HealthController" type="Node2D" parent="." unique_id=197947811]

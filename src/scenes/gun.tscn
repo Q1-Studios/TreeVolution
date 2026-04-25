@@ -18,11 +18,12 @@ position = Vector2(15.5, -47)
 shape = SubResource("RectangleShape2D_wa6vi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=799529819]
-position = Vector2(246, 785)
+position = Vector2(401, -827)
 texture = ExtResource("2_xkiar")
+flip_v = true
 
 [node name="Muzzle" type="Area2D" parent="." unique_id=1731287587]
-position = Vector2(215, -57)
+position = Vector2(371, 0.9999924)
 scale = Vector2(10, 10)
 collision_layer = 2
 metadata/_edit_group_ = true
