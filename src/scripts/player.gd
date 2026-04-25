@@ -3,7 +3,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var movement_controller : MovementController
-@export var stat_controller : StatController
+#@export var stat_controller : StatController
 
 var PLAYER_MAX_HEALTH = 100
 var player_health = 10
@@ -36,7 +36,10 @@ func _physics_process(delta: float) -> void:
 		area.affect_player(self, polen_attributes) #script is in polenArea
 
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
-	stat_controller.bullet_damage(self, body)
+	if body.is_in_group("bullets"):
+		var bullet_damage: float = body.damage
+		print("Collided with bullet, took %s damage " % str(bullet_damage))
+		player_health -= bullet_damage
 
 # area parameter -> polen area
 func _on_polen_detection_area_entered(area: Area2D) -> void:
@@ -47,3 +50,4 @@ func _on_polen_detection_area_entered(area: Area2D) -> void:
 func _on_polen_detection_area_exited(area: Area2D) -> void:
 	if (area.is_in_group("Polen")):
 		polen_list.erase(area)
+		

@@ -13,6 +13,7 @@ script = ExtResource("1_5k3mm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=893163589 groups=["Polen"]]
 collision_layer = 4
+collision_mask = 2
 script = ExtResource("2_fkvtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=213131670 groups=["Polen"]]
@@ -26,4 +27,5 @@ scale = Vector2(0.36523438, 0.37890625)
 texture = ExtResource("1_t01yt")
 script = ExtResource("4_2o132")
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_bullet_2d_body_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="Area2D" method="_on_timer_timeout"]

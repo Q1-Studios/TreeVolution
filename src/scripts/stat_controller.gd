@@ -13,7 +13,4 @@ func _process(delta: float) -> void:
 	pass
 
 func bullet_damage(player, body):
-	if body.is_in_group("bullets"):
-		var bullet_damage: float = body.damage
-		print("Collided with bullet, took %s damage " % str(bullet_damage))
-		player.player_health -= bullet_damage
+	pass

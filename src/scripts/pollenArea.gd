@@ -1,12 +1,10 @@
 extends Area2D
 
-
 var can_affect = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,9 +24,6 @@ func start_effect_cooldown():
 	await get_tree().create_timer(1.0).timeout
 	can_affect = true
 	
-	
-	
-
 func buff_player_damage(player, array):
 	if array[0]:
 		player.player_health += array[1]
