@@ -15,6 +15,10 @@ run/main_scene="uid://cetum6xiv4va7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://drhnifrhvuhjd"
 
+[autoload]
+
+Evolutions="*uid://bjqifjyoeungk"
+
 [global_group]
 
 bullets=""

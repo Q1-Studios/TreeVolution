@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bjqifjyoeungk"]
+
+[ext_resource type="Script" uid="uid://c7eaqlfpyfhsg" path="res://src/scripts/evolutions.gd" id="1_c5lsn"]
+[ext_resource type="Script" uid="uid://by77gqfuyfqdf" path="res://src/scripts/evolution_data.gd" id="2_t8dfm"]
+[ext_resource type="Texture2D" uid="uid://ckcvko4invenw" path="res://src/assets/2D/player_evo.png" id="3_nocab"]
+[ext_resource type="Texture2D" uid="uid://batdpwagm2vis" path="res://src/assets/2D/pollen_evo.png" id="4_nocab"]
+[ext_resource type="Texture2D" uid="uid://drnj6k0kgpnei" path="res://src/assets/2D/gun_evo.png" id="5_8wwsg"]
+
+[sub_resource type="Resource" id="Resource_8dmq1"]
+script = ExtResource("2_t8dfm")
+readable_name = "Increase Player Health"
+icon = ExtResource("3_nocab")
+description = "Slightly increase the total health of the player"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_t8dfm"]
+script = ExtResource("2_t8dfm")
+readable_name = "Increase Movement Speed"
+icon = ExtResource("3_nocab")
+description = "Slighlty increase the players movement speed"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_nocab"]
+script = ExtResource("2_t8dfm")
+readable_name = "Increase Jump Height"
+icon = ExtResource("3_nocab")
+description = "Slightly increase the players jump height"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_i02fx"]
+script = ExtResource("2_t8dfm")
+readable_name = "Decrease Pollen Burst Cooldown"
+icon = ExtResource("4_nocab")
+description = "Slightly decrease the cooldown between pollen bursts"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_2ivhv"]
+script = ExtResource("2_t8dfm")
+readable_name = "Increase Damage of Pollen Burst"
+icon = ExtResource("4_nocab")
+description = "Increases the damage output from pollen burst to enemy players "
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_r7yx6"]
+script = ExtResource("2_t8dfm")
+readable_name = "Improve Bullet Shield of Pollen Burst"
+icon = ExtResource("4_nocab")
+description = "Pollen burst blocks one additional bullet"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_8a6ol"]
+script = ExtResource("2_t8dfm")
+readable_name = "Increase Heal Rate of Pollen Burst"
+icon = ExtResource("4_nocab")
+description = "Slightly increases the heal rate received from a pollen burst"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_3j67i"]
+script = ExtResource("2_t8dfm")
+readable_name = "Make Bullets bigger"
+icon = ExtResource("5_8wwsg")
+description = "Increases the size of bullets"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_8wwsg"]
+script = ExtResource("2_t8dfm")
+readable_name = "Make Bullets faster"
+icon = ExtResource("5_8wwsg")
+description = "Increases the speed of bullets"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_lm6of"]
+script = ExtResource("2_t8dfm")
+readable_name = "Make Bullets more hurtful"
+icon = ExtResource("5_8wwsg")
+description = "Increases the damage dealt by bullets"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[sub_resource type="Resource" id="Resource_kswtt"]
+script = ExtResource("2_t8dfm")
+readable_name = "Make Bullets more bouncy"
+icon = ExtResource("5_8wwsg")
+description = "Adds +2 bounces to bullets but makes each slower and deal less damage"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
+[node name="Evolutions" type="Node" unique_id=2110948266]
+script = ExtResource("1_c5lsn")
+EVO_DICT = Dictionary[int, ExtResource("2_t8dfm")]({
+0: SubResource("Resource_8dmq1"),
+1: SubResource("Resource_t8dfm"),
+2: SubResource("Resource_nocab"),
+3: SubResource("Resource_i02fx"),
+4: SubResource("Resource_2ivhv"),
+5: SubResource("Resource_r7yx6"),
+6: SubResource("Resource_8a6ol"),
+7: SubResource("Resource_3j67i"),
+8: SubResource("Resource_8wwsg"),
+9: SubResource("Resource_lm6of"),
+10: SubResource("Resource_kswtt")
+})
