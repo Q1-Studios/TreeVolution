@@ -14,3 +14,4 @@ func _on_bullet_detection_body_entered(body: Node2D) -> void:
 		var bullet_damage: float = body.get_damage()
 		print("Enemy collided with bullet, took %s damage " % str(bullet_damage))
 		health -= bullet_damage
+		$AnimationPlayer.play("damage_taken")

@@ -4,11 +4,48 @@
 [ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_v14g5"]
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
-[ext_resource type="Script" uid="uid://dqkai3yi40ep0" path="res://src/scripts/stat_controller.gd" id="5_gjb54"]
+[ext_resource type="Script" path="res://src/scripts/stat_controller.gd" id="5_gjb54"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
 radius = 316.8831
 height = 1516.883
+
+[sub_resource type="Animation" id="Animation_gjb54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1g466"]
+resource_name = "damage_taken"
+length = 0.43333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uo3qh"]
+_data = {
+&"RESET": SubResource("Animation_gjb54"),
+&"damage_taken": SubResource("Animation_1g466")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "stat_controller")]
 scale = Vector2(0.385, 0.385)
@@ -45,6 +82,9 @@ shape = SubResource("CapsuleShape2D_qfal1")
 
 [node name="StatController" type="Node2D" parent="." unique_id=1452008666]
 script = ExtResource("5_gjb54")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=685060259]
+libraries/ = SubResource("AnimationLibrary_uo3qh")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_area_entered"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
