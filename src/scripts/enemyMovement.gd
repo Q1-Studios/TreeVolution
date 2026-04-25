@@ -1,16 +1,13 @@
-class_name PlayerMovement
+class_name EnemyMovement
 extends MovementController
-
 
 func handleMovement(player: PollenAffected, delta: float) -> void:
 	super(player, delta)
 
+	#_handle_lateral_movement(player, delta)
+	#_handle_jump(player, delta)
 	
-	_handle_lateral_movement(player, delta)
-	_handle_jump(player, delta)
-
 	player.move_and_slide()
-
 
 func _handle_lateral_movement(player: Player, delta: float):
 	var direction = _improved_input_getAxis()
@@ -42,4 +39,3 @@ func _improved_input_getAxis() -> int:
 	previous_direction = pos - neg
 	return previous_direction
 		
-	
