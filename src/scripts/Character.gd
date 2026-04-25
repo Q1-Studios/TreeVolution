@@ -1,4 +1,4 @@
-class_name PollenAffected
+class_name Character
 extends CharacterBody2D
 
 

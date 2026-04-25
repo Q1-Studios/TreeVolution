@@ -2,7 +2,7 @@ class_name PlayerMovement
 extends MovementController
 
 
-func handleMovement(player: PollenAffected, delta: float) -> void:
+func handleMovement(player: Character, delta: float) -> void:
 	super(player, delta)
 
 	

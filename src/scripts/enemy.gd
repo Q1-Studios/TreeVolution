@@ -1,4 +1,4 @@
-extends PollenAffected
+extends Character
 class_name Enemy
 
 func _ready() -> void:

@@ -1,5 +1,5 @@
 class_name Player
-extends PollenAffected
+extends Character
 
 
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")

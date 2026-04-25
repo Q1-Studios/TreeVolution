@@ -31,7 +31,7 @@ var previous_direction = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
-func handleMovement(player: PollenAffected, delta: float) -> void:
+func handleMovement(player: Character, delta: float) -> void:
 	if player.is_on_floor():
 		is_grounded = true
 		used_double_Jump = !allowDoubleJump
@@ -42,14 +42,14 @@ func handleMovement(player: PollenAffected, delta: float) -> void:
 	
 	
 	
-func _movement_on_ground(player: PollenAffected, direction: int) -> void:
+func _movement_on_ground(player: Character, direction: int) -> void:
 	if direction:
 		player.velocity.x =  move_toward(player.velocity.x, direction * max_speed, acceleration)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, autoDeceleration)
 
 
-func _movement_in_air(player: PollenAffected, direction: int) -> void:
+func _movement_in_air(player: Character, direction: int) -> void:
 	if direction:
 		if abs(player.velocity.x) > maxSpeedInAir && player.velocity.x * direction > 0:
 			pass
@@ -62,7 +62,7 @@ func _movement_in_air(player: PollenAffected, direction: int) -> void:
 
 		
 
-func _simulate_gravity(player: PollenAffected, delta: float) -> void:
+func _simulate_gravity(player: Character, delta: float) -> void:
 	if player.is_on_floor():
 		return
 	

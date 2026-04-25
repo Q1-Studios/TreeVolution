@@ -1,7 +1,7 @@
 class_name EnemyMovement
 extends MovementController
 
-func handleMovement(player: PollenAffected, delta: float) -> void:
+func handleMovement(player: Character, delta: float) -> void:
 	super(player, delta)
 
 	#_handle_lateral_movement(player, delta)

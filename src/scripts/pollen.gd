@@ -1,7 +1,7 @@
 extends Node2D
 class_name Pollen
 
-var owner_call: PollenAffected
+var owner_call: Character
 var pollen_heal_amount:int = 1
 var pollen_damage_enemy_amount:int = 5
 var pollen_ability_cooldown:int = 10
