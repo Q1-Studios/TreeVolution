@@ -105,10 +105,10 @@ autowrap_mode = 3
 
 [node name="Description" type="Label" parent="Broken" unique_id=654012397]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 129.0
-offset_right = 259.0
-offset_bottom = 236.0
+offset_left = 66.0
+offset_top = 160.0
+offset_right = 261.0
+offset_bottom = 267.0
 theme_override_font_sizes/font_size = 12
 text = "Test test Test"
 horizontal_alignment = 1
@@ -167,10 +167,10 @@ autowrap_mode = 3
 
 [node name="Description" type="Label" parent="Fixet" unique_id=1777586226]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 129.0
-offset_right = 259.0
-offset_bottom = 236.0
+offset_left = 54.0
+offset_top = 148.0
+offset_right = 249.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 12
 text = "Test test Test"
 horizontal_alignment = 1

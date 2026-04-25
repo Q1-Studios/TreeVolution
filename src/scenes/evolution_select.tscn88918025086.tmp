@@ -45,12 +45,15 @@ focus_neighbor_right = NodePath("../EvolutionBox2")
 focus_neighbor_bottom = NodePath("../EvolutionBox3")
 focus_next = NodePath("../EvolutionBox3")
 focus_previous = NodePath(".")
+evolution = null
 
 [node name="EvolutionBox2" parent="VBoxContainer/EvoBoxContainer" unique_id=770527392 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
+evolution = null
 
 [node name="EvolutionBox3" parent="VBoxContainer/EvoBoxContainer" unique_id=243554185 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
+evolution = null
 
 [node name="ConfirmBtn" parent="VBoxContainer" unique_id=1613722498 instance=ExtResource("5_lnnja")]
 visible = false

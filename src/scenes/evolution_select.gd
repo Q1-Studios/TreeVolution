@@ -1,25 +1,38 @@
 extends Control
 
-@onready var evolution_box_left = $VBoxContainer/HBoxContainer/EvolutionBox
-@onready var evolution_box_center = $VBoxContainer/HBoxContainer/EvolutionBox2
-@onready var evolution_box_right = $VBoxContainer/HBoxContainer/EvolutionBox3
+@onready var evolution_box_container = $VBoxContainer/EvoBoxContainer
+@onready var confirm_btn = $VBoxContainer/ConfirmBtn
 
-signal evolution
+var btn_group: ButtonGroup
 
+signal evolution_selected(evolution: Evolutions.Evolution)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	display_evolution()
+	init_evolution_boxes()
 	pass
 
-func display_evolution() -> void:
+func init_evolution_boxes() -> void:
+	btn_group = ButtonGroup.new()
+	btn_group.pressed.connect(display_confirm_btn)
+	
 	var all_evolutions = Evolutions.Evolution.values()
 	all_evolutions.shuffle()
-	var picked_evolutions = all_evolutions.slice(0, 3)
-	evolution_box_left.set_evolution_data(Evolutions.get_evolution_data(picked_evolutions[0]))
-	evolution_box_center.set_evolution_data(Evolutions.get_evolution_data(picked_evolutions[1]))
-	evolution_box_right.set_evolution_data(Evolutions.get_evolution_data(picked_evolutions[2]))
+	
+	for evo in all_evolutions:
+		print("Evolution " + str(evo) + ": " + str(Evolutions.get_evolution_data(evo).readable_name))
+	
+	for index in range(3):
+		var evolution: Evolutions.Evolution = all_evolutions[index]
+		var evolution_box: EvolutionBox = evolution_box_container.get_child(index)
+		evolution_box.set_evolution(evolution)
+		evolution_box.button_group = btn_group
 
+func display_confirm_btn(_button: BaseButton) -> void:
+	confirm_btn.visible = true
 
 func _on_cool_button_button_up() -> void:
-	pass # Replace with function body.
+	var evolution_box: EvolutionBox = btn_group.get_pressed_button()
+	var evolution: Evolutions.Evolution = evolution_box.get_evolution()
+	print("Selected evolution: " + str(evolution))
+	evolution_selected.emit(evolution)

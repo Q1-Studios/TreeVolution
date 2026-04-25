@@ -11,6 +11,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Increase Player Health"
 icon = ExtResource("3_nocab")
 description = "Slightly increase the total health of the player"
+color = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_t8dfm"]
@@ -18,6 +19,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Increase Movement Speed"
 icon = ExtResource("3_nocab")
 description = "Slighlty increase the players movement speed"
+color = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_nocab"]
@@ -25,6 +27,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Increase Jump Height"
 icon = ExtResource("3_nocab")
 description = "Slightly increase the players jump height"
+color = Color(0, 1, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_i02fx"]
@@ -32,6 +35,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Decrease Pollen Burst Cooldown"
 icon = ExtResource("4_nocab")
 description = "Slightly decrease the cooldown between pollen bursts"
+color = Color(0, 0, 1, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_2ivhv"]
@@ -39,6 +43,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Increase Damage of Pollen Burst"
 icon = ExtResource("4_nocab")
 description = "Increases the damage output from pollen burst to enemy players "
+color = Color(0, 0, 1, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_r7yx6"]
@@ -46,6 +51,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Improve Bullet Shield of Pollen Burst"
 icon = ExtResource("4_nocab")
 description = "Pollen burst blocks one additional bullet"
+color = Color(0, 0, 1, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_8a6ol"]
@@ -53,6 +59,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Increase Heal Rate of Pollen Burst"
 icon = ExtResource("4_nocab")
 description = "Slightly increases the heal rate received from a pollen burst"
+color = Color(0, 0, 1, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_3j67i"]
@@ -60,6 +67,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Make Bullets bigger"
 icon = ExtResource("5_8wwsg")
 description = "Increases the size of bullets"
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_8wwsg"]
@@ -67,6 +75,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Make Bullets faster"
 icon = ExtResource("5_8wwsg")
 description = "Increases the speed of bullets"
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_lm6of"]
@@ -74,6 +83,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Make Bullets more hurtful"
 icon = ExtResource("5_8wwsg")
 description = "Increases the damage dealt by bullets"
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_kswtt"]
@@ -81,6 +91,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Make Bullets more bouncy"
 icon = ExtResource("5_8wwsg")
 description = "Adds +2 bounces to bullets but makes each slower and deal less damage"
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_j1fy0"]
@@ -88,6 +99,7 @@ script = ExtResource("2_t8dfm")
 readable_name = "Make more Bullets"
 icon = ExtResource("5_8wwsg")
 description = "Adds +2 bullets per shot but decreases damage"
+color = Color(1, 0, 0, 1)
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [node name="Evolutions" type="Node" unique_id=2110948266]
