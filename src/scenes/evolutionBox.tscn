@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://c7jg5d7xjt0s8"]
+
+[ext_resource type="Script" uid="uid://dvksdp6phqlyj" path="res://src/scripts/evolution_box.gd" id="1_7ntl0"]
+[ext_resource type="Texture2D" uid="uid://b3c7n0a7tf8tp" path="res://src/assets/2D/stone_full.png" id="2_7ntl0"]
+[ext_resource type="Texture2D" uid="uid://cqc6dqggba3fk" path="res://src/assets/2D/stone_upper.png" id="2_cp8hd"]
+[ext_resource type="Texture2D" uid="uid://ckcvko4invenw" path="res://src/assets/2D/player_evo.png" id="3_8frw0"]
+[ext_resource type="Texture2D" uid="uid://1sye5wnuo4" path="res://src/assets/2D/stone_lower.png" id="3_40nq7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weetq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+
+[sub_resource type="Theme" id="Theme_67laq"]
+Label/font_sizes/font_size = 48
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_weetq")
+
+[node name="EvolutionBox" type="Button" unique_id=2106384170]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 130.0
+offset_right = -812.0
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_67laq")
+script = ExtResource("1_7ntl0")
+
+[node name="Broken" type="Control" parent="." unique_id=1702135868]
+anchors_preset = 0
+offset_top = -130.0
+offset_right = 40.0
+offset_bottom = -90.0
+
+[node name="TextureRect2" type="TextureRect" parent="Broken" unique_id=241307912]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 6.0
+offset_top = 124.0
+offset_right = 1089.3333
+offset_bottom = 1207.3333
+scale = Vector2(0.3, 0.3)
+size_flags_vertical = 4
+texture = ExtResource("2_cp8hd")
+expand_mode = 5
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Broken" unique_id=64445159]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 138.0
+offset_right = 1093.3333
+offset_bottom = 1221.3333
+scale = Vector2(0.3, 0.3)
+size_flags_vertical = 4
+texture = ExtResource("3_40nq7")
+expand_mode = 5
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Broken" unique_id=156904601]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_right = 0.012
+offset_left = -45.48
+offset_top = 126.00001
+offset_right = 76.52
+offset_bottom = 248.0
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 0
+texture = ExtResource("3_8frw0")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="Broken" unique_id=971607526]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 66.0
+offset_top = 267.0
+offset_right = 300.0
+offset_bottom = 440.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
+theme_override_font_sizes/font_size = 32
+text = "Gruber"
+horizontal_alignment = 1
+
+[node name="Fixet" type="Control" parent="." unique_id=795924130]
+visible = false
+anchors_preset = 0
+offset_top = -130.0
+offset_right = 40.0
+offset_bottom = -90.0
+
+[node name="TextureRect" type="TextureRect" parent="Fixet" unique_id=571744747]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 12.0
+offset_top = 126.0
+offset_right = 1095.3333
+offset_bottom = 1209.3333
+scale = Vector2(0.3, 0.3)
+size_flags_vertical = 4
+texture = ExtResource("2_7ntl0")
+expand_mode = 5
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Fixet" unique_id=1365203076]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_right = 0.012
+offset_left = 7.52
+offset_top = 113.0
+offset_right = 129.52
+offset_bottom = 235.0
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 0
+texture = ExtResource("3_8frw0")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="Fixet" unique_id=526347983]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 52.0
+offset_top = 233.0
+offset_right = 286.0
+offset_bottom = 406.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
+theme_override_font_sizes/font_size = 32
+text = "Gruber"
+horizontal_alignment = 1
