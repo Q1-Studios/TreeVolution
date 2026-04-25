@@ -5,10 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x01q"]
-radius = 31.168884
-height = 753.2468
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
 radius = 316.8831
 height = 1516.883
@@ -35,16 +31,6 @@ scale = Vector2(0.9999999, 0.9999999)
 
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643]
 script = ExtResource("2_v14g5")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=147974235]
-position = Vector2(-340.25974, 597.40265)
-rotation = 1.5707964
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 32768
-
-[node name="isGrounded" type="CollisionShape2D" parent="StaticBody2D" unique_id=66318307]
-scale = Vector2(1.0000001, 1.0000001)
-shape = SubResource("CapsuleShape2D_7x01q")
 
 [node name="HealthController" type="Node2D" parent="." unique_id=197947811]
 
