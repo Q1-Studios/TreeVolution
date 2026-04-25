@@ -1,8 +1,8 @@
+class_name Player
+
 extends CharacterBody2D
 
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var movement_controller : MovementController
 
 var MAX_HEALTH = 100
 var health = 100
@@ -13,6 +13,7 @@ var heal_amount = 1
 var pollen_attributes = {"damageBuff": [false, damage_amount], "healing": [false, heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+
 
 func _process(dealta) -> void:
 	spawn_pollen()
@@ -27,6 +28,10 @@ func spawn_pollen():
 		await get_tree().create_timer(2).timeout
 		temp_pollen.queue_free()
 
+
+func _physics_process(delta: float) -> void:
+	movement_controller.handleMovement(self, delta)
+	
 func pollen_healing(healing_array):
 	var new_health
 	

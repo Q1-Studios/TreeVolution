@@ -1,7 +1,9 @@
+class_name MovementController
+
 extends Node
 
+
 @export_group("Character & Model")
-@export var player : CharacterBody2D 
 @export var model_container : Node3D 
 
 @export_group("Running")
@@ -23,17 +25,15 @@ extends Node
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _physics_process(delta: float) -> void:
-	_simulate_gravity(delta)
-	_handle_lateral_movement(delta)
-	_handle_jump(delta)
+func handleMovement(player: Player, delta: float) -> void:
+	_simulate_gravity(player, delta)
+	_handle_lateral_movement(player, delta)
+	_handle_jump(player, delta)
 	
 	player.move_and_slide()
 
 
-
-
-func _handle_lateral_movement(delta):
+func _handle_lateral_movement(player: Player, delta: float):
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction:
 		player.velocity.x = direction * max_speed
@@ -42,7 +42,7 @@ func _handle_lateral_movement(delta):
 
 
 
-func _handle_jump(delta: float) -> void:
+func _handle_jump(player: Player, delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if !player.is_on_floor():
 			return
@@ -53,6 +53,6 @@ func _handle_jump(delta: float) -> void:
 
 
 
-func _simulate_gravity(delta: float) -> void:
+func _simulate_gravity(player: Player, delta: float) -> void:
 	if not player.is_on_floor():
 		player.velocity += gravitationalConstant*delta*Vector2.DOWN
