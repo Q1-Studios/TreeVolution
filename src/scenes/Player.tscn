@@ -46,5 +46,6 @@ shape = SubResource("CapsuleShape2D_qfal1")
 [node name="StatController" type="Node2D" parent="." unique_id=1452008666]
 script = ExtResource("5_gjb54")
 
-[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_area_entered"]
+[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_polen_detection_area_entered"]
+[connection signal="area_exited" from="Bullet_Detection" to="." method="_on_polen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
