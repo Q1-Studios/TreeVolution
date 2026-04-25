@@ -33,8 +33,7 @@ func spawn_polen():
 func _physics_process(delta: float) -> void:
 	movement_controller.handleMovement(self, delta)
 	for area in polen_list:
-		area.affect_player(self, polen_attributes)
-		await get_tree().create_timer(1*delta).timeout
+		area.affect_player(self, polen_attributes) #script is in polenArea
 
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	stat_controller.bullet_damage(self, body)
