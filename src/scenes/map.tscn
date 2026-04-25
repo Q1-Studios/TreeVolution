@@ -3,9 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
-[ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/icon.tscn" id="5_ahmr2"]
-[ext_resource type="Script" uid="uid://tw4xfab1n860" path="res://src/scenes/map_holder.gd" id="5_b4rpm"]
+[ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
+[ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
+
+[sub_resource type="GDScript" id="GDScript_f1v2q"]
+script/source = "extends Node2D
+
+const icon = preload(\"res://src/scenes/vertex.tscn\")
+var graph
+
+func _ready() -> void:
+	graph = AStar2D.new()
+	
+"
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udcsr"]
 
@@ -31,7 +42,7 @@ zoom = Vector2(0.3, 0.3)
 position = Vector2(345, 50)
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
-script = ExtResource("5_b4rpm")
+script = SubResource("GDScript_f1v2q")
 
 [node name="Floor" type="StaticBody2D" parent="MapHolder" unique_id=2038121272]
 position = Vector2(0, 1174)
@@ -81,7 +92,10 @@ texture = SubResource("PlaceholderTexture2D_udcsr")
 scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
 
-[node name="G" type="Node2D" parent="MapHolder" unique_id=929467085]
+[node name="G" type="Node2D" parent="MapHolder" unique_id=929467085 node_paths=PackedStringArray("V", "E")]
+script = ExtResource("4_ahmr2")
+V = NodePath("V")
+E = NodePath("E")
 
 [node name="V" type="Node2D" parent="MapHolder/G" unique_id=574635472]
 
@@ -163,7 +177,7 @@ points = PackedVector2Array(113, 1015, -326, 241)
 jump = true
 
 [node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=816497007 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1388, 1035, -802, 246, -756, 246)
+points = PackedVector2Array(-1388, 1035, -756, 246)
 jump = true
 
 [node name="Node2D11" parent="MapHolder/G/E/jump" unique_id=1328148926 instance=ExtResource("6_f1v2q")]
@@ -180,10 +194,12 @@ jumpOnDown = true
 [node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=486631092 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(-2773, 1040, -1807, -436)
 doubleJump = true
+timeTillDoubleJump = 0.25
 
 [node name="Node2D12" parent="MapHolder/G/E/doublejump" unique_id=635403712 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(-768, 247, 240, -1058)
 doubleJump = true
+timeTillDoubleJump = 0.25
 
 [node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
 
@@ -196,7 +212,7 @@ points = PackedVector2Array(937, -1063, 1963, 994)
 onlyDown = true
 
 [node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1169, -404, -1032, 1020)
+points = PackedVector2Array(-1032, 1020, -1169, -404)
 onlyDown = true
 [connection signal="area_entered" from="Pollen" to="Player" method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Pollen" to="Player" method="_on_pollen_detection_area_exited"]
