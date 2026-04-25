@@ -13,14 +13,13 @@ var polen_damage_increase = 10
 var polen_heal_amount = 1
 
 var pollen_ability_cooldown = 10
-var pollen_attributes = {"damageBuff": [false, polen_damage_increase], "healing": [true, polen_heal_amount], "blocking": false}
+var polen_attributes = {"damageBuff": [true, polen_damage_increase], "healing": [true, polen_heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
-
-func _process(dealta) -> void:
+var polen_list = []
+func _process(delta) -> void:
 	spawn_polen()
-	
 
 func spawn_polen():
 	if Input.is_action_just_pressed("Pollen ability"):
@@ -33,12 +32,19 @@ func spawn_polen():
 
 func _physics_process(delta: float) -> void:
 	movement_controller.handleMovement(self, delta)
+	for area in polen_list:
+		area.affect_player(self, polen_attributes)
+		await get_tree().create_timer(1*delta).timeout
 
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
-	
 	stat_controller.bullet_damage(self, body)
 
-func _on_bullet_detection_area_entered(area: Area2D) -> void:
-	stat_controller.polen_heal(self, area, pollen_attributes["healing"])
+# area parameter -> polen area
+func _on_polen_detection_area_entered(area: Area2D) -> void:
+	if (area.is_in_group("Polen")):
+		if area not in polen_list:
+			polen_list.append(area)
 
- 
+func _on_polen_detection_area_exited(area: Area2D) -> void:
+	if (area.is_in_group("Polen")):
+		polen_list.erase(area)
