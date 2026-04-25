@@ -13,6 +13,7 @@ var Bullet = preload("res://src/scenes/bullet.tscn")
 @export var bullet_velocity: float = 8000
 
 var can_shoot: bool = true;
+const MULTI_BULLET_OFFSET: float = PI/18 # 10 degrees
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,18 +36,19 @@ func start_shooting_cooldown() -> void:
 		
 func get_bullet_arrangement() -> Array[int]:
 	var bullet_arrangement: Array[int] = []
-	for i in range(1, bullet_count + 1):
+	for i in range(0, bullet_count):
 		var direction = -1 if i % 2 == 0 else 1
 		var value = ceil((float(i) / 3 ))
 		bullet_arrangement.append(value * direction)
+		
+	print("Bullet arangement: "+ str(bullet_arrangement))
 	return bullet_arrangement
 
 func spawn_bullet() -> void:
 	var dir = get_global_mouse_position() - global_position
-	const multi_bullets_offset: float = 0.261799 # 15 degrees
 	
 	for arrangement in get_bullet_arrangement():
-		var offset = multi_bullets_offset * arrangement
+		var offset = MULTI_BULLET_OFFSET * arrangement
 		# clamp bullet rotation between +60° and -60°
 		var bullet_rotation = clamp(dir.angle() + offset, -PI/3, PI/3)
 		var velocity = Vector2(bullet_velocity, 0).rotated(bullet_rotation)
