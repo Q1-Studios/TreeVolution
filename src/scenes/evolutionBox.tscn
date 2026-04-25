@@ -17,33 +17,47 @@ border_width_bottom = 8
 Label/font_sizes/font_size = 48
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_weetq")
 
-[node name="EvolutionBox" type="Button" unique_id=2106384170]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 130.0
-offset_right = -812.0
-offset_bottom = -205.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp8hd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40nq7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yi2cj"]
+
+[node name="EvolutionBox" type="Button" unique_id=870802911]
+anchors_preset = -1
+anchor_right = 0.29500002
+anchor_bottom = 0.483
+offset_bottom = 0.015991211
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_67laq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cp8hd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_40nq7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yi2cj")
+toggle_mode = true
 script = ExtResource("1_7ntl0")
+label = "Test"
+texture = ExtResource("3_8frw0")
 
 [node name="Broken" type="Control" parent="." unique_id=1702135868]
-anchors_preset = 0
-offset_top = -130.0
-offset_right = 40.0
-offset_bottom = -90.0
+show_behind_parent = true
+layout_mode = 1
+anchor_right = 0.95900005
+anchor_bottom = 1.0
+offset_right = 0.09338379
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="TextureRect2" type="TextureRect" parent="Broken" unique_id=241307912]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 6.0
-offset_top = 124.0
-offset_right = 1089.3333
-offset_bottom = 1207.3333
+offset_left = 6.3759995
+offset_right = 1089.7092
+offset_bottom = 1083.3333
 scale = Vector2(0.3, 0.3)
 size_flags_vertical = 4
 texture = ExtResource("2_cp8hd")
@@ -53,10 +67,10 @@ stretch_mode = 2
 [node name="TextureRect" type="TextureRect" parent="Broken" unique_id=64445159]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 138.0
-offset_right = 1093.3333
-offset_bottom = 1221.3333
+offset_left = -3.6240005
+offset_top = -13.0
+offset_right = 1079.7092
+offset_bottom = 1070.3333
 scale = Vector2(0.3, 0.3)
 size_flags_vertical = 4
 texture = ExtResource("3_40nq7")
@@ -68,10 +82,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
 anchor_right = 0.012
-offset_left = -45.48
-offset_top = 126.00001
-offset_right = 76.52
-offset_bottom = 248.0
+offset_left = -43.912
+offset_top = -1.0
+offset_right = 78.088
+offset_bottom = 121.0
 scale = Vector2(1.5, 1.5)
 size_flags_vertical = 0
 texture = ExtResource("3_8frw0")
@@ -80,10 +94,10 @@ expand_mode = 5
 [node name="Label" type="Label" parent="Broken" unique_id=971607526]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 66.0
-offset_top = 267.0
-offset_right = 300.0
-offset_bottom = 440.0
+offset_left = 56.376
+offset_top = 114.0
+offset_right = 290.376
+offset_bottom = 287.0
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
 theme_override_font_sizes/font_size = 32
@@ -92,18 +106,22 @@ horizontal_alignment = 1
 
 [node name="Fixet" type="Control" parent="." unique_id=795924130]
 visible = false
-anchors_preset = 0
-offset_top = -130.0
-offset_right = 40.0
-offset_bottom = -90.0
+show_behind_parent = true
+layout_mode = 1
+anchor_right = 0.95600003
+anchor_bottom = 0.96800005
+offset_top = -1.0
+offset_right = 0.11291504
+offset_bottom = 0.015991211
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="Fixet" unique_id=571744747]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 12.0
-offset_top = 126.0
-offset_right = 1095.3333
-offset_bottom = 1209.3333
+offset_left = 2.0
+offset_top = -2.9676514
+offset_right = 1085.3333
+offset_bottom = 1080.3656
 scale = Vector2(0.3, 0.3)
 size_flags_vertical = 4
 texture = ExtResource("2_7ntl0")
@@ -115,10 +133,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
 anchor_right = 0.012
-offset_left = 7.52
-offset_top = 113.0
-offset_right = 129.52
-offset_bottom = 235.0
+offset_left = -0.15199995
+offset_top = -17.0
+offset_right = 121.848
+offset_bottom = 105.0
 scale = Vector2(1.5, 1.5)
 size_flags_vertical = 0
 texture = ExtResource("3_8frw0")
@@ -127,12 +145,14 @@ expand_mode = 5
 [node name="Label" type="Label" parent="Fixet" unique_id=526347983]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 52.0
-offset_top = 233.0
-offset_right = 286.0
-offset_bottom = 406.0
+offset_left = 40.328
+offset_top = 93.0
+offset_right = 274.328
+offset_bottom = 266.0
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
 theme_override_font_sizes/font_size = 32
 text = "Gruber"
 horizontal_alignment = 1
+
+[connection signal="toggled" from="." to="." method="_on_button_toggled"]
