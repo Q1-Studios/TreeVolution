@@ -61,6 +61,7 @@ position = Vector2(80.51948, -1748.2078)
 zoom = Vector2(0.3, 0.3)
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
+visible = false
 position = Vector2(345, 50)
 
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("4_f1v2q")]
