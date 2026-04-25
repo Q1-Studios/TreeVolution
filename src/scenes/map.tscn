@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 
@@ -48,7 +48,6 @@ scale = Vector2(1.6155555, 1.6155556)
 texture = ExtResource("2_k6avn")
 
 [node name="Sprite2D" type="Sprite2D" parent="VisualBackGround" unique_id=468748651]
-visible = false
 visibility_layer = 512
 position = Vector2(0, -500)
 scale = Vector2(1.415, 1.415)
@@ -64,7 +63,14 @@ zoom = Vector2(0.3, 0.3)
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
 position = Vector2(1063.9999, 801.99994)
 
+[node name="MovementController" parent="Enemy" index="4" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
+G = NodePath("../../MapHolder/G")
+player = NodePath("../../Player")
+
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
+position = Vector2(345, 50)
+
+[node name="Pollen2" parent="." unique_id=719815752 instance=ExtResource("3_3tm0b")]
 position = Vector2(-4551, -5137)
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
@@ -247,3 +253,5 @@ visible = false
 [connection signal="area_entered" from="Pollen" to="Player" method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Pollen" to="Player" method="_on_pollen_detection_area_exited"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
+
+[editable path="Enemy"]

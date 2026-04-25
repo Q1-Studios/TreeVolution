@@ -52,6 +52,7 @@ func _physics_process(_delta: float) -> void:
 	if movement_controller:
 		movement_controller.handleMovement(self)
 		
+	var current_player_damage:int = 0
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 

@@ -1,3 +1,4 @@
+class_name Graph
 extends Node2D
 
 @export var V: Node2D
