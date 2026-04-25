@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://yjcon4nkrc51"]
+
+[ext_resource type="Script" uid="uid://c5e66our8mhe4" path="res://src/scripts/gun.gd" id="1_xfvrx"]
+[ext_resource type="Texture2D" uid="uid://nsxpe6gwm0qc" path="res://src/assets/2D/weapon.png" id="2_xkiar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa6vi"]
+size = Vector2(397, 84)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfvrx"]
+radius = 0.6082766
+
+[node name="Gun" type="StaticBody2D" unique_id=399179884]
+collision_layer = 2
+script = ExtResource("1_xfvrx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=219846246]
+position = Vector2(15.5, -47)
+shape = SubResource("RectangleShape2D_wa6vi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=799529819]
+position = Vector2(246, 785)
+texture = ExtResource("2_xkiar")
+
+[node name="Muzzle" type="Area2D" parent="." unique_id=1731287587]
+position = Vector2(215, -57)
+scale = Vector2(10, 10)
+collision_layer = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Muzzle" unique_id=311610365]
+shape = SubResource("CircleShape2D_xfvrx")
+metadata/_edit_group_ = true
