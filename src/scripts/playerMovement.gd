@@ -23,7 +23,7 @@ extends Node
 @export var gravitationalConstantWhenFalling = 50.0
 
 
-var used_double_Jump = false
+var used_double_Jump = !allowDoubleJump
 var is_grounded = true
 var previous_direction = 0
 
@@ -34,7 +34,7 @@ func _ready() -> void:
 func handleMovement(player: Player, delta: float) -> void:
 	if player.is_on_floor():
 		is_grounded = true
-		used_double_Jump = false
+		used_double_Jump = !allowDoubleJump
 	else:
 		is_grounded = false
 	
