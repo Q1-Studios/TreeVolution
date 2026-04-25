@@ -14,14 +14,14 @@ size = Vector2(2339.8845, 33.612663)
 visibility_layer = 512
 texture = ExtResource("1_edtax")
 
-[node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
+[node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
 position = Vector2(0, 800.06)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
 position = Vector2(80.51948, -1748.2078)
 zoom = Vector2(0.3, 0.3)
 
-[node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
+[node name="Pollen" parent="." unique_id=241079387 groups=["Polen"] instance=ExtResource("3_3tm0b")]
 position = Vector2(345, 50)
 
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("4_udcsr")]
@@ -34,6 +34,3 @@ scale = Vector2(1.73, 1.73)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1840679791]
 position = Vector2(-0.5779995, 676.25726)
 shape = SubResource("RectangleShape2D_kyhn7")
-
-[connection signal="start_effect" from="Pollen" to="Player" method="_on_pollen_start_effect"]
-[connection signal="stop_effect" from="Pollen" to="Player" method="_on_pollen_stop_effect"]

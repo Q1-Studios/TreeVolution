@@ -35,10 +35,11 @@ script = ExtResource("2_v14g5")
 [node name="HealthController" type="Node2D" parent="." unique_id=197947811]
 
 [node name="Bullet_Detection" type="Area2D" parent="." unique_id=1975164628]
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1982930971]
 position = Vector2(-322.07794, -116.883125)
 shape = SubResource("CapsuleShape2D_qfal1")
 
+[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_area_entered"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
