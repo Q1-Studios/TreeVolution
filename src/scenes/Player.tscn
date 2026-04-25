@@ -47,11 +47,11 @@ _data = {
 &"damage_taken": SubResource("Animation_1g466")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "stat_controller")]
+[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player")]
 scale = Vector2(0.385, 0.385)
 script = ExtResource("1_7x01q")
 movement_controller = NodePath("MovementController")
-stat_controller = NodePath("StatController")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
 position = Vector2(3.8146973e-06, -1.1920929e-07)
@@ -86,6 +86,8 @@ script = ExtResource("5_gjb54")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=685060259]
 libraries/ = SubResource("AnimationLibrary_uo3qh")
 
-[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_polen_detection_area_entered"]
-[connection signal="area_exited" from="Bullet_Detection" to="." method="_on_polen_detection_area_exited"]
+[node name="Timer" type="Timer" parent="." unique_id=297888288]
+
+[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
+[connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]

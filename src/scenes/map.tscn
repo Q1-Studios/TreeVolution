@@ -198,3 +198,5 @@ onlyDown = true
 [node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(-1169, -404, -1032, 1020)
 onlyDown = true
+[connection signal="area_entered" from="Pollen" to="Player" method="_on_pollen_detection_area_entered"]
+[connection signal="area_exited" from="Pollen" to="Player" method="_on_pollen_detection_area_exited"]

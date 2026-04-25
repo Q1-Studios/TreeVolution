@@ -1,53 +1,22 @@
 class_name Player
+extends PollenAffected
 
-extends CharacterBody2D
 
-@export var movement_controller : MovementController
-#@export var stat_controller : StatController
-
-var PLAYER_MAX_HEALTH = 100
-var player_health = 10
-var player_damage = 10
-
-var polen_damage_increase = 10
-var polen_heal_amount = 1
-
-var pollen_ability_cooldown = 10
-var polen_attributes = {"damageBuff": [true, polen_damage_increase], "healing": [true, polen_heal_amount], "blocking": false}
-@onready var health_manager = $HealthController
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
-var polen_list = []
-func _process(delta) -> void:
-	spawn_polen()
+func _ready() -> void:
+	health = 100
 
-func spawn_polen():
+func _process(delta) -> void:
+	spawn_pollen()
+
+
+func spawn_pollen():
 	if Input.is_action_just_pressed("Pollen ability"):
 		var player_position = $".".position
-		var temp_polen = pollen_obj.instantiate()
-		get_tree().root.add_child(temp_polen)
-		temp_polen.global_position = player_position 
-		await get_tree().create_timer(pollen_ability_cooldown).timeout
-		temp_polen.queue_free()
-
-func _physics_process(delta: float) -> void:
-	movement_controller.handleMovement(self, delta)
-	for area in polen_list:
-		area.affect_player(self, polen_attributes) #script is in polenArea
-
-func _on_bullet_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("bullets"):
-		var bullet_damage: float = body.damage
-		print("Collided with bullet, took %s damage " % str(bullet_damage))
-		player_health -= bullet_damage
-
-# area parameter -> polen area
-func _on_polen_detection_area_entered(area: Area2D) -> void:
-	if (area.is_in_group("Polen")):
-		if area not in polen_list:
-			polen_list.append(area)
-
-func _on_polen_detection_area_exited(area: Area2D) -> void:
-	if (area.is_in_group("Polen")):
-		polen_list.erase(area)
-		
+		var temp_pollen = pollen_obj.instantiate()
+		temp_pollen = create_pollen(temp_pollen)
+		get_tree().root.add_child(temp_pollen)
+		temp_pollen.global_position = player_position 
+		await get_tree().create_timer(pollen_life_time).timeout
+		temp_pollen.queue_free()

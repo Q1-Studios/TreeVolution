@@ -1,5 +1,5 @@
 extends Area2D
-
+@export var enemy : Enemy
 var can_affect = true
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,7 @@ func affect_player(player, polen_attributes):
 	var dictionary_keys = polen_attributes.keys()
 	buff_player_damage(player, polen_attributes[dictionary_keys[0]])
 	heal_player(player, polen_attributes[dictionary_keys[1]])
+	
 	start_effect_cooldown()
 	
 func start_effect_cooldown():
