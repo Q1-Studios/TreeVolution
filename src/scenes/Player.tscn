@@ -1,21 +1,88 @@
 [gd_scene format=3 uid="uid://ke7q6souawdw"]
 
 [ext_resource type="Script" uid="uid://c0tou1pyce784" path="res://src/scripts/player.gd" id="1_7x01q"]
-[ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_v14g5"]
+[ext_resource type="Texture2D" uid="uid://ci3ivlghlfvcn" path="res://src/assets/2D/player_idle1.png" id="2_awtg0"]
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
+[ext_resource type="Texture2D" uid="uid://6gygpjifx6j4" path="res://src/assets/2D/player_idle2.png" id="3_aycp6"]
+[ext_resource type="Texture2D" uid="uid://b2kfgx7wu3sqn" path="res://src/assets/2D/player_idle3.png" id="4_ccvdx"]
 [ext_resource type="Script" uid="uid://dqkai3yi40ep0" path="res://src/scripts/stat_controller.gd" id="5_gjb54"]
+[ext_resource type="Texture2D" uid="uid://befv1w6llqm1j" path="res://src/assets/2D/player_jumpup.png" id="5_pi0vf"]
+[ext_resource type="Texture2D" uid="uid://msdujuai8ee8" path="res://src/assets/2D/player_airtime.png" id="6_cbarn"]
+[ext_resource type="Texture2D" uid="uid://c141eopql7v5a" path="res://src/assets/2D/player_walk1.png" id="7_1cgn3"]
+[ext_resource type="Texture2D" uid="uid://di6s4krm1fk5f" path="res://src/assets/2D/player_land.png" id="7_aycp6"]
+[ext_resource type="Texture2D" uid="uid://cq71aqiaafib0" path="res://src/assets/2D/player_walk2.png" id="8_ep4ku"]
+[ext_resource type="Texture2D" uid="uid://bywb4sjtgfi81" path="res://src/assets/2D/player_walk3.png" id="9_1now0"]
+[ext_resource type="Texture2D" uid="uid://c4vtkkvps45bb" path="res://src/assets/2D/player_walk4.png" id="10_68jbn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3t6ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cbarn")
+}],
+"loop": true,
+"name": &"airtime",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_awtg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ccvdx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pi0vf")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}],
+"loop": true,
+"name": &"land",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1cgn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ep4ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1now0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_68jbn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
-radius = 316.8831
-height = 1516.883
+radius = 309.09088
+height = 1700.3344
 
 [sub_resource type="Animation" id="Animation_gjb54"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +98,7 @@ length = 0.43333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,18 +124,20 @@ animation_player = NodePath("AnimationPlayer")
 gun = NodePath("THE_PISS_STREAM")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
-position = Vector2(3.8146973e-06, -1.1920929e-07)
-scale = Vector2(0.99999994, 0.99999994)
-polygon = PackedVector2Array(-52.000004, 267, -59.000004, 376, -191, 396, -178, 594, -223, 617, -320, 422, -334, 416, -433, 622, -474, 603, -449, 426, -573, 449, -618, 371, -612, 225, -528, -33, -491, -147, -518, -272, -472, -277, -543, -368, -597, -536, -590, -766, -72, -823, -29.000004, -571, -50.000004, -428, -136, -303, -104, -291, -171, -172)
+position = Vector2(-77.92208, 140.25972)
+scale = Vector2(0.8991934, 0.8991934)
+polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147, 797.4027, 70.129875, 974.0261, -10.389616, 984.4158, -88.311714, 984.4158, -298.70135, 779.2209, -311.68835, 625.9741, -231.16887, 298.70135, -210.38965, 212.98705, -103.896126, -28.571434, -77.9221, -332.4676, -57.14287, -672.7274, 23.376623, -935.0651, 155.84418, -929.8703, 493.5066, -812.9872, 410.38968, -451.94812, 309.09097, -296.10394, 335.065, -275.32474, 285.71432, -184.41562)
 
 [node name="ModelContainer" type="Node2D" parent="." unique_id=437818947]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=587143810]
-position = Vector2(43.999996, -0.99999994)
-texture = ExtResource("1_v14g5")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1249482178]
+position = Vector2(-31.83445, 126.46459)
+scale = Vector2(0.87985724, 0.87985724)
+sprite_frames = SubResource("SpriteFrames_3t6ey")
+animation = &"land"
 
 [node name="THE_PISS_STREAM" parent="." unique_id=399179884 instance=ExtResource("2_qfal1")]
-position = Vector2(-342.85718, 410.38965)
+position = Vector2(127.27272, 109.09091)
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643]
@@ -80,7 +149,8 @@ script = ExtResource("2_v14g5")
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1982930971]
-position = Vector2(-322.07794, -116.883125)
+position = Vector2(18.18182, 155.84416)
+rotation = 0.15707964
 shape = SubResource("CapsuleShape2D_qfal1")
 
 [node name="StatController" type="Node2D" parent="." unique_id=1452008666]

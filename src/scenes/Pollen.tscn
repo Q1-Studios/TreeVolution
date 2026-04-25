@@ -7,27 +7,29 @@
 radius = 200.24985
 
 [node name="Pollen" type="Area2D" unique_id=1049056460 groups=["Polen"]]
-position = Vector2(526, 322)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_5k3mm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=213131670 groups=["Polen"]]
+position = Vector2(0, 155)
 shape = SubResource("CircleShape2D_5k3mm")
 
 [node name="Timer" type="Timer" parent="." unique_id=1356492730]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2129697036]
-position = Vector2(0, 196)
+position = Vector2(0, 351)
 rotation = -1.5707964
 amount = 60
 texture = ExtResource("3_fkvtm")
-lifetime = 0.44
+lifetime = 0.9400000000000001
 explosiveness = 0.45
+randomness = 0.57
+lifetime_randomness = 1.0
 spread = 89.4
-gravity = Vector2(0, -100)
-initial_velocity_min = 437.3
-initial_velocity_max = 750.1
+gravity = Vector2(0, 100)
+initial_velocity_min = 416.4
+initial_velocity_max = 835.71
 scale_amount_min = 0.0
 scale_amount_max = 0.2
 

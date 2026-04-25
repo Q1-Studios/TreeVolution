@@ -65,8 +65,7 @@ zoom = Vector2(0.3, 0.3)
 position = Vector2(1063.9999, 801.99994)
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
-visible = false
-position = Vector2(345, 50)
+position = Vector2(-4551, -5137)
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
 script = SubResource("GDScript_f1v2q")

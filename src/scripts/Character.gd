@@ -101,6 +101,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			gun
 			pass
 
+
 # singaling
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):

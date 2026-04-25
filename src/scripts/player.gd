@@ -1,7 +1,7 @@
 class_name Player
 extends Character
 
-
+@onready var animated_sprite = $AnimatedSprite2D
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 var can_spawn_pollen: bool = true
 
@@ -16,9 +16,9 @@ func _physics_process(delta: float) -> void:
 	_handle_gun()
 
 func _process(delta) -> void:
+	play_animation()
 	timer -= delta
 	spawn_pollen()
-	print(timer)
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen=true
 
@@ -37,7 +37,7 @@ func spawn_pollen():
 		var temp_pollen = pollen_obj.instantiate()
 		temp_pollen = create_pollen(temp_pollen)
 		get_tree().root.add_child(temp_pollen)
-		temp_pollen.global_position = player_position 
+		temp_pollen.global_position = player_position
 		await get_tree().create_timer(pollen_life_time).timeout
 		if temp_pollen:
 			temp_pollen.queue_free()
@@ -48,4 +48,24 @@ func start_pollen_cooldown():
 	timer = max_time
 	can_spawn_pollen = false
 
-	
+
+func play_animation() -> void:
+	var landing = false
+	if velocity.x > 0 && velocity.y == 0:
+		animated_sprite.flip_h = velocity.x < 0
+		animated_sprite.play("walk")
+	elif velocity.x < 0 && velocity.y == 0:
+		animated_sprite.flip_h = velocity.x < 0 
+		animated_sprite.play("walk")
+	elif Input.is_action_just_pressed("jump"):
+		animated_sprite.play("jump")
+		landing = true
+		print(landing)
+	elif velocity.y == 0 && landing:
+		print("test")
+		animated_sprite.play("land")
+		landing = false
+	elif velocity.y < 0:
+		animated_sprite.play("airtime")
+	else:
+		animated_sprite.play("idle")
