@@ -10,7 +10,7 @@ var Bullet = preload("res://src/scenes/bullet.tscn")
 @export var bullet_count: int = 1
 @export var bullet_bounces: int = 1
 @export var bullet_size: float = 1
-@export var bullet_velocity: float = 40000
+@export var bullet_velocity: float = 8000
 
 var can_shoot: bool = true;
 
@@ -32,17 +32,30 @@ func rotate_weapon() -> void:
 func start_shooting_cooldown() -> void:
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_shoot = true
+		
+func get_bullet_arrangement() -> Array[int]:
+	var bullet_arrangement: Array[int] = []
+	for i in range(1, bullet_count + 1):
+		var direction = -1 if i % 2 == 0 else 1
+		var value = ceil((float(i) / 3 ))
+		bullet_arrangement.append(value * direction)
+	return bullet_arrangement
 
 func spawn_bullet() -> void:
 	var dir = get_global_mouse_position() - global_position
-	var bullet_rotation = dir.angle() + randf_range(-0.2, 0.2)
-	var velocity = Vector2(bullet_velocity, 0).rotated(bullet_rotation)
-		
-	var bullet = Bullet.instantiate()
-	bullet.spawn($Muzzle.global_position, bullet_rotation, velocity, bullet_size)
-	bullet.set_bounces(bullet_bounces)
-	bullet.set_damage(bullet_damage)
-	get_tree().root.add_child(bullet)
+	const multi_bullets_offset: float = 0.261799 # 15 degrees
+	
+	for arrangement in get_bullet_arrangement():
+		var offset = multi_bullets_offset * arrangement
+		# clamp bullet rotation between +60° and -60°
+		var bullet_rotation = clamp(dir.angle() + offset, -PI/3, PI/3)
+		var velocity = Vector2(bullet_velocity, 0).rotated(bullet_rotation)
+
+		var bullet = Bullet.instantiate()
+		bullet.spawn($Muzzle.global_position, bullet_rotation, velocity, bullet_size)
+		bullet.set_bounces(bullet_bounces)
+		bullet.set_damage(bullet_damage)
+		get_tree().root.add_child(bullet)
 
 func shoot() -> void:
 	if !can_shoot:
@@ -51,3 +64,13 @@ func shoot() -> void:
 	can_shoot = false
 	spawn_bullet()
 	start_shooting_cooldown()
+	
+func set_bullet_attributes(damage: float, count: int, bounces: int, size: float, velocity: float) -> void:
+	bullet_damage = damage
+	bullet_count = count
+	bullet_bounces = bounces
+	bullet_size = size
+	bullet_velocity = velocity
+	
+func set_attack_cooldown(amount: float) -> void:
+	attack_cooldown = amount

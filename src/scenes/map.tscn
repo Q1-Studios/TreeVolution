@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cnjuj12ylkcyd"]
+[gd_scene format=3 uid="uid://cetum6xiv4va7"]
 
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
-[ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
+[ext_resource type="PackedScene" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scripts/enemy.tscn" id="4_udcsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
