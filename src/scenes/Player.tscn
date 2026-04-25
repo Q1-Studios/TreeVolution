@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_v14g5"]
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
+[ext_resource type="Script" uid="uid://dqkai3yi40ep0" path="res://src/scripts/stat_controller.gd" id="5_gjb54"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
 radius = 316.8831
 height = 1516.883
 
-[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller")]
+[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "stat_controller")]
 scale = Vector2(0.385, 0.385)
 script = ExtResource("1_7x01q")
 movement_controller = NodePath("MovementController")
+stat_controller = NodePath("StatController")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
 position = Vector2(3.8146973e-06, -1.1920929e-07)
@@ -40,6 +42,9 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1982930971]
 position = Vector2(-322.07794, -116.883125)
 shape = SubResource("CapsuleShape2D_qfal1")
+
+[node name="StatController" type="Node2D" parent="." unique_id=1452008666]
+script = ExtResource("5_gjb54")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_area_entered"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
