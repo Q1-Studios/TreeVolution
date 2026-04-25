@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cw2itwdnxfff5"]
 
 [ext_resource type="Script" uid="uid://t8gosgkkv8jn" path="res://src/scripts/group_child_btns.gd" id="1_244bg"]
+[ext_resource type="Script" uid="uid://cspewdpk16o64" path="res://src/scenes/evolution_select.gd" id="1_h2r2r"]
 [ext_resource type="PackedScene" uid="uid://c7jg5d7xjt0s8" path="res://src/scenes/evolutionBox.tscn" id="1_pp4y5"]
-[ext_resource type="Texture2D" uid="uid://drnj6k0kgpnei" path="res://src/assets/2D/gun_evo.png" id="2_246na"]
-[ext_resource type="Texture2D" uid="uid://batdpwagm2vis" path="res://src/assets/2D/pollen_evo.png" id="3_244bg"]
 [ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="5_lnnja"]
 
 [node name="EvolutionSelect" type="Control" unique_id=1243789143]
@@ -15,6 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_h2r2r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2045624534]
 layout_mode = 1
@@ -47,20 +47,17 @@ focus_neighbor_right = NodePath("../EvolutionBox2")
 focus_neighbor_bottom = NodePath("../EvolutionBox3")
 focus_next = NodePath("../EvolutionBox3")
 focus_previous = NodePath(".")
-label = "Seal"
 
 [node name="EvolutionBox2" parent="VBoxContainer/HBoxContainer" unique_id=770527392 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
-label = "Seal"
-texture = ExtResource("2_246na")
 
 [node name="EvolutionBox3" parent="VBoxContainer/HBoxContainer" unique_id=243554185 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
-label = "Seal"
-texture = ExtResource("3_244bg")
 
 [node name="CoolButton" parent="VBoxContainer" unique_id=1613722498 instance=ExtResource("5_lnnja")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Confirm"
+
+[connection signal="button_up" from="VBoxContainer/CoolButton" to="." method="_on_cool_button_button_up"]

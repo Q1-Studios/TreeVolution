@@ -38,10 +38,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_40nq7")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_yi2cj")
 toggle_mode = true
 script = ExtResource("1_7ntl0")
-label = "Test"
-texture = ExtResource("3_8frw0")
 
 [node name="Broken" type="Control" parent="." unique_id=1702135868]
+visible = false
 show_behind_parent = true
 layout_mode = 1
 anchor_right = 0.95900005
@@ -91,21 +90,32 @@ size_flags_vertical = 0
 texture = ExtResource("3_8frw0")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="Broken" unique_id=971607526]
+[node name="Title" type="Label" parent="Broken" unique_id=1586684918]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 56.376
-offset_top = 114.0
-offset_right = 290.376
-offset_bottom = 287.0
+offset_left = 134.0
+offset_top = 93.0
+offset_right = 279.0
+offset_bottom = 120.0
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Gruber"
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Broken" unique_id=654012397]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 129.0
+offset_right = 259.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 12
+text = "Test test Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Fixet" type="Control" parent="." unique_id=795924130]
-visible = false
 show_behind_parent = true
 layout_mode = 1
 anchor_right = 0.95600003
@@ -142,17 +152,29 @@ size_flags_vertical = 0
 texture = ExtResource("3_8frw0")
 expand_mode = 5
 
-[node name="Label" type="Label" parent="Fixet" unique_id=526347983]
+[node name="Title" type="Label" parent="Fixet" unique_id=526347983]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 40.328
+offset_left = 113.0
 offset_top = 93.0
 offset_right = 274.328
-offset_bottom = 266.0
+offset_bottom = 120.0
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.8431839, 0.8431838, 0.8431839, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Gruber"
 horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Fixet" unique_id=1777586226]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 129.0
+offset_right = 259.0
+offset_bottom = 236.0
+theme_override_font_sizes/font_size = 12
+text = "Test test Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="toggled" from="." to="." method="_on_button_toggled"]

@@ -83,6 +83,13 @@ icon = ExtResource("5_8wwsg")
 description = "Adds +2 bounces to bullets but makes each slower and deal less damage"
 metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
+[sub_resource type="Resource" id="Resource_j1fy0"]
+script = ExtResource("2_t8dfm")
+readable_name = "Make more Bullets"
+icon = ExtResource("5_8wwsg")
+description = "Adds +2 bullets per shot but decreases damage"
+metadata/_custom_type_script = "uid://by77gqfuyfqdf"
+
 [node name="Evolutions" type="Node" unique_id=2110948266]
 script = ExtResource("1_c5lsn")
 EVO_DICT = Dictionary[int, ExtResource("2_t8dfm")]({
@@ -96,5 +103,6 @@ EVO_DICT = Dictionary[int, ExtResource("2_t8dfm")]({
 7: SubResource("Resource_3j67i"),
 8: SubResource("Resource_8wwsg"),
 9: SubResource("Resource_lm6of"),
-10: SubResource("Resource_kswtt")
+10: SubResource("Resource_kswtt"),
+11: SubResource("Resource_j1fy0")
 })
