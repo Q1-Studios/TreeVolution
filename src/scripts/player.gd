@@ -10,6 +10,7 @@ var damage = 10
 var in_pollen = false
 var damage_amount = 10
 var heal_amount = 1
+var pollen_ability_cooldown = 1
 var pollen_attributes = {"damageBuff": [false, damage_amount], "healing": [false, heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
@@ -19,13 +20,15 @@ func _process(dealta) -> void:
 	spawn_pollen()
 	pollen_healing(pollen_attributes["healing"])
 	pollen_damage_buff(pollen_attributes["damageBuff"])
-	
+
 
 func spawn_pollen():
 	if Input.is_action_just_pressed("Pollen ability"):
+		var player_position = $".".position
 		var temp_pollen = pollen_obj.instantiate()
-		add_child(temp_pollen)
-		await get_tree().create_timer(2).timeout
+		get_tree().root.add_child(temp_pollen)
+		temp_pollen.global_position = player_position
+		await get_tree().create_timer(pollen_ability_cooldown).timeout
 		temp_pollen.queue_free()
 
 
@@ -34,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	
 func pollen_healing(healing_array):
 	var new_health
-	
 	if(healing_array[0]):
 		new_health = health + healing_array[1]
 		if (health > MAX_HEALTH):	#idk why had issue with clamp method

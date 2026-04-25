@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Spring 2D Jam The Reckoning"
-run/main_scene="uid://cetum6xiv4va7"
+run/main_scene="uid://cnjuj12ylkcyd"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://drhnifrhvuhjd"
 
