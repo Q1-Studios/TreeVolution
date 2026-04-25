@@ -16,7 +16,7 @@ extends Node
 @export var jumpForce := 4000.0
 @export var maxSpeedInAir := 400
 @export var airAcceleration := 75.0
-@export var autoAirDeceleration := 5.0
+@export var autoAirDeceleration := 35.0
 
 @export_group("La Physics")
 @export var gravitationalConstant = 150.0
