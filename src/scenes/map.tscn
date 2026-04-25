@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="4_f1v2q"]
+[ext_resource type="PackedScene" path="res://src/scripts/enemy.tscn" id="4_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
+[ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -241,5 +242,9 @@ onlyDown = true
 points = PackedVector2Array(-1032, 1020, -1169, -404)
 onlyDown = true
 
+[node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
+visible = false
+
 [connection signal="area_entered" from="Pollen" to="Player" method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Pollen" to="Player" method="_on_pollen_detection_area_exited"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]

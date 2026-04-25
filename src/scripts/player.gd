@@ -10,6 +10,9 @@ var timer: float = pollen_life_time
 
 func _ready() -> void:
 	health = 100
+	
+func _physics_process(_delta: float) -> void:
+	_handle_gun()
 
 func _process(delta) -> void:
 	timer -= delta
@@ -18,6 +21,12 @@ func _process(delta) -> void:
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen=true
 
+func _handle_gun() -> void:
+	var direction = get_global_mouse_position() - gun.global_position
+	gun.rotate_weapon(direction)
+	
+	if Input.is_action_pressed("shoot"):
+		gun.shoot(direction)
 
 func spawn_pollen():
 	if Input.is_action_just_pressed("Pollen ability") && can_spawn_pollen:

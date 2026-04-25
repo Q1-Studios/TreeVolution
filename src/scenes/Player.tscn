@@ -47,13 +47,14 @@ _data = {
 &"damage_taken": SubResource("Animation_1g466")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player")]
+[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player", "gun")]
 scale = Vector2(0.385, 0.385)
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_7x01q")
 movement_controller = NodePath("MovementController")
 animation_player = NodePath("AnimationPlayer")
+gun = NodePath("THE_PISS_STREAM")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
 position = Vector2(3.8146973e-06, -1.1920929e-07)

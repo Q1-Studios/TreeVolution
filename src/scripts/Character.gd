@@ -17,13 +17,14 @@ var pollen_effect_can_happen: bool = true
 
 @export var movement_controller : MovementController
 @export var animation_player : AnimationPlayer
+@export var gun: GunController
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 func upgrade_pollen_heal_amount(upgrade_amount: int):
@@ -47,9 +48,10 @@ func create_pollen(temp_pollen: Pollen) -> Pollen:
 	return temp_pollen
 
 
-func _physics_process(delta: float) -> void:
-	movement_controller.handleMovement(self)
-	var current_player_damage:int = 0
+func _physics_process(_delta: float) -> void:
+	if movement_controller:
+		movement_controller.handleMovement(self)
+		
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 
@@ -89,3 +91,10 @@ func _on_pollen_detection_area_entered(area: Area2D) -> void:
 func _on_pollen_detection_area_exited(area: Area2D) -> void:
 	if (area.is_in_group("Polen")):
 		pollen_list.erase(area)
+		
+		
+func _on_evolution_selected(evolution: Evolutions.Evolution):
+	
+	
+	
+	pass

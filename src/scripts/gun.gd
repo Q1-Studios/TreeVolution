@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name GunController
 
 var Bullet = preload("res://src/scenes/bullet.tscn")
 
@@ -18,23 +19,24 @@ const MULTI_BULLET_OFFSET: float = PI/18 # 10 degrees
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-		
-func _physics_process(_delta: float) -> void:
-	rotate_weapon()
 	
-	if(Input.is_action_pressed("shoot")):
-		shoot()
-	
-func rotate_weapon() -> void:
+func rotate_weapon(direction: Vector2) -> void:
 	var dir = get_global_mouse_position() - global_position
-	if dir.length() > 5:
+	if direction.length() > 5:
 		rotation = dir.angle()
 		
-func start_shooting_cooldown() -> void:
+func shoot(direction: Vector2) -> void:
+	if !can_shoot:
+		return
+	can_shoot = false
+	_spawn_bullets(direction)
+	_start_shooting_cooldown()
+		
+func _start_shooting_cooldown() -> void:
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_shoot = true
 		
-func get_bullet_arrangement() -> Array[int]:
+func _get_bullet_arrangement() -> Array[int]:
 	var bullet_arrangement: Array[int] = []
 	for i in range(0, bullet_count):
 		var direction = -1 if i % 2 == 0 else 1
@@ -42,13 +44,11 @@ func get_bullet_arrangement() -> Array[int]:
 		bullet_arrangement.append(value * direction)
 	return bullet_arrangement
 
-func spawn_bullets() -> void:
-	var dir = get_global_mouse_position() - global_position
-	
-	for arrangement in get_bullet_arrangement():
+func _spawn_bullets(direction: Vector2) -> void:
+	for arrangement in _get_bullet_arrangement():
 		var offset = MULTI_BULLET_OFFSET * arrangement
 		# clamp bullet rotation between +60° and -60°
-		var bullet_rotation = clamp(dir.angle() + offset, -PI/3, PI/3)
+		var bullet_rotation = clamp(direction.angle() + offset, -PI/3, PI/3)
 		var velocity = Vector2(bullet_velocity, 0).rotated(bullet_rotation)
 
 		var bullet = Bullet.instantiate()
@@ -56,21 +56,13 @@ func spawn_bullets() -> void:
 		bullet.set_bounces(bullet_bounces)
 		bullet.set_damage(bullet_damage)
 		get_tree().root.add_child(bullet)
-
-func shoot() -> void:
-	if !can_shoot:
-		return
-		
-	can_shoot = false
-	spawn_bullets()
-	start_shooting_cooldown()
 	
-func set_bullet_attributes(damage: float, count: int, bounces: int, size: float, velocity: float) -> void:
+func _set_bullet_attributes(damage: float, count: int, bounces: int, size: float, velocity: float) -> void:
 	bullet_damage = damage
 	bullet_count = count
 	bullet_bounces = bounces
 	bullet_size = size
 	bullet_velocity = velocity
 	
-func set_attack_cooldown(amount: float) -> void:
+func _set_attack_cooldown(amount: float) -> void:
 	attack_cooldown = amount
