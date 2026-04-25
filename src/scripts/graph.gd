@@ -66,7 +66,6 @@ func _build_graph() -> void:
 		# Does not work since (unidirectional, graph.connect_points(closestPointIds[0], closestPointIds[1])
 		graph.connect_points(closestPointIds[0], closestPointIds[1], bidirectional)
 		edgeMap["%s-%s"%[str(closestPointIds[0]),str(closestPointIds[1])]] = edge
-		print(graph.are_points_connected(closestPointIds[1], closestPointIds[0], false))
 	
 		
  		

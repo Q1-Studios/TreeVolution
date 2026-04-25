@@ -31,14 +31,14 @@ var previous_direction = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
-func handleMovement(player: Character, delta: float) -> void:
+func handleMovement(player: Character) -> void:
 	if player.is_on_floor():
 		is_grounded = true
 		used_double_Jump = !allowDoubleJump
 	else:
 		is_grounded = false
 	
-	_simulate_gravity(player, delta)
+	_simulate_gravity(player)
 	
 	
 	
@@ -62,7 +62,7 @@ func _movement_in_air(player: Character, direction: int) -> void:
 
 		
 
-func _simulate_gravity(player: Character, delta: float) -> void:
+func _simulate_gravity(player: Character) -> void:
 	if player.is_on_floor():
 		return
 	

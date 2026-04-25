@@ -43,7 +43,7 @@ func create_pollen(temp_pollen: Pollen) -> Pollen:
 
 
 func _physics_process(delta: float) -> void:
-	movement_controller.handleMovement(self, delta)
+	movement_controller.handleMovement(self)
 	var current_player_damage:int = 0
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)

@@ -2,17 +2,17 @@ class_name PlayerMovement
 extends MovementController
 
 
-func handleMovement(player: Character, delta: float) -> void:
-	super(player, delta)
+func handleMovement(player: Character) -> void:
+	super(player)
 
 	
-	_handle_lateral_movement(player, delta)
-	_handle_jump(player, delta)
+	_handle_lateral_movement(player)
+	_handle_jump(player)
 
 	player.move_and_slide()
 
 
-func _handle_lateral_movement(player: Player, delta: float):
+func _handle_lateral_movement(player: Player):
 	var direction = _improved_input_getAxis()
 	
 	if is_grounded:
@@ -21,7 +21,7 @@ func _handle_lateral_movement(player: Player, delta: float):
 		_movement_in_air(player, direction)
 
 
-func _handle_jump(player: Player, delta: float) -> void:
+func _handle_jump(player: Player) -> void:
 	if Input.is_action_just_pressed("jump"):
 		if !is_grounded:
 			if used_double_Jump:
