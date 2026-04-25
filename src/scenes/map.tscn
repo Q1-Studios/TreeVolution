@@ -29,6 +29,11 @@ size = Vector2(452.99994, 33.612663)
 
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=266633726]
+position = Vector2(33.999996, 53.940002)
+scale = Vector2(0.385, 0.385)
+zoom = Vector2(0.18, 0.18)
+
 [node name="VisualBackGround" type="Node2D" parent="." unique_id=1155806893]
 
 [node name="Parallax2D2" type="Parallax2D" parent="VisualBackGround" unique_id=1920472163]
@@ -55,10 +60,6 @@ texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
 position = Vector2(2.9999998, 727)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
-position = Vector2(80.51948, -1748.2078)
-zoom = Vector2(0.3, 0.3)
 
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
 position = Vector2(1063.9999, 801.99994)
@@ -131,20 +132,23 @@ E = NodePath("E")
 
 [node name="V" type="Node2D" parent="MapHolder/G" unique_id=574635472]
 
-[node name="Icon" parent="MapHolder/G/V" unique_id=1343320165 instance=ExtResource("5_ahmr2")]
+[node name="Icon14" parent="MapHolder/G/V" unique_id=1343320165 instance=ExtResource("5_ahmr2")]
+position = Vector2(87, 1009)
+
+[node name="Icon" parent="MapHolder/G/V" unique_id=2032995106 instance=ExtResource("5_ahmr2")]
 position = Vector2(-3970, 1040)
 
 [node name="Icon2" parent="MapHolder/G/V" unique_id=627484801 instance=ExtResource("5_ahmr2")]
 position = Vector2(2874, 1068)
 
 [node name="Icon3" parent="MapHolder/G/V" unique_id=1209161415 instance=ExtResource("5_ahmr2")]
-position = Vector2(-2752, 1040)
+position = Vector2(-3290, 1043)
 
 [node name="Icon4" parent="MapHolder/G/V" unique_id=1731070543 instance=ExtResource("5_ahmr2")]
 position = Vector2(-1357, 1017)
 
 [node name="Icon5" parent="MapHolder/G/V" unique_id=1060224695 instance=ExtResource("5_ahmr2")]
-position = Vector2(128, 1017)
+position = Vector2(524, 1015)
 
 [node name="Icon6" parent="MapHolder/G/V" unique_id=1802877704 instance=ExtResource("5_ahmr2")]
 position = Vector2(1952, 1029)
@@ -179,10 +183,12 @@ points = PackedVector2Array(270, -1051, 927, -1065)
 closed = true
 
 [node name="Node2D" parent="MapHolder/G/E/horizontal" unique_id=21663852 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-3976, 1017, -2757, 1020)
+position = Vector2(-10, 0)
+points = PackedVector2Array(-3976, 1017, -3312, 1034)
 
 [node name="Node2D2" parent="MapHolder/G/E/horizontal" unique_id=984739654 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-2761, 1024, -1378, 1017)
+position = Vector2(-17, 0)
+points = PackedVector2Array(-3278, 1052, -1378, 1017)
 
 [node name="Node2D3" parent="MapHolder/G/E/horizontal" unique_id=577165135 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(-1375, 1017, -1044, 1024)
@@ -191,7 +197,7 @@ points = PackedVector2Array(-1375, 1017, -1044, 1024)
 points = PackedVector2Array(-1029, 1009, 122, 1005)
 
 [node name="Node2D5" parent="MapHolder/G/E/horizontal" unique_id=228297962 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(122, 1020, 1933, 1032)
+points = PackedVector2Array(548, 1015, 1933, 1032)
 
 [node name="Node2D6" parent="MapHolder/G/E/horizontal" unique_id=836610270 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(1948, 1032, 2879, 1073)
@@ -202,10 +208,13 @@ points = PackedVector2Array(-1811, -416, -1183, -438)
 [node name="Node2D16" parent="MapHolder/G/E/horizontal" unique_id=88479791 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(-773, 258, -355, 244)
 
+[node name="Node2D7" parent="MapHolder/G/E/horizontal" unique_id=96252070 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(70, 1011, 520, 1006)
+
 [node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
 
 [node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=52779588 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(113, 1015, -326, 241)
+points = PackedVector2Array(520, 1013, -326, 241)
 jump = true
 
 [node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=816497007 instance=ExtResource("6_f1v2q")]
@@ -224,7 +233,7 @@ jumpOnDown = true
 [node name="doublejump" type="Node2D" parent="MapHolder/G/E" unique_id=2050723171]
 
 [node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=486631092 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-2773, 1040, -1807, -436)
+points = PackedVector2Array(-3291, 1032, -1807, -436)
 doubleJump = true
 timeTillDoubleJump = 0.25
 
@@ -236,7 +245,7 @@ timeTillDoubleJump = 0.25
 [node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
 
 [node name="Node2D13" parent="MapHolder/G/E/dropdown" unique_id=744712461 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(290, -1058, 113, 1030)
+points = PackedVector2Array(290, -1058, 96, 1014)
 onlyDown = true
 
 [node name="Node2D14" parent="MapHolder/G/E/dropdown" unique_id=464522750 instance=ExtResource("6_f1v2q")]

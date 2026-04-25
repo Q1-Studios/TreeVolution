@@ -32,14 +32,4 @@ func _handle_jump(player: Player) -> void:
 		
 		player.velocity.y = -jumpForce
 		
-func _improved_input_getAxis() -> int:
-	var pos: int = Input.is_action_pressed("moveRight")
-	var neg: int = Input.is_action_pressed("moveLeft")
-	
-	if pos && neg:
-		return -previous_direction
-	
-	previous_direction = pos - neg
-	return previous_direction
-		
 	

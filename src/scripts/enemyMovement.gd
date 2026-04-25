@@ -5,23 +5,38 @@ extends MovementController
 @export var G : Graph 
 @export var player : Player 
 
+@export_group("AI Parameters")
+@export var arrival_distance_x := 25.0
+@export var arrival_distance_y := 25.0
+@export var time_to_build_speed_before_jump := 0.05
+
 @onready var graph: AStar2D = G.graph
 @onready var edges: Dictionary[String, Edge] = G.edgeMap
 
 var edgeNames: Array[String]
-	
 var path: PackedInt64Array = []
+
+var is_traversing: bool = false
+var current_target_pos: Vector2
+var active_edge: Edge = null
+
+var jump_phase: int = 0 # 0: initial jump, 1: double jump, 2: done jumping
+var edge_timer: float = 0.0
+var should_jump: bool = false
+var should_double_jump: bool = false
 
 func handleMovement(character: Character) -> void:
 	super(character)
 	
-	if (path.is_empty() 
-		or graph.get_closest_point(player.position) != path[-1]
-		or graph.get_closest_point(character.position) not in path):
-			
+	if not is_traversing:
 		_find_path(character)
-		print(path)
-		_move_along_path(character)
+		if path.size() > 1:
+			_setup_next_edge(character, path[0], path[1])
+		else:
+			_handle_lateral_movement(character, 0)
+			
+	if is_traversing:
+		move_to_next_point(character)
 	
 	character.move_and_slide()
 
@@ -31,40 +46,66 @@ func _find_path(character: Character) -> void:
 	if startingNode == -1 or finalNode == -1:
 		print("Can't find a path")
 		path = []
+		return
 		
 	path = graph.get_id_path(startingNode, finalNode)
+
+func _setup_next_edge(character: Character, start_id: int, end_id: int) -> void:
+	current_target_pos = graph.get_point_position(end_id)
 	
-func _move_along_path(character:Character) -> void:
-	if path.is_empty():
-		return
-		
-	var nextIndex = path.find(graph.get_closest_point(character.position))
-	if (nextIndex == len(path)-1):
-		return
-		
-	var edgeName = "%s-%s"%[path[nextIndex], path[nextIndex+1]]
-	var edgeNameReverse = "%s-%s"%[path[nextIndex+1], path[nextIndex]]
-	
-	var nextEdge: Edge
+	var edgeName = "%s-%s" % [start_id, end_id]
+	var edgeNameReverse = "%s-%s" % [end_id, start_id]
 	edgeNames = edges.keys()
 	if edgeName in edgeNames:
-		nextEdge = edges[edgeName]
+		active_edge = edges[edgeName]
 	elif edgeNameReverse in edgeNames:
-		nextEdge = edges[edgeNameReverse]
+		active_edge = edges[edgeNameReverse]
 	else:
-		assert(false, "Edge does not exists, something went horribly wrong")
+		print("Edge does not exists, something went horribly wrong")
+		active_edge = null 
+		
+	# reset state variables
+	is_traversing = true
+	jump_phase = 0
+	edge_timer = 0.0
+	should_jump = false
+	should_double_jump = false
 	
+	if active_edge:
+		var is_moving_down = current_target_pos.y > character.position.y
+		
+		if not is_moving_down or active_edge.jumpOnDown:
+			should_jump = active_edge.jump or active_edge.doubleJump
+			should_double_jump = active_edge.doubleJump
+
+
+func move_to_next_point(character: Character) -> void:
+	var delta = character.get_physics_process_delta_time()
 	
-	#_handle_lateral_movement(character, delta)
-	#_handle_jump(character, delta)
-
-func move_to_next_point(edgeToTraverse: Edge, edgeStartIndex: int, edgeEndIndex: int) -> void:
-	pass
-
-
-func _handle_lateral_movement(character: Character):
-	var direction = _improved_input_getAxis()
+	var direction = sign(current_target_pos.x - character.position.x)
+	_handle_lateral_movement(character, direction)
 	
+	if should_jump and jump_phase == 0:
+		edge_timer += delta
+		if edge_timer >= time_to_build_speed_before_jump:
+			_handle_jump(character)
+			jump_phase = 1 
+			edge_timer = 0.0 
+			
+	elif should_double_jump and jump_phase == 1:
+		edge_timer += delta
+		if edge_timer >= active_edge.timeTillDoubleJump:
+			_handle_jump(character)
+			jump_phase = 2
+			
+	var dist_x = abs(character.position.x - current_target_pos.x)
+	var dist_y = abs(character.position.y - current_target_pos.y)
+	
+	if dist_x <= arrival_distance_x  and is_grounded: #and dist_y <= arrival_distance_y
+		is_traversing = false
+
+
+func _handle_lateral_movement(character: Character, direction: int):
 	if is_grounded:
 		_movement_on_ground(character, direction)
 	else:
@@ -72,23 +113,11 @@ func _handle_lateral_movement(character: Character):
 
 
 func _handle_jump(character: Character) -> void:
-	if Input.is_action_just_pressed("jump"):
-		if !is_grounded:
-			if used_double_Jump:
-				return
-			else:
-				used_double_Jump = true
+	if !is_grounded:
+		if used_double_Jump:
+			return
+		else:
+			used_double_Jump = true
 			
 		
-		character.velocity.y = -jumpForce
-		
-func _improved_input_getAxis() -> int:
-	var pos: int = Input.is_action_pressed("moveRight")
-	var neg: int = Input.is_action_pressed("moveLeft")
-	
-	if pos && neg:
-		return -previous_direction
-	
-	previous_direction = pos - neg
-	return previous_direction
-		
+	character.velocity.y = -jumpForce
