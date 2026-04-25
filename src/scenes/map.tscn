@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
 [ext_resource type="PackedScene" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scripts/enemy.tscn" id="4_udcsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
 size = Vector2(2339.8845, 33.612663)
@@ -23,8 +24,9 @@ zoom = Vector2(0.3, 0.3)
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
 position = Vector2(345, 50)
 
-[node name="Enemy" parent="." unique_id=1541630701 instance=ExtResource("1_b4rpm")]
-position = Vector2(1277, 870)
+[node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("4_udcsr")]
+position = Vector2(1222, 684)
+scale = Vector2(0.6, 0.6)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=2038121272]
 scale = Vector2(1.73, 1.73)

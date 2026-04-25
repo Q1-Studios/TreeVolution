@@ -31,9 +31,16 @@ func move(delta: float) -> void:
 		fired = true
 	
 func check_for_collision() -> void:
+	
 	# check for colliding bodies
-	bounce_amount = bounce_amount - get_contact_count()
-		
+	for node in get_colliding_bodies():
+		var parent: Node2D = node.get_parent()
+		var collider_is_character: bool = node is CharacterBody2D or parent is CharacterBody2D
+		print("Collided with %s (is character %s)" % str(node), str(collider_is_character))
+		if !collider_is_character:
+			# only bounce of all other things except character
+			bounce_amount = bounce_amount - 1
+	
 	# if bounce amount is hit, remove child from tree
 	if bounce_amount <= 0:
 		queue_free()

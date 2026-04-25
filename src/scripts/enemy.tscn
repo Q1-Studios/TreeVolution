@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b8q85wbvjmkca"]
+
+[ext_resource type="Script" uid="uid://cm0df5lawbi2b" path="res://src/scripts/enemy.gd" id="1_k24wl"]
+[ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_vp4d7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
+radius = 323.0
+height = 1484.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp4d7"]
+radius = 339.0
+height = 1564.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=699392529]
+script = ExtResource("1_k24wl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624332015]
+position = Vector2(47, 3)
+shape = SubResource("CapsuleShape2D_k24wl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483896026]
+position = Vector2(-314, 87)
+texture = ExtResource("1_vp4d7")
+flip_h = true
+
+[node name="Bullet_Detection" type="Area2D" parent="." unique_id=575113254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1587372262]
+position = Vector2(53, 0)
+shape = SubResource("CapsuleShape2D_vp4d7")
+
+[connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
