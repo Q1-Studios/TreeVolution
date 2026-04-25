@@ -8,6 +8,7 @@ var damage:int = 10
 
 var pollen_heal_amount:int = 1
 var pollen_damage_enemy_amount:int = 5
+var pollen_block_amount: int = 2
 var pollen_life_time:int = 3
 var pollen_summon_cooldown: int = 5
 
@@ -26,18 +27,22 @@ func _process(delta: float) -> void:
 	pass
 	
 func upgrade_pollen_heal_amount(upgrade_amount: int):
-	pollen_heal_amount + upgrade_amount
+	pollen_heal_amount += upgrade_amount
 
 func upgrade_pollen_damage_amount(upgrade_amount: int):
-	pollen_damage_enemy_amount + upgrade_amount
+	pollen_damage_enemy_amount += upgrade_amount
+
+func upgrade_pollen_block_amount(upgrade_amount: int):
+	pollen_block_amount += upgrade_amount
 
 func upgrade_pollen_summon_cooldown(upgrade_amount: int):
-	pollen_summon_cooldown - upgrade_amount
+	pollen_summon_cooldown -= upgrade_amount
 
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
 	temp_pollen.pollen_damage_enemy_amount = pollen_damage_enemy_amount
 	temp_pollen.pollen_life_time = pollen_life_time
+	temp_pollen.pollen_block_amount = pollen_block_amount
 	temp_pollen.owner_call = self
 	return temp_pollen
 
