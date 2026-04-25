@@ -1,4 +1,4 @@
-sclass_name StatController
+class_name StatController
 
 extends Node
 
