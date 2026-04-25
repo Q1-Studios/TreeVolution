@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://cw2itwdnxfff5"]
 
-[ext_resource type="Script" uid="uid://t8gosgkkv8jn" path="res://src/scenes/group_child_btns.gd" id="1_244bg"]
+[ext_resource type="Script" uid="uid://t8gosgkkv8jn" path="res://src/scripts/group_child_btns.gd" id="1_244bg"]
 [ext_resource type="PackedScene" uid="uid://c7jg5d7xjt0s8" path="res://src/scenes/evolutionBox.tscn" id="1_pp4y5"]
 [ext_resource type="Texture2D" uid="uid://drnj6k0kgpnei" path="res://src/assets/2D/gun_evo.png" id="2_246na"]
 [ext_resource type="Texture2D" uid="uid://batdpwagm2vis" path="res://src/assets/2D/pollen_evo.png" id="3_244bg"]
+[ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="5_lnnja"]
 
 [node name="EvolutionSelect" type="Control" unique_id=1243789143]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2.0
-offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -19,10 +18,10 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2045624534]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -112.0
+anchor_bottom = 0.83000004
+offset_bottom = 0.19995117
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 48
@@ -60,8 +59,8 @@ layout_mode = 2
 label = "Seal"
 texture = ExtResource("3_244bg")
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1652438552]
+[node name="CoolButton" parent="VBoxContainer" unique_id=1613722498 instance=ExtResource("5_lnnja")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 text = "Confirm"
