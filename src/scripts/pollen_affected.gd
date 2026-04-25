@@ -8,7 +8,8 @@ var damage:int = 10
 
 var pollen_heal_amount:int = 1
 var pollen_damage_enemy_amount:int = 5
-var pollen_life_time:int = 10
+var pollen_life_time:int = 3
+var pollen_summon_cooldown: int = 5
 
 var pollen_list = [] # stores in what pollen areas wer are in
 var pollen_effect_can_happen: bool = true
@@ -20,11 +21,14 @@ var pollen_effect_can_happen: bool = true
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
+func upgrade_pollen_heal_amount(upgrade_amount: int):
+	pollen_heal_amount + upgrade_amount
+
+
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
 	temp_pollen.pollen_damage_enemy_amount = pollen_damage_enemy_amount
