@@ -83,9 +83,8 @@ func _handle_jump(player: Player, delta: float) -> void:
 			else:
 				used_double_Jump = true
 			
-		if player.velocity.y > 0:
-			player.velocity.y = 0
-		player.velocity.y -= jumpForce
+		
+		player.velocity.y = -jumpForce
 		
 
 func _simulate_gravity(player: Player, delta: float) -> void:

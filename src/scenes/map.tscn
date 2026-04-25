@@ -3,16 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
-[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scripts/enemy.tscn" id="4_udcsr"]
+[ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/icon.tscn" id="5_ahmr2"]
+[ext_resource type="Script" uid="uid://tw4xfab1n860" path="res://src/scenes/map_holder.gd" id="5_b4rpm"]
+[ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udcsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
-size = Vector2(2339.8845, 33.612663)
+size = Vector2(452.99994, 33.612663)
 
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=468748651]
 visibility_layer = 512
-position = Vector2(13, 0)
+position = Vector2(0, -500)
+scale = Vector2(1.415, 1.415)
 texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
@@ -25,13 +30,171 @@ zoom = Vector2(0.3, 0.3)
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
 position = Vector2(345, 50)
 
-[node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("4_udcsr")]
-position = Vector2(1222, 684)
-scale = Vector2(0.6, 0.6)
+[node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
+script = ExtResource("5_b4rpm")
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=2038121272]
-scale = Vector2(1.73, 1.73)
+[node name="Floor" type="StaticBody2D" parent="MapHolder" unique_id=2038121272]
+position = Vector2(0, 1174)
+scale = Vector2(43.370003, 1.7190093)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1840679791]
-position = Vector2(-0.5779995, 676.25726)
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Floor" unique_id=408176823]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Floor" unique_id=1840679791]
+scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="stuff" type="StaticBody2D" parent="MapHolder" unique_id=28840447]
+position = Vector2(-562, 382)
+scale = Vector2(1.2900001, 1.73)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff" unique_id=1754652281]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff" unique_id=2105228739]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="stuff2" type="StaticBody2D" parent="MapHolder" unique_id=772181553]
+position = Vector2(-1496, -256)
+scale = Vector2(1.6641002, 2.9929001)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff2" unique_id=789068934]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff2" unique_id=1501655221]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="stuff3" type="StaticBody2D" parent="MapHolder" unique_id=646593541]
+position = Vector2(621, -903)
+scale = Vector2(1.6641002, 2.9929001)
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff3" unique_id=849196186]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff3" unique_id=2018002269]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="G" type="Node2D" parent="MapHolder" unique_id=929467085]
+
+[node name="V" type="Node2D" parent="MapHolder/G" unique_id=574635472]
+
+[node name="Icon" parent="MapHolder/G/V" unique_id=1343320165 instance=ExtResource("5_ahmr2")]
+position = Vector2(-3970, 1040)
+
+[node name="Icon2" parent="MapHolder/G/V" unique_id=627484801 instance=ExtResource("5_ahmr2")]
+position = Vector2(2874, 1068)
+
+[node name="Icon3" parent="MapHolder/G/V" unique_id=1209161415 instance=ExtResource("5_ahmr2")]
+position = Vector2(-2752, 1040)
+
+[node name="Icon4" parent="MapHolder/G/V" unique_id=1731070543 instance=ExtResource("5_ahmr2")]
+position = Vector2(-1357, 1017)
+
+[node name="Icon5" parent="MapHolder/G/V" unique_id=1060224695 instance=ExtResource("5_ahmr2")]
+position = Vector2(128, 1017)
+
+[node name="Icon6" parent="MapHolder/G/V" unique_id=1802877704 instance=ExtResource("5_ahmr2")]
+position = Vector2(1952, 1029)
+
+[node name="Icon7" parent="MapHolder/G/V" unique_id=1663175376 instance=ExtResource("5_ahmr2")]
+position = Vector2(929, -1040)
+
+[node name="Icon8" parent="MapHolder/G/V" unique_id=989635110 instance=ExtResource("5_ahmr2")]
+position = Vector2(295, -1051)
+
+[node name="Icon9" parent="MapHolder/G/V" unique_id=1503627769 instance=ExtResource("5_ahmr2")]
+position = Vector2(-334, 261)
+
+[node name="Icon10" parent="MapHolder/G/V" unique_id=1192555033 instance=ExtResource("5_ahmr2")]
+position = Vector2(-768, 253)
+
+[node name="Icon11" parent="MapHolder/G/V" unique_id=345015735 instance=ExtResource("5_ahmr2")]
+position = Vector2(-1173, -399)
+
+[node name="Icon12" parent="MapHolder/G/V" unique_id=183480504 instance=ExtResource("5_ahmr2")]
+position = Vector2(-1799, -394)
+
+[node name="Icon13" parent="MapHolder/G/V" unique_id=177313336 instance=ExtResource("5_ahmr2")]
+position = Vector2(-1026, 1016)
+
+[node name="E" type="Node2D" parent="MapHolder/G" unique_id=285898098]
+
+[node name="horizontal" type="Node2D" parent="MapHolder/G/E" unique_id=774905292]
+
+[node name="Node2D17" parent="MapHolder/G/E/horizontal" unique_id=1801558419 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(270, -1051, 927, -1065)
+closed = true
+
+[node name="Node2D" parent="MapHolder/G/E/horizontal" unique_id=21663852 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-3976, 1017, -2757, 1020)
+
+[node name="Node2D2" parent="MapHolder/G/E/horizontal" unique_id=984739654 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-2761, 1024, -1378, 1017)
+
+[node name="Node2D3" parent="MapHolder/G/E/horizontal" unique_id=577165135 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1375, 1017, -1044, 1024)
+
+[node name="Node2D4" parent="MapHolder/G/E/horizontal" unique_id=1181709164 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1029, 1009, 122, 1005)
+
+[node name="Node2D5" parent="MapHolder/G/E/horizontal" unique_id=228297962 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(122, 1020, 1933, 1032)
+
+[node name="Node2D6" parent="MapHolder/G/E/horizontal" unique_id=836610270 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(1948, 1032, 2879, 1073)
+
+[node name="Node2D15" parent="MapHolder/G/E/horizontal" unique_id=1789203585 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1811, -416, -1183, -438)
+
+[node name="Node2D16" parent="MapHolder/G/E/horizontal" unique_id=88479791 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-773, 258, -355, 244)
+
+[node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
+
+[node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=52779588 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(113, 1015, -326, 241)
+jump = true
+
+[node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=816497007 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1388, 1035, -802, 246, -756, 246)
+jump = true
+
+[node name="Node2D11" parent="MapHolder/G/E/jump" unique_id=1328148926 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-771, 241, -1165, -416)
+jump = true
+
+[node name="Node2D9" parent="MapHolder/G/E/jump" unique_id=1773679512 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1211, -411, 275, -1058)
+jump = true
+jumpOnDown = true
+
+[node name="doublejump" type="Node2D" parent="MapHolder/G/E" unique_id=2050723171]
+
+[node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=486631092 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-2773, 1040, -1807, -436)
+doubleJump = true
+
+[node name="Node2D12" parent="MapHolder/G/E/doublejump" unique_id=635403712 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-768, 247, 240, -1058)
+doubleJump = true
+
+[node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
+
+[node name="Node2D13" parent="MapHolder/G/E/dropdown" unique_id=744712461 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(290, -1058, 113, 1030)
+onlyDown = true
+
+[node name="Node2D14" parent="MapHolder/G/E/dropdown" unique_id=464522750 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(937, -1063, 1963, 994)
+onlyDown = true
+
+[node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-1169, -404, -1032, 1020)
+onlyDown = true
