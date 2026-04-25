@@ -12,12 +12,21 @@ var damage_amount = 10
 var heal_amount = 1
 var pollen_attributes = {"damageBuff": [false, damage_amount], "healing": [false, heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
+@onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
 func _process(dealta) -> void:
+	spawn_pollen()
 	pollen_healing(pollen_attributes["healing"])
 	pollen_damage_buff(pollen_attributes["damageBuff"])
 	
-	
+
+func spawn_pollen():
+	if Input.is_action_just_pressed("Pollen ability"):
+		var temp_pollen = pollen_obj.instantiate()
+		add_child(temp_pollen)
+		await get_tree().create_timer(2).timeout
+		temp_pollen.queue_free()
+
 func pollen_healing(healing_array):
 	var new_health
 	
