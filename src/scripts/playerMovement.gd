@@ -7,20 +7,21 @@ extends Node
 @export var model_container : Node3D 
 
 @export_group("Running")
-@export var max_speed := 900.0           
-@export var acceleration := 2250.0
-@export var autoDeceleration := 900.0
+@export var max_speed := 2250.0           
+@export var acceleration := 4550.0
+@export var autoDeceleration := 1300.0
 
 @export_group("Jump")
 @export var allowDoubleJump := true
-@export var jumpForce := 600.0
-@export var maxSpeedInAir := 200
-@export var airAcceleration := 25.0
+@export var jumpForce := 4000.0
+@export var maxSpeedInAir := 400
+@export var airAcceleration := 75.0
 @export var autoAirDeceleration := 5.0
 
 @export_group("La Physics")
-@export var gravitationalConstant = 20.0
-@export var gravitationalConstantWhenFalling = 50.0
+@export var gravitationalConstant = 150.0
+@export var gravitationalBoostFactorWhenFalling = 1.2
+
 
 
 var used_double_Jump = !allowDoubleJump
@@ -38,9 +39,9 @@ func handleMovement(player: Player, delta: float) -> void:
 	else:
 		is_grounded = false
 	
-	_simulate_gravity(player, delta)
 	_handle_lateral_movement(player, delta)
 	_handle_jump(player, delta)
+	_simulate_gravity(player, delta)
 	
 	player.move_and_slide()
 
@@ -52,9 +53,6 @@ func _handle_lateral_movement(player: Player, delta: float):
 		_movement_on_ground(player, direction)
 	else:
 		_movement_in_air(player, direction)
-
-
-
 
 
 func _movement_on_ground(player: Player, direction: int) -> void:
@@ -94,10 +92,12 @@ func _simulate_gravity(player: Player, delta: float) -> void:
 	if player.is_on_floor():
 		return
 	
-	if player.velocity.y <= 0:
-		player.velocity += gravitationalConstant*Vector2.DOWN
-	elif player.velocity.y > 0:
-		player.velocity += gravitationalConstantWhenFalling*Vector2.DOWN
+	if player.velocity.y > 0:
+		player.velocity.y += gravitationalConstant*gravitationalBoostFactorWhenFalling
+	else:
+		player.velocity.y += gravitationalConstant
+		
+	
 	
 	
 	
