@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
-[ext_resource type="PackedScene" path="res://src/scripts/enemy.tscn" id="4_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
+[ext_resource type="PackedScene" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 
@@ -55,18 +55,18 @@ scale = Vector2(1.415, 1.415)
 texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
-position = Vector2(0, 407.00003)
+position = Vector2(2.9999998, 727)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
 position = Vector2(80.51948, -1748.2078)
 zoom = Vector2(0.3, 0.3)
 
+[node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
+position = Vector2(1063.9999, 801.99994)
+
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
 visible = false
 position = Vector2(345, 50)
-
-[node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("4_f1v2q")]
-position = Vector2(1182, -4.999878)
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
 script = SubResource("GDScript_f1v2q")

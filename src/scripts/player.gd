@@ -11,7 +11,8 @@ var timer: float = pollen_life_time
 func _ready() -> void:
 	health = 100
 	
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	super(delta)
 	_handle_gun()
 
 func _process(delta) -> void:

@@ -72,6 +72,34 @@ func pollen_effect_cooldown():
 	await get_tree().create_timer(1).timeout
 	pollen_effect_can_happen = true
 
+func apply_evolution_effects(evolution: Evolutions.Evolution):
+	# TODO: balancing
+	match evolution:
+		Evolutions.Evolution.PLAYER_HEALTH:
+			pass
+		Evolutions.Evolution.PLAYER_SPEED:
+			pass
+		Evolutions.Evolution.PLAYER_JUMP:
+			pass
+		Evolutions.Evolution.PLAYER_POLLEN_COOLDOWN:
+			pass
+		Evolutions.Evolution.POLLEN_DAMAGE:
+			pass
+		Evolutions.Evolution.POLLEN_BLOCK:
+			pass
+		Evolutions.Evolution.POLLEN_HEAL:
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_SIZE:
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_SPEED:
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_COUNT:
+			gun
+			pass
 
 # singaling
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
@@ -94,7 +122,4 @@ func _on_pollen_detection_area_exited(area: Area2D) -> void:
 		
 		
 func _on_evolution_selected(evolution: Evolutions.Evolution):
-	
-	
-	
-	pass
+	apply_evolution_effects(evolution)
