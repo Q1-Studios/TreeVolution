@@ -28,6 +28,11 @@ func _process(delta: float) -> void:
 func upgrade_pollen_heal_amount(upgrade_amount: int):
 	pollen_heal_amount + upgrade_amount
 
+func upgrade_pollen_damage_amount(upgrade_amount: int):
+	pollen_damage_enemy_amount + upgrade_amount
+
+func upgrade_pollen_summon_cooldown(upgrade_amount: int):
+	pollen_summon_cooldown - upgrade_amount
 
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
