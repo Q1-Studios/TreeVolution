@@ -25,26 +25,34 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_simulate_gravity(delta)
-	_handleInput(delta)
+	_handle_lateral_movement(delta)
+	_handle_jump(delta)
 	
 	player.move_and_slide()
-	
-	
-func _handleInput(delta: float) -> void:
+
+
+
+
+func _handle_lateral_movement(delta):
 	var direction = Input.get_axis("moveLeft", "moveRight")
 	if direction:
 		player.velocity.x = direction * max_speed
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, autoDeceleration)
-	
+
+
+
+func _handle_jump(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
+		if !player.is_on_floor():
+			return
+			
 		if player.velocity.y > 0:
 			player.velocity.y = 0
 		player.velocity.y -= jumpForce
-	
-	
-func _simulate_gravity(delta: float) -> void:
-	player.velocity += gravitationalConstant*delta*Vector2.DOWN
 
-func _is_grounded() -> bool:
-	return true
+
+
+func _simulate_gravity(delta: float) -> void:
+	if not player.is_on_floor():
+		player.velocity += gravitationalConstant*delta*Vector2.DOWN
