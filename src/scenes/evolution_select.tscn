@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cw2itwdnxfff5"]
 
+[ext_resource type="Script" uid="uid://t8gosgkkv8jn" path="res://src/scenes/group_child_btns.gd" id="1_244bg"]
 [ext_resource type="PackedScene" uid="uid://c7jg5d7xjt0s8" path="res://src/scenes/evolutionBox.tscn" id="1_pp4y5"]
-[ext_resource type="Texture2D" uid="uid://5edvuhs5cvjr" path="res://src/assets/2D/sealtext.png" id="2_246na"]
+[ext_resource type="Texture2D" uid="uid://drnj6k0kgpnei" path="res://src/assets/2D/gun_evo.png" id="2_246na"]
+[ext_resource type="Texture2D" uid="uid://batdpwagm2vis" path="res://src/assets/2D/pollen_evo.png" id="3_244bg"]
 
 [node name="EvolutionSelect" type="Control" unique_id=1243789143]
 layout_mode = 3
@@ -15,18 +17,30 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1423367958]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2045624534]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99600005
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -0.3840332
-offset_bottom = -327.0
+offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+theme_override_constants/separation = 48
 
-[node name="EvolutionBox" parent="HBoxContainer" unique_id=1723905162 instance=ExtResource("1_pp4y5")]
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=259037597]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 72
+text = "Choose your evolution"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1423367958]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_244bg")
+
+[node name="EvolutionBox" parent="VBoxContainer/HBoxContainer" unique_id=1723905162 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../EvolutionBox3")
 focus_neighbor_top = NodePath("../EvolutionBox3")
@@ -35,14 +49,19 @@ focus_neighbor_bottom = NodePath("../EvolutionBox3")
 focus_next = NodePath("../EvolutionBox3")
 focus_previous = NodePath(".")
 label = "Seal"
-texture = ExtResource("2_246na")
 
-[node name="EvolutionBox2" parent="HBoxContainer" unique_id=770527392 instance=ExtResource("1_pp4y5")]
+[node name="EvolutionBox2" parent="VBoxContainer/HBoxContainer" unique_id=770527392 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
 label = "Seal"
 texture = ExtResource("2_246na")
 
-[node name="EvolutionBox3" parent="HBoxContainer" unique_id=243554185 instance=ExtResource("1_pp4y5")]
+[node name="EvolutionBox3" parent="VBoxContainer/HBoxContainer" unique_id=243554185 instance=ExtResource("1_pp4y5")]
 layout_mode = 2
 label = "Seal"
-texture = ExtResource("2_246na")
+texture = ExtResource("3_244bg")
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1652438552]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Confirm"
