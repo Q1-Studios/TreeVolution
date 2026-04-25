@@ -17,10 +17,14 @@ texture = ExtResource("1_edtax")
 position = Vector2(0, 800.06)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=266633726]
-zoom = Vector2(0.635, 0.635)
+position = Vector2(80.51948, -1748.2078)
+zoom = Vector2(0.3, 0.3)
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
-position = Vector2(573, 533)
+position = Vector2(345, 50)
+
+[node name="Enemy" parent="." unique_id=1541630701 instance=ExtResource("1_b4rpm")]
+position = Vector2(1277, 870)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=2038121272]
 scale = Vector2(1.73, 1.73)

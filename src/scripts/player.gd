@@ -12,6 +12,7 @@ var damage_amount = 10
 var heal_amount = 1
 var pollen_attributes = {"damageBuff": [false, damage_amount], "healing": [false, heal_amount], "blocking": false}
 @onready var health_manager = $HealthController
+	
 
 func pollen_healing(healing_array):
 	var new_health
@@ -34,3 +35,9 @@ func _on_pollen_start_effect() -> void:
 
 func _on_pollen_stop_effect() -> void:
 	in_pollen = false
+	
+func _on_bullet_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("bullets"):
+		var bullet_damage: float = body.get_damage()
+		print("Collided with bullet, took %s damage " % str(bullet_damage))
+		health -= bullet_damage

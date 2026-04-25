@@ -9,12 +9,15 @@
 radius = 31.168884
 height = 753.2468
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
+radius = 316.8831
+height = 1516.883
+
 [node name="Player" type="CharacterBody2D" unique_id=1140108763]
 scale = Vector2(0.385, 0.385)
 script = ExtResource("1_7x01q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
-visible = false
 position = Vector2(3.8146973e-06, -1.1920929e-07)
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(-52.000004, 267, -59.000004, 376, -191, 396, -178, 594, -223, 617, -320, 422, -334, 416, -433, 622, -474, 603, -449, 426, -573, 449, -618, 371, -612, 225, -528, -33, -491, -147, -518, -272, -472, -277, -543, -368, -597, -536, -590, -766, -72, -823, -29.000004, -571, -50.000004, -428, -136, -303, -104, -291, -171, -172)
@@ -42,5 +45,15 @@ collision_layer = 32768
 [node name="isGrounded" type="CollisionShape2D" parent="StaticBody2D" unique_id=66318307]
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CapsuleShape2D_7x01q")
+disabled = true
 
 [node name="HealthController" type="Node2D" parent="." unique_id=197947811]
+
+[node name="Bullet_Detection" type="Area2D" parent="." unique_id=1975164628]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1982930971]
+position = Vector2(-322.07794, -116.883125)
+shape = SubResource("CapsuleShape2D_qfal1")
+
+[connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
