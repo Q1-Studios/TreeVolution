@@ -10,7 +10,7 @@ var Bullet = preload("res://src/scenes/bullet.tscn")
 @export var bullet_count: int = 1
 @export var bullet_bounces: int = 1
 @export var bullet_size: float = 1
-@export var bullet_velocity: float = 8000
+@export var bullet_velocity: float = 10000
 
 var can_shoot: bool = true;
 const MULTI_BULLET_OFFSET: float = PI/18 # 10 degrees
@@ -40,11 +40,9 @@ func get_bullet_arrangement() -> Array[int]:
 		var direction = -1 if i % 2 == 0 else 1
 		var value = ceil((float(i) / 3 ))
 		bullet_arrangement.append(value * direction)
-		
-	print("Bullet arangement: "+ str(bullet_arrangement))
 	return bullet_arrangement
 
-func spawn_bullet() -> void:
+func spawn_bullets() -> void:
 	var dir = get_global_mouse_position() - global_position
 	
 	for arrangement in get_bullet_arrangement():
@@ -64,7 +62,7 @@ func shoot() -> void:
 		return
 		
 	can_shoot = false
-	spawn_bullet()
+	spawn_bullets()
 	start_shooting_cooldown()
 	
 func set_bullet_attributes(damage: float, count: int, bounces: int, size: float, velocity: float) -> void:
