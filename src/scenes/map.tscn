@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://d1q4jmlxxirbn" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
@@ -15,6 +15,12 @@
 [ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scripts/overlayCamera.gd" id="12_335g5"]
 [ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
 [ext_resource type="Script" uid="uid://dhn5togl1l4jw" path="res://src/scripts/camera.gd" id="14_a4r01"]
+[ext_resource type="Script" uid="uid://cab8utlgsk2hl" path="res://src/scripts/music_state_config.gd" id="15_iivk4"]
+[ext_resource type="AudioStream" uid="uid://0lwhetqsn641" path="res://src/assets/Music/maintheme-intro.ogg" id="16_8lty4"]
+[ext_resource type="AudioStream" uid="uid://co7bsmcaestf6" path="res://src/assets/Music/maintheme-selection.ogg" id="17_hikp2"]
+[ext_resource type="AudioStream" uid="uid://uv74wwpbvs24" path="res://src/assets/Music/maintheme-buildup.ogg" id="18_erll5"]
+[ext_resource type="AudioStream" uid="uid://vo7giqlls38h" path="res://src/assets/Music/maintheme-fight.ogg" id="19_si7be"]
+[ext_resource type="Script" uid="uid://ncgjnp308o3o" path="res://src/scripts/interactive_music_manager.gd" id="20_a4r01"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -31,6 +37,36 @@ func _ready() -> void:
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
 size = Vector2(452.99994, 33.612663)
+
+[sub_resource type="Resource" id="Resource_x0i5t"]
+script = ExtResource("15_iivk4")
+stream = ExtResource("16_8lty4")
+bpm = 156.0
+auto_transition = true
+auto_transition_to = 1
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_ee3yv"]
+script = ExtResource("15_iivk4")
+stream = ExtResource("17_hikp2")
+loop = true
+bpm = 156.0
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_ngjjt"]
+script = ExtResource("15_iivk4")
+stream = ExtResource("18_erll5")
+bpm = 156.0
+auto_transition = true
+auto_transition_to = 3
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_qt34g"]
+script = ExtResource("15_iivk4")
+stream = ExtResource("19_si7be")
+loop = true
+bpm = 156.0
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
 
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 script = ExtResource("1_h7s7u")
@@ -308,10 +344,24 @@ script = ExtResource("14_a4r01")
 player = NodePath("../Player")
 enemy = NodePath("../Enemy")
 
+[node name="InteractiveMusicManager" type="Node" parent="." unique_id=1401012861 node_paths=PackedStringArray("audio_player")]
+script = ExtResource("20_a4r01")
+audio_player = NodePath("AudioStreamPlayer")
+state_data = Dictionary[int, ExtResource("15_iivk4")]({
+0: SubResource("Resource_x0i5t"),
+1: SubResource("Resource_ee3yv"),
+2: SubResource("Resource_ngjjt"),
+3: SubResource("Resource_qt34g")
+})
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InteractiveMusicManager" unique_id=1651661031]
+bus = &"Music"
+
 [connection signal="die" from="Player" to="." method="_on_player_die"]
 [connection signal="die" from="Enemy" to="." method="_on_enemy_die"]
 [connection signal="hit" from="Enemy" to="Player" method="_on_enemy_hit"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="." method="_on_evolution_selected"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="InteractiveMusicManager" method="_on_evolution_select_evolution_selected"]
 
 [editable path="Enemy"]

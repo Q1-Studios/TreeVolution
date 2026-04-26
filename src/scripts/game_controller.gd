@@ -3,6 +3,7 @@ extends Node
 @onready var player: Player = $Player
 @onready var enemy: Enemy = $Enemy
 @onready var evolution_select = $EvolutionSelect
+@onready var music_manager: InteractiveMusicManager = $InteractiveMusicManager
 
 var player_spawn: Vector2
 var enemy_spawn: Vector2
@@ -44,6 +45,7 @@ func _on_player_die(_character: Character) -> void:
 	print("Player died")
 	reset_game()
 	display_evolution_select()
+	music_manager.transition_to_state(InteractiveMusicManager.MusicState.SELECTION)
 
 
 func _on_enemy_die(_character: Character) -> void:
