@@ -112,9 +112,11 @@ animations = [{
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
+radius = 1024.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player")]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.335, 0.335)
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_k24wl")
@@ -152,4 +154,13 @@ animation = &"land"
 position = Vector2(0, 844)
 sprite_frames = SubResource("SpriteFrames_q8yqk")
 
+[node name="BulletBlocker" type="Area2D" parent="." unique_id=1166516784]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBlocker" unique_id=1075329362]
+position = Vector2(0, -216)
+shape = SubResource("CircleShape2D_q8yqk")
+
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
+[connection signal="body_entered" from="BulletBlocker" to="." method="_on_bullet_blocker_body_entered"]
