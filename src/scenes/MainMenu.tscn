@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b64mf63rx7hq0"]
+[gd_scene format=3 ]
 
 [ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_1bg10"]
 [ext_resource type="Script" uid="uid://0jfhau6mg6of" path="res://src/scripts/main_menu.gd" id="1_6ekv6"]
