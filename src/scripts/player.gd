@@ -2,6 +2,8 @@ class_name Player
 extends Character
 
 @onready var animated_sprite = $PlayerMovementAnimation
+@onready var dust_sprite = $DustAnimation
+
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
 var can_spawn_pollen: bool = true
@@ -11,6 +13,7 @@ var max_time: float = 0.5
 var timer: float = pollen_life_time
 var on_ground: bool = true
 func _ready() -> void:
+	super()
 	health = 100
 	
 func _physics_process(delta: float) -> void:
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
  
 
 func _process(delta) -> void:
+	super(delta)
 	timer -= delta
 	spawn_pollen()
 	if(timer <= 0 && !can_spawn_pollen):
@@ -70,5 +74,6 @@ func play_animation() -> void:
 		animated_sprite.play("airtime")
 	elif stun:
 		animated_sprite.play("land")
+		dust_sprite.play("dust")
 	else:
 		animated_sprite.play("idle")
