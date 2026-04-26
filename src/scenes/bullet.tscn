@@ -25,4 +25,8 @@ shape = SubResource("CircleShape2D_a4mbi")
 scale = Vector2(0.05763472, 0.057634715)
 texture = ExtResource("2_a4mbi")
 
+[node name="DespawnTimer" type="Timer" parent="." unique_id=20847588]
+wait_time = 3.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

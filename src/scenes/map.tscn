@@ -55,7 +55,7 @@ position = Vector2(0, -500)
 scale = Vector2(1.415, 1.415)
 texture = ExtResource("1_edtax")
 
-[node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
+[node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
 position = Vector2(-2976.9998, 727)
 
 [node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player", "gun") instance=ExtResource("5_jcr4r")]

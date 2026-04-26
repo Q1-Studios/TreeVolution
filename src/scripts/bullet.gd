@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+@onready var despawn_timer: Timer = $DespawnTimer
+
 var fired = false
 var bounce_amount: int = 1
 var size: float = 1.0
@@ -34,25 +36,35 @@ func check_for_collision() -> void:
 			bounce_amount = bounce_amount - 1
 		else:
 			# if collision with player, remove the bullet
-			queue_free()
+			delete()
 			return
 	
 	# if bounce amount is hit, remove child from tree
 	if bounce_amount <= 0:
-		queue_free()
+		delete()
 		return
+
+func delete() -> void:
+	if is_queued_for_deletion():
+		return
+	queue_free()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	max_contacts_reported = 1
 	contact_monitor = true
 	update_size()
+	despawn_timer.start()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_queued_for_deletion():
 		return
 	
 	update_size()
 	check_for_collision()
+
+
+func _on_despawn_timer_timeout() -> void:
+	delete()
