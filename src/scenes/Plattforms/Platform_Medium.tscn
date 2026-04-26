@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cmt3knxhp212j"]
+
+[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_a54rs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ah5d"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(0, 0, 1863.002, 604.64557)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abskg"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(1913.8735, 1461.383, 1681.7617, 548.33386)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a56ka"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(2786.9194, 683.3002, 983.3252, 529.9541)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj618"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(1307.3364, 661.85693, 1154.8711, 842.4126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56fdq"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(2826.7424, 119.64957, 943.5022, 542.2074)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kguvs"]
+atlas = ExtResource("1_a54rs")
+region = Rect2(308.6947, 661.85693, 1007.83167, 811.7794)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k7la"]
+size = Vector2(1188, 103)
+
+[node name="Platform" type="StaticBody2D" unique_id=1869407090]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1881091623]
+
+[node name="CenterPieceExtension_II" type="Sprite2D" parent="Sprites" unique_id=1150752516]
+position = Vector2(687.0601, 6.249995)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI" type="Sprite2D" parent="Sprites" unique_id=2118070945]
+position = Vector2(360.00003, -1.1920929e-07)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="NormalNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=2023069519]
+visible = false
+position = Vector2(260, 6)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_a56ka")
+
+[node name="GrasNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=1061231953]
+position = Vector2(777, 2.999999)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_mj618")
+
+[node name="CenterPiece" type="Sprite2D" parent="Sprites" unique_id=1800225942]
+position = Vector2(1, -1.000061)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="NormalNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=557159961]
+position = Vector2(-243, 1.9999847)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_56fdq")
+
+[node name="GrasNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=1136029136]
+position = Vector2(-244.00003, 2.9999542)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_kguvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2075489562]
+position = Vector2(273, 3.500002)
+shape = SubResource("RectangleShape2D_8k7la")

@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://d1q4jmlxxirbn" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://b4wbt8w1kexe0" path="res://src/scenes/Plattforms/Platform_Small.tscn" id="8_a4r01"]
+[ext_resource type="PackedScene" uid="uid://cmt3knxhp212j" path="res://src/scenes/Plattforms/Platform_Medium.tscn" id="9_335g5"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 [ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
 [ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scripts/overlayCamera.gd" id="12_335g5"]
@@ -98,10 +100,18 @@ scale = Vector2(1.5654628, 1.565463)
 texture = ExtResource("4_335g5")
 
 [node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
-position = Vector2(-2976.9998, 727)
+position = Vector2(-5528, 727)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2059040765]
+scale = Vector2(36.52287, -0.80148745)
+zoom = Vector2(0.195, 0.19)
+limit_left = -8000
+limit_top = -3750
+limit_right = 6000
+limit_bottom = 1200
 
 [node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("gun") instance=ExtResource("5_jcr4r")]
-position = Vector2(2395.9998, 827.99994)
+position = Vector2(4258, 828)
 gun = NodePath("Gun")
 
 [node name="MovementController" parent="Enemy" index="3" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
@@ -135,48 +145,6 @@ texture = SubResource("PlaceholderTexture2D_udcsr")
 scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
 
-[node name="stuff" type="StaticBody2D" parent="MapHolder" unique_id=28840447]
-visibility_layer = 3
-position = Vector2(-562, 382)
-scale = Vector2(1.2900001, 1.73)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff" unique_id=1754652281]
-scale = Vector2(471.4917, 32.73527)
-texture = SubResource("PlaceholderTexture2D_udcsr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff" unique_id=2105228739]
-scale = Vector2(1.0371802, 1)
-shape = SubResource("RectangleShape2D_kyhn7")
-
-[node name="stuff2" type="StaticBody2D" parent="MapHolder" unique_id=772181553]
-position = Vector2(-1496, -256)
-scale = Vector2(1.6641002, 2.9929001)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff2" unique_id=789068934]
-scale = Vector2(471.4917, 32.73527)
-texture = SubResource("PlaceholderTexture2D_udcsr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff2" unique_id=1501655221]
-scale = Vector2(1.0371802, 1)
-shape = SubResource("RectangleShape2D_kyhn7")
-
-[node name="Sprite2D2" type="Sprite2D" parent="MapHolder/stuff2" unique_id=1260381803]
-position = Vector2(-2.4036884, 0.33412647)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("8_a4r01")
-
-[node name="stuff3" type="StaticBody2D" parent="MapHolder" unique_id=646593541]
-position = Vector2(621, -903)
-scale = Vector2(1.6641002, 2.9929001)
-
-[node name="Sprite2D" type="Sprite2D" parent="MapHolder/stuff3" unique_id=849196186]
-scale = Vector2(471.4917, 32.73527)
-texture = SubResource("PlaceholderTexture2D_udcsr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff3" unique_id=2018002269]
-scale = Vector2(1.0371802, 1)
-shape = SubResource("RectangleShape2D_kyhn7")
-
 [node name="G" type="Node2D" parent="MapHolder" unique_id=929467085 node_paths=PackedStringArray("V", "E")]
 script = ExtResource("4_ahmr2")
 V = NodePath("V")
@@ -184,127 +152,84 @@ E = NodePath("E")
 
 [node name="V" type="Node2D" parent="MapHolder/G" unique_id=574635472]
 
-[node name="Icon14" parent="MapHolder/G/V" unique_id=1343320165 instance=ExtResource("5_ahmr2")]
-position = Vector2(87, 1009)
-
-[node name="Icon" parent="MapHolder/G/V" unique_id=2032995106 instance=ExtResource("5_ahmr2")]
-position = Vector2(-3970, 1040)
-
-[node name="Icon2" parent="MapHolder/G/V" unique_id=627484801 instance=ExtResource("5_ahmr2")]
-position = Vector2(2874, 1068)
-
-[node name="Icon3" parent="MapHolder/G/V" unique_id=1209161415 instance=ExtResource("5_ahmr2")]
-position = Vector2(-3290, 1043)
-
-[node name="Icon4" parent="MapHolder/G/V" unique_id=1731070543 instance=ExtResource("5_ahmr2")]
-position = Vector2(-1357, 1017)
-
-[node name="Icon5" parent="MapHolder/G/V" unique_id=1060224695 instance=ExtResource("5_ahmr2")]
-position = Vector2(524, 1015)
-
-[node name="Icon6" parent="MapHolder/G/V" unique_id=1802877704 instance=ExtResource("5_ahmr2")]
-position = Vector2(1952, 1029)
-
-[node name="Icon7" parent="MapHolder/G/V" unique_id=1663175376 instance=ExtResource("5_ahmr2")]
-position = Vector2(929, -1040)
-
-[node name="Icon8" parent="MapHolder/G/V" unique_id=989635110 instance=ExtResource("5_ahmr2")]
-position = Vector2(295, -1051)
-
-[node name="Icon10" parent="MapHolder/G/V" unique_id=1192555033 instance=ExtResource("5_ahmr2")]
-position = Vector2(-618, 274)
-
-[node name="Icon12" parent="MapHolder/G/V" unique_id=183480504 instance=ExtResource("5_ahmr2")]
-position = Vector2(-1505, -397)
-
-[node name="Icon13" parent="MapHolder/G/V" unique_id=177313336 instance=ExtResource("5_ahmr2")]
-position = Vector2(-1026, 1016)
-
-[node name="Icon15" parent="MapHolder/G/V" unique_id=912330715 instance=ExtResource("5_ahmr2")]
-position = Vector2(-444, 1014)
-
 [node name="E" type="Node2D" parent="MapHolder/G" unique_id=285898098]
 
 [node name="horizontal" type="Node2D" parent="MapHolder/G/E" unique_id=774905292]
 
-[node name="Node2D17" parent="MapHolder/G/E/horizontal" unique_id=1801558419 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(270, -1051, 927, -1065)
-closed = true
-
-[node name="Node2D" parent="MapHolder/G/E/horizontal" unique_id=21663852 instance=ExtResource("6_f1v2q")]
-position = Vector2(-10, 0)
-points = PackedVector2Array(-3976, 1017, -3312, 1034)
-
-[node name="Node2D2" parent="MapHolder/G/E/horizontal" unique_id=984739654 instance=ExtResource("6_f1v2q")]
-position = Vector2(-17, 0)
-points = PackedVector2Array(-3278, 1052, -1378, 1017)
-
-[node name="Node2D3" parent="MapHolder/G/E/horizontal" unique_id=577165135 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1375, 1017, -1044, 1024)
-
-[node name="Node2D4" parent="MapHolder/G/E/horizontal" unique_id=1181709164 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-428, 1003, 72, 1018)
-
-[node name="Node2D5" parent="MapHolder/G/E/horizontal" unique_id=228297962 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(548, 1015, 1933, 1032)
-
-[node name="Node2D6" parent="MapHolder/G/E/horizontal" unique_id=836610270 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(1948, 1032, 2879, 1073)
-
-[node name="Node2D7" parent="MapHolder/G/E/horizontal" unique_id=96252070 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(70, 1011, 520, 1006)
-
-[node name="Node2D18" parent="MapHolder/G/E/horizontal" unique_id=1594976266 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-419, 998, -1009, 1033)
-closed = true
-
 [node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
-
-[node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=52779588 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(520, 1013, -599, 283)
-jump = true
-
-[node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=816497007 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1388, 1035, -570, 262)
-jump = true
-
-[node name="Node2D11" parent="MapHolder/G/E/jump" unique_id=1328148926 instance=ExtResource("6_f1v2q")]
-position = Vector2(-240, 13)
-points = PackedVector2Array(-335, 265, -1211, -426)
-jump = true
-
-[node name="Node2D9" parent="MapHolder/G/E/jump" unique_id=1773679512 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1517, -413, 275, -1058)
-jump = true
-jumpOnDown = true
 
 [node name="doublejump" type="Node2D" parent="MapHolder/G/E" unique_id=2050723171]
 
-[node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=486631092 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-3291, 1032, -1494, -393)
-doubleJump = true
-timeTillDoubleJump = 0.25
-
-[node name="Node2D12" parent="MapHolder/G/E/doublejump" unique_id=635403712 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-602, 254, 240, -1058)
-doubleJump = true
-timeTillDoubleJump = 0.25
-
 [node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
 
-[node name="Node2D13" parent="MapHolder/G/E/dropdown" unique_id=744712461 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(290, -1058, 96, 1014)
-onlyDown = true
+[node name="Platform" parent="MapHolder" unique_id=1869407090 instance=ExtResource("8_a4r01")]
+position = Vector2(-3985, 373)
 
-[node name="Node2D14" parent="MapHolder/G/E/dropdown" unique_id=464522750 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(937, -1063, 1963, 994)
-onlyDown = true
+[node name="Platform2" parent="MapHolder" unique_id=1604902569 instance=ExtResource("9_335g5")]
+position = Vector2(-2096, -784)
 
-[node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1032, 1020, -1508, -387)
-onlyDown = true
+[node name="Platform3" parent="MapHolder" unique_id=1845354370 instance=ExtResource("9_335g5")]
+position = Vector2(2175, -1487)
+
+[node name="Platform4" parent="MapHolder" unique_id=1100546741 instance=ExtResource("9_335g5")]
+position = Vector2(4507, -956)
+
+[node name="Platform6" parent="MapHolder" unique_id=285191050 instance=ExtResource("9_335g5")]
+position = Vector2(525, -696)
+
+[node name="Platform7" parent="MapHolder" unique_id=1417003261 instance=ExtResource("8_a4r01")]
+position = Vector2(-200, -2230)
+
+[node name="Platform8" parent="MapHolder" unique_id=1309198906 instance=ExtResource("8_a4r01")]
+position = Vector2(3290, 168)
+
+[node name="Platform9" parent="MapHolder" unique_id=1109344891 instance=ExtResource("8_a4r01")]
+position = Vector2(-6586, -325)
+
+[node name="Platform10" parent="MapHolder" unique_id=427020323 instance=ExtResource("8_a4r01")]
+position = Vector2(-4931, -1420)
+
+[node name="Platform11" parent="MapHolder" unique_id=791728592 instance=ExtResource("8_a4r01")]
+position = Vector2(-3236, -1779)
+
+[node name="Platform12" parent="MapHolder" unique_id=1234770070 instance=ExtResource("8_a4r01")]
+position = Vector2(-229, 464)
+
+[node name="Platform13" parent="MapHolder" unique_id=1990226313 instance=ExtResource("8_a4r01")]
+position = Vector2(5266, -2059)
+
+[node name="Wall" type="StaticBody2D" parent="MapHolder" unique_id=141435454]
+visible = false
+position = Vector2(-8000, 1194)
+rotation = 1.5707964
+scale = Vector2(43.370003, 1.7190093)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Wall" unique_id=936521586]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Wall" unique_id=1037610406]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="Wall2" type="StaticBody2D" parent="MapHolder" unique_id=821288333]
+visible = false
+position = Vector2(6000, 1194)
+rotation = 1.5707964
+scale = Vector2(43.370003, 1.7190093)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Wall2" unique_id=1639817341]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Wall2" unique_id=2001623905]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
 
 [node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
+visible = false
 offset_left = -3155.0
 offset_top = -2253.0002
 offset_right = -1993.0
@@ -316,9 +241,10 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(573.63635, 316.72726)
 zoom = Vector2(0.19, 0.19)
 script = ExtResource("12_335g5")
-main_camera = NodePath("../../Camera2D")
+main_camera = NodePath("../../Player/Camera2D")
 
 [node name="Parallax_InFront" type="Node2D" parent="." unique_id=516652516]
+visible = false
 
 [node name="Parallax2D4" type="Parallax2D" parent="Parallax_InFront" unique_id=1317835305]
 scroll_scale = Vector2(0.85, 0.85)
