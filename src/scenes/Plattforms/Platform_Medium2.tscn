@@ -1,0 +1,314 @@
+[gd_scene format=3 uid="uid://dqv8cpvj7u453"]
+
+[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_u6nlv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ah5d"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(0, 0, 1863.002, 604.64557)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abskg"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(1913.8735, 1461.383, 1681.7617, 548.33386)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a56ka"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(2786.9194, 683.3002, 983.3252, 529.9541)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj618"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(1307.3364, 661.85693, 1154.8711, 842.4126)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56fdq"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(2826.7424, 119.64957, 943.5022, 542.2074)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kguvs"]
+atlas = ExtResource("1_u6nlv")
+region = Rect2(308.6947, 661.85693, 1007.83167, 811.7794)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k7la"]
+size = Vector2(16486, 70)
+
+[node name="Platform" type="StaticBody2D" unique_id=1869407090]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1881091623]
+
+[node name="CenterPieceExtension_II" type="Sprite2D" parent="Sprites" unique_id=1150752516]
+position = Vector2(687.0601, 6.249995)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI" type="Sprite2D" parent="Sprites" unique_id=2118070945]
+position = Vector2(360.00003, -1.1920929e-07)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="NormalNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=2023069519]
+visible = false
+position = Vector2(260, 6)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_a56ka")
+
+[node name="GrasNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=1061231953]
+visible = false
+position = Vector2(777, 2.999999)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_mj618")
+
+[node name="CenterPiece" type="Sprite2D" parent="Sprites" unique_id=1800225942]
+position = Vector2(1, -1.000061)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="NormalNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=557159961]
+visible = false
+position = Vector2(-243, 1.9999847)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_56fdq")
+
+[node name="GrasNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=1136029136]
+visible = false
+position = Vector2(-244.00003, 2.9999542)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_kguvs")
+
+[node name="CenterPieceExtension_II2" type="Sprite2D" parent="Sprites" unique_id=969385273]
+position = Vector2(1714.2595, -21.24994)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI2" type="Sprite2D" parent="Sprites" unique_id=964441746]
+position = Vector2(1378, -11.000001)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="NormalNuppnRechts2" type="Sprite2D" parent="Sprites" unique_id=1535111608]
+visible = false
+position = Vector2(260, 6)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_a56ka")
+
+[node name="GrasNuppnRechts2" type="Sprite2D" parent="Sprites" unique_id=898467397]
+visible = false
+position = Vector2(777, 2.999999)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_mj618")
+
+[node name="CenterPiece2" type="Sprite2D" parent="Sprites" unique_id=436342401]
+position = Vector2(1030, -7.000002)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II3" type="Sprite2D" parent="Sprites" unique_id=954174203]
+position = Vector2(2745.2595, -13.249943)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI3" type="Sprite2D" parent="Sprites" unique_id=1032364775]
+position = Vector2(2418.1995, -19.49994)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece3" type="Sprite2D" parent="Sprites" unique_id=521109369]
+position = Vector2(2059.1995, -20.500002)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II4" type="Sprite2D" parent="Sprites" unique_id=884480767]
+position = Vector2(3767.2595, -27.74988)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI4" type="Sprite2D" parent="Sprites" unique_id=1575647592]
+position = Vector2(3404, -14.000008)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece4" type="Sprite2D" parent="Sprites" unique_id=1808140872]
+position = Vector2(3088.399, -10.999939)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II5" type="Sprite2D" parent="Sprites" unique_id=1481965962]
+position = Vector2(4792.0605, -19.24994)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI5" type="Sprite2D" parent="Sprites" unique_id=2026487429]
+position = Vector2(4465, -25.49994)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece5" type="Sprite2D" parent="Sprites" unique_id=989170467]
+position = Vector2(4106, -26.500002)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II6" type="Sprite2D" parent="Sprites" unique_id=1899165248]
+position = Vector2(5839, -11.999987)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI6" type="Sprite2D" parent="Sprites" unique_id=121983615]
+position = Vector2(5494.2, -15.99988)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece6" type="Sprite2D" parent="Sprites" unique_id=1118468115]
+position = Vector2(5135.2, -16.99994)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II7" type="Sprite2D" parent="Sprites" unique_id=444385855]
+position = Vector2(6850.26, -20.749996)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI7" type="Sprite2D" parent="Sprites" unique_id=140069197]
+position = Vector2(6517.0005, -19.999994)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece7" type="Sprite2D" parent="Sprites" unique_id=1502991279]
+position = Vector2(6180.1997, -16.500006)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II8" type="Sprite2D" parent="Sprites" unique_id=1355402059]
+position = Vector2(7877.459, -22.749893)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI8" type="Sprite2D" parent="Sprites" unique_id=236635844]
+position = Vector2(7550.399, -28.999886)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece8" type="Sprite2D" parent="Sprites" unique_id=977363456]
+position = Vector2(7193.3994, -18.499992)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II9" type="Sprite2D" parent="Sprites" unique_id=318407193]
+position = Vector2(8939.92, -21.508293)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI9" type="Sprite2D" parent="Sprites" unique_id=1813484166]
+position = Vector2(8612.86, -27.758286)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece9" type="Sprite2D" parent="Sprites" unique_id=1228741747]
+position = Vector2(8249.001, -20.000015)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II10" type="Sprite2D" parent="Sprites" unique_id=1629630162]
+position = Vector2(9969.119, -12.008232)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI10" type="Sprite2D" parent="Sprites" unique_id=1235855618]
+position = Vector2(9642.06, -18.258224)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece10" type="Sprite2D" parent="Sprites" unique_id=1215929663]
+position = Vector2(9283.06, -19.258286)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II11" type="Sprite2D" parent="Sprites" unique_id=1153921770]
+position = Vector2(11000.119, -4.008232)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI11" type="Sprite2D" parent="Sprites" unique_id=1886976727]
+position = Vector2(10673.06, -10.2582245)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece11" type="Sprite2D" parent="Sprites" unique_id=106613852]
+position = Vector2(10314.06, -11.2582855)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II12" type="Sprite2D" parent="Sprites" unique_id=987279887]
+position = Vector2(12022.92, -15.508279)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI12" type="Sprite2D" parent="Sprites" unique_id=1021956714]
+position = Vector2(11695.86, -21.758274)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece12" type="Sprite2D" parent="Sprites" unique_id=931657340]
+position = Vector2(11334, -7.0000153)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II13" type="Sprite2D" parent="Sprites" unique_id=972820820]
+position = Vector2(13049.721, -16.008339)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI13" type="Sprite2D" parent="Sprites" unique_id=1668350317]
+position = Vector2(12722.661, -22.258337)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece13" type="Sprite2D" parent="Sprites" unique_id=505416486]
+position = Vector2(12363.661, -23.258398)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II14" type="Sprite2D" parent="Sprites" unique_id=834353966]
+position = Vector2(14080.92, -20.5083)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI14" type="Sprite2D" parent="Sprites" unique_id=517494419]
+position = Vector2(13751.861, -12.758276)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece14" type="Sprite2D" parent="Sprites" unique_id=1939174742]
+position = Vector2(13392.861, -13.758337)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II15" type="Sprite2D" parent="Sprites" unique_id=50199344]
+position = Vector2(15111.92, -12.508301)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI15" type="Sprite2D" parent="Sprites" unique_id=1664690912]
+position = Vector2(14784.861, -18.7583)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece15" type="Sprite2D" parent="Sprites" unique_id=754771247]
+position = Vector2(14425.861, -19.758362)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtension_II16" type="Sprite2D" parent="Sprites" unique_id=497324527]
+position = Vector2(16141.12, -3.008255)
+scale = Vector2(0.21605964, 0.21605961)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CenterPieceExtensionI16" type="Sprite2D" parent="Sprites" unique_id=560729598]
+position = Vector2(15814.061, -9.25824)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_abskg")
+
+[node name="CenterPiece16" type="Sprite2D" parent="Sprites" unique_id=140016214]
+position = Vector2(15455.061, -10.258301)
+scale = Vector2(0.22350995, 0.22350994)
+texture = SubResource("AtlasTexture_7ah5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2075489562]
+position = Vector2(8074, -8.999998)
+shape = SubResource("RectangleShape2D_8k7la")
