@@ -64,7 +64,7 @@ func _physics_process(_delta: float) -> void:
 			await get_tree().create_timer(0.5).timeout
 			stun = false
 			high_fall = false
-			
+		
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 
@@ -100,9 +100,11 @@ func pollen_effect_trigger(pollen: Pollen):
 	pollen_effect_can_happen = false
 	if pollen.owner_call == self:
 		healing(pollen.pollen_heal_amount)
+		print(pollen.owner_call)
 	else:
 		take_damage(pollen.pollen_damage_enemy_amount)
-		
+		print(pollen_damage_enemy_amount)
+	
 	pollen_effect_cooldown()
 
 func pollen_effect_cooldown():
@@ -168,7 +170,7 @@ func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		var bullet_damage: float = body.damage
 		take_damage(bullet_damage)
-		
+
 
 # area parameter -> pollen area
 func _on_pollen_detection_area_entered(area: Area2D) -> void:
@@ -180,7 +182,7 @@ func _on_pollen_detection_area_entered(area: Area2D) -> void:
 func _on_pollen_detection_area_exited(area: Area2D) -> void:
 	if (area.is_in_group("Polen")):
 		pollen_list.erase(area)
-		
-		
+
+
 func _on_evolution_selected(evolution: Evolutions.Evolution):
 	apply_evolution_effects(evolution)

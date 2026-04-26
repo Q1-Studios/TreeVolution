@@ -1,21 +1,49 @@
 extends Character
 class_name Enemy
 
+@onready var dust_sprite = $DustAnimation
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
-var can_land = true
+var can_spawn_pollen: bool = true
+var can_land: bool = false
+var timer: bool = pollen_life_time
+var max_time: bool = 0.5
+
 func _ready() -> void:
 	super()
-	health = 100
-	
+	dust_sprite.stop()
+
 func _physics_process(delta: float) -> void:
 	super(delta)
-	
 	if !enabled:
 		return
-	
 	play_animation()
 	pass
+
+func _process(delta):
+	if Input.is_action_just_pressed("enemyPollen") && can_spawn_pollen:
+		spawn_pollen()
+		timer -= delta
+
+		
+func spawn_pollen() -> void:
+	timer = pollen_summon_cooldown
+	can_spawn_pollen = false
+	var player_position = $".".position
+	var temp_pollen = pollen_obj.instantiate()
+	temp_pollen = create_pollen(temp_pollen)
+	get_tree().root.add_child(temp_pollen)
+	temp_pollen.global_position = player_position
+	await get_tree().create_timer(pollen_life_time).timeout
+	if temp_pollen:
+		temp_pollen.queue_free()
+		start_pollen_cooldown()
+		
+func start_pollen_cooldown() -> void:
+	timer = max_time
+	can_spawn_pollen = false
+
 
 func select_random_evolution() -> void:
 	var all_evolutions = Evolutions.Evolution.values()
@@ -39,6 +67,7 @@ func play_animation() -> void:
 		animated_sprite.play("jump")
 	elif stun:
 		animated_sprite.play("land")
+		dust_sprite.play("dust")
 	else:
 		animated_sprite.play("idle")
 
@@ -46,4 +75,3 @@ func play_animation() -> void:
 func _on_bullet_blocker_body_entered(body: Node2D) -> void:
 	if !body.is_in_group("bullets"):
 		return
-	

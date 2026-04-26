@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://cxcpmdwrimy1g" path="res://src/assets/2D/Enemy/e_walking_3.png" id="8_mc4g7"]
 [ext_resource type="Texture2D" uid="uid://cdalvt82e1iij" path="res://src/assets/2D/Enemy/e_walking_4.png" id="9_6g7bn"]
 [ext_resource type="Texture2D" uid="uid://ckmfdw3qxkv50" path="res://src/assets/2D/Enemy/e_walking_5.png" id="10_oj8xh"]
+[ext_resource type="Texture2D" uid="uid://cwj5f5mg1fdi6" path="res://src/assets/2D/LandingEffects/landing_1.png" id="13_40a6p"]
+[ext_resource type="Texture2D" uid="uid://dvq8iygwgkxir" path="res://src/assets/2D/LandingEffects/landing_2.png" id="14_neaov"]
+[ext_resource type="Texture2D" uid="uid://dq74t0yfc6r5l" path="res://src/assets/2D/LandingEffects/landing_3.png" id="15_fim43"]
+[ext_resource type="Texture2D" uid="uid://d17to01c0fcve" path="res://src/assets/2D/LandingEffects/landing_4.png" id="16_6yjfe"]
+[ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="17_3s7ax"]
+[ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="18_pwbhv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
 radius = 264.93506
@@ -112,6 +118,31 @@ animations = [{
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_40a6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_neaov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fim43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6yjfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3s7ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pwbhv")
+}],
+"loop": false,
+"name": &"dust",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
 radius = 1024.0
 
@@ -128,7 +159,7 @@ position = Vector2(12.987014, -148.05197)
 shape = SubResource("CapsuleShape2D_k24wl")
 
 [node name="Bullet_Detection" type="Area2D" parent="." unique_id=575113254]
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1587372262]
 position = Vector2(18.181824, -257.14288)
@@ -151,8 +182,9 @@ sprite_frames = SubResource("SpriteFrames_oj8xh")
 animation = &"land"
 
 [node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
-position = Vector2(0, 844)
+position = Vector2(149.25372, -62.686584)
 sprite_frames = SubResource("SpriteFrames_q8yqk")
+animation = &"dust"
 
 [node name="BulletBlocker" type="Area2D" parent="." unique_id=1166516784]
 collision_layer = 0
@@ -162,5 +194,7 @@ collision_mask = 2
 position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
 
+[connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
+[connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
 [connection signal="body_entered" from="BulletBlocker" to="." method="_on_bullet_blocker_body_entered"]
