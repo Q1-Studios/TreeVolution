@@ -72,10 +72,8 @@ func _physics_process(_delta: float) -> void:
 func check_stun():
 	if velocity.y > 6000:
 		high_fall = true
-		print(velocity.y)
 	if high_fall && is_on_floor():
 		stun = true
-		print(stun)
 
 """
 if velocity greater 6000 we are in free fall -> high_fall true
