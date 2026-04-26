@@ -77,3 +77,7 @@ func play_animation() -> void:
 		dust_sprite.play("dust")
 	else:
 		animated_sprite.play("idle")
+
+
+func _on_enemy_hit(damage) -> void:
+	take_damage(damage)

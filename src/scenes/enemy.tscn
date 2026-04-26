@@ -186,15 +186,15 @@ position = Vector2(149.25372, -62.686584)
 sprite_frames = SubResource("SpriteFrames_q8yqk")
 animation = &"dust"
 
-[node name="BulletBlocker" type="Area2D" parent="." unique_id=1166516784]
+[node name="BulletBlockerAndSwordFighter" type="Area2D" parent="." unique_id=1166516784]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBlocker" unique_id=1075329362]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBlockerAndSwordFighter" unique_id=1075329362]
 position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
-[connection signal="body_entered" from="BulletBlocker" to="." method="_on_bullet_blocker_body_entered"]
+[connection signal="body_entered" from="BulletBlockerAndSwordFighter" to="." method="_on_bullet_blocker_body_entered"]

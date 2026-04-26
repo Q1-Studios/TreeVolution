@@ -10,6 +10,9 @@ var can_land: bool = false
 var timer: bool = pollen_life_time
 var max_time: bool = 0.5
 
+signal hit
+
+var can_land = true
 func _ready() -> void:
 	super()
 	dust_sprite.stop()
@@ -73,5 +76,10 @@ func play_animation() -> void:
 
 
 func _on_bullet_blocker_body_entered(body: Node2D) -> void:
-	if !body.is_in_group("bullets"):
+	if !body.is_in_group("bullets") and !body.is_in_group("Player"):
 		return
+	if body.is_in_group("bullets"):
+		print("blocking")
+	else:
+		print("hitting")
+		emit_signal("hit", 2*gun.bullet_damage)
