@@ -1,7 +1,7 @@
 class_name Player
 extends Character
 
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animated_sprite = $PlayerMovementAnimation
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 
 var can_spawn_pollen: bool = true

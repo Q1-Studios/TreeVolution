@@ -67,7 +67,6 @@ func _physics_process(_delta: float) -> void:
 			
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
-		
 
 func check_stun():
 	if velocity.y > 6000:
@@ -75,17 +74,7 @@ func check_stun():
 	if high_fall && is_on_floor():
 		stun = true
 
-"""
-if velocity greater 6000 we are in free fall -> high_fall true
-we then land on floor -> is on floor = true
-stun = is on floor + highfall
 
-fucntion:
-	check velocity and store high fall
-
-when not stun -> we set highfall to false
-after pause we cam set stun to false
-"""
 func take_damage(amount: float) -> void:
 	var new_health: float = max(0.0, health - amount)
 	self.health = new_health

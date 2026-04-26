@@ -67,7 +67,7 @@ G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
-position = Vector2(345, 50)
+position = Vector2(-3810, -5129)
 
 [node name="Pollen2" parent="." unique_id=719815752 instance=ExtResource("3_3tm0b")]
 position = Vector2(-4551, -5137)

@@ -115,7 +115,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath("PlayerMovementAnimation:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,7 +131,7 @@ length = 0.43333334
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/path = NodePath("PlayerMovementAnimation:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,6 +146,8 @@ _data = {
 &"RESET": SubResource("Animation_gjb54"),
 &"damage_taken": SubResource("Animation_1g466")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aycp6"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player", "gun")]
 scale = Vector2(0.385, 0.385)
@@ -163,11 +165,11 @@ polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147
 
 [node name="ModelContainer" type="Node2D" parent="." unique_id=437818947]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1249482178]
+[node name="PlayerMovementAnimation" type="AnimatedSprite2D" parent="." unique_id=1249482178]
 position = Vector2(-31.83445, 126.46459)
 scale = Vector2(0.87985724, 0.87985724)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"airtime"
+animation = &"walk"
 
 [node name="THE_PISS_STREAM2" parent="." unique_id=238068524 instance=ExtResource("2_qfal1")]
 position = Vector2(127.27272, 109.09091)
@@ -193,6 +195,10 @@ script = ExtResource("5_gjb54")
 libraries/ = SubResource("AnimationLibrary_uo3qh")
 
 [node name="Timer" type="Timer" parent="." unique_id=297888288]
+
+[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
+position = Vector2(0, 1028.5714)
+sprite_frames = SubResource("SpriteFrames_aycp6")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]

@@ -111,6 +111,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player")]
 scale = Vector2(0.25, 0.25)
 collision_layer = 16
@@ -144,6 +146,10 @@ scale = Vector2(0.9999999, 0.9999999)
 position = Vector2(132.46754, -142.85715)
 scale = Vector2(1.0828563, 1.0159134)
 sprite_frames = SubResource("SpriteFrames_oj8xh")
-animation = &"idle"
+animation = &"land"
+
+[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
+position = Vector2(0, 844)
+sprite_frames = SubResource("SpriteFrames_q8yqk")
 
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
