@@ -19,6 +19,10 @@ config/icon="uid://drhnifrhvuhjd"
 
 Evolutions="*uid://bjqifjyoeungk"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 bullets=""
