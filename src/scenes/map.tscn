@@ -135,6 +135,7 @@ frame_progress = 0.0
 script = SubResource("GDScript_f1v2q")
 
 [node name="G" type="Node2D" parent="MapHolder" unique_id=929467085 node_paths=PackedStringArray("V", "E")]
+visible = false
 script = ExtResource("4_ahmr2")
 V = NodePath("V")
 E = NodePath("E")
