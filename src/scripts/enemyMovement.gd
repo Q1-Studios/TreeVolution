@@ -10,9 +10,6 @@ extends MovementController
 @export var time_to_build_speed_before_jump := 0.05
 @export var reaction_delay := 0.0
 @export var sampling_time := 1.0
-@export var move_randomly_to_neighbor_node_on_same_floor := false
-@export var same_floor_delta_y := 10.0
-@export var randomize_weights := false
 @export var lineup_probability := 0.2
 @export var lineup_waiting_time := 0.5
 
@@ -33,10 +30,6 @@ var should_double_jump: bool = false
 
 var positionBuffer:Queue = Queue.new()
 
-var previousGoalNode: int
-var previousSelectedNode: int
-var previousNodeId: int = -1
-var currentPathIndex = 0
 var rng = RandomNumberGenerator.new()
 var lineupTimer = 0.0
 
@@ -55,12 +48,9 @@ func handleMovement(character: Character) -> void:
 		lineupTimer -= character.get_physics_process_delta_time()
 		
 	if not is_traversing:
-		if currentPathIndex > path.size() -1:
-			_find_path(character)
-			currentPathIndex = 0
-		if path.size() > currentPathIndex + 1 and lineupTimer <= 0:
-			_setup_next_edge(character, path[currentPathIndex], path[currentPathIndex + 1])
-			currentPathIndex += 1
+		_find_path(character)
+		if path.size() > 1:
+			_setup_next_edge(character, path[0], path[1])
 		else:
 			_handle_lateral_movement(character, 0)
 				
@@ -72,51 +62,16 @@ func handleMovement(character: Character) -> void:
 func _find_path(character: Character) -> void:
 	var startingNode = graph.get_closest_point(character.position)
 	var goalNode = graph.get_closest_point(positionBuffer.peek().position)
-	var possibleNodes = graph.get_point_connections(goalNode)
-	var applicableNodes = []
-	applicableNodes.push_back(goalNode)
-	
-	for node in possibleNodes:
-		if abs(graph.get_point_position(goalNode)[1] - graph.get_point_position(node)[1]) < same_floor_delta_y:
-			applicableNodes.push_back(node)
-	
-	var finalNode: int
-	if move_randomly_to_neighbor_node_on_same_floor:
-		if goalNode != previousGoalNode:
-			finalNode = applicableNodes.pick_random()
-		else:
-			finalNode = previousSelectedNode
-	else:
-		finalNode = goalNode
-	
-	if startingNode == -1 or finalNode == -1:
+
+	if startingNode == -1 or goalNode == -1:
 		print("Can't find a path")
 		path = []
 		return
 	
-	previousSelectedNode = finalNode
-	previousGoalNode = goalNode		
-	
-	if randomize_weights:
-		for id in graph.get_point_ids():
-			var w = rng.randfn(500, 200)
-			if w < 500:
-				w = 500 - w
-			else:
-				w = 1500 - w
-			graph.set_point_weight_scale(id, w)
-		
-		if previousNodeId != -1 and previousNodeId != startingNode:
-			graph.set_point_weight_scale(previousNodeId, 10000.0) 
-		path = graph.get_id_path(startingNode, finalNode)
-		for id in graph.get_point_ids():
-			graph.set_point_weight_scale(id, 1.0)
-	else:
-		path = graph.get_id_path(startingNode, finalNode)
+	path = graph.get_id_path(startingNode, goalNode)
 	
 
 func _setup_next_edge(character: Character, start_id: int, end_id: int) -> void:
-	previousNodeId = start_id 
 	current_target_pos = graph.get_point_position(end_id)
 	
 	var edgeName = "%s-%s" % [start_id, end_id]

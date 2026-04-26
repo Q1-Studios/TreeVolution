@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://d26055wco2ru" path="res://src/assets/2D/bgart/IMG-20260223-WA0006_0_blur.jpg" id="1_2ckrn"]
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
-[ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
+[ext_resource type="Script" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
 [ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://d1q4jmlxxirbn" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 
@@ -58,17 +58,11 @@ texture = ExtResource("1_edtax")
 [node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
 position = Vector2(-2976.9998, 727)
 
-[node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player", "gun") instance=ExtResource("5_jcr4r")]
+[node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("gun") instance=ExtResource("5_jcr4r")]
 position = Vector2(2395.9998, 827.99994)
-movement_controller = NodePath("MovementController")
-animation_player = NodePath("AnimationPlayer")
 gun = NodePath("Gun")
 
-[node name="Sprite2D" parent="Enemy" index="1" unique_id=483896026]
-visible = true
-texture = null
-
-[node name="MovementController" parent="Enemy" index="4" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
+[node name="MovementController" parent="Enemy" index="3" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
 G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
 
@@ -165,17 +159,11 @@ position = Vector2(929, -1040)
 [node name="Icon8" parent="MapHolder/G/V" unique_id=989635110 instance=ExtResource("5_ahmr2")]
 position = Vector2(295, -1051)
 
-[node name="Icon9" parent="MapHolder/G/V" unique_id=1503627769 instance=ExtResource("5_ahmr2")]
-position = Vector2(-334, 261)
-
 [node name="Icon10" parent="MapHolder/G/V" unique_id=1192555033 instance=ExtResource("5_ahmr2")]
-position = Vector2(-768, 253)
-
-[node name="Icon11" parent="MapHolder/G/V" unique_id=345015735 instance=ExtResource("5_ahmr2")]
-position = Vector2(-1173, -399)
+position = Vector2(-618, 274)
 
 [node name="Icon12" parent="MapHolder/G/V" unique_id=183480504 instance=ExtResource("5_ahmr2")]
-position = Vector2(-1799, -394)
+position = Vector2(-1505, -397)
 
 [node name="Icon13" parent="MapHolder/G/V" unique_id=177313336 instance=ExtResource("5_ahmr2")]
 position = Vector2(-1026, 1016)
@@ -211,12 +199,6 @@ points = PackedVector2Array(548, 1015, 1933, 1032)
 [node name="Node2D6" parent="MapHolder/G/E/horizontal" unique_id=836610270 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(1948, 1032, 2879, 1073)
 
-[node name="Node2D15" parent="MapHolder/G/E/horizontal" unique_id=1789203585 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1811, -416, -1183, -438)
-
-[node name="Node2D16" parent="MapHolder/G/E/horizontal" unique_id=88479791 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-773, 258, -355, 244)
-
 [node name="Node2D7" parent="MapHolder/G/E/horizontal" unique_id=96252070 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(70, 1011, 520, 1006)
 
@@ -227,31 +209,32 @@ closed = true
 [node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
 
 [node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=52779588 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(520, 1013, -326, 241)
+points = PackedVector2Array(520, 1013, -599, 283)
 jump = true
 
 [node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=816497007 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1388, 1035, -756, 246)
+points = PackedVector2Array(-1388, 1035, -570, 262)
 jump = true
 
 [node name="Node2D11" parent="MapHolder/G/E/jump" unique_id=1328148926 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-335, 265, -1165, -416)
+position = Vector2(-240, 13)
+points = PackedVector2Array(-335, 265, -1211, -426)
 jump = true
 
 [node name="Node2D9" parent="MapHolder/G/E/jump" unique_id=1773679512 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1211, -411, 275, -1058)
+points = PackedVector2Array(-1517, -413, 275, -1058)
 jump = true
 jumpOnDown = true
 
 [node name="doublejump" type="Node2D" parent="MapHolder/G/E" unique_id=2050723171]
 
 [node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=486631092 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-3291, 1032, -1807, -436)
+points = PackedVector2Array(-3291, 1032, -1494, -393)
 doubleJump = true
 timeTillDoubleJump = 0.25
 
 [node name="Node2D12" parent="MapHolder/G/E/doublejump" unique_id=635403712 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-768, 247, 240, -1058)
+points = PackedVector2Array(-602, 254, 240, -1058)
 doubleJump = true
 timeTillDoubleJump = 0.25
 
@@ -266,7 +249,7 @@ points = PackedVector2Array(937, -1063, 1963, 994)
 onlyDown = true
 
 [node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1032, 1020, -1187, -362)
+points = PackedVector2Array(-1032, 1020, -1508, -387)
 onlyDown = true
 
 [node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
