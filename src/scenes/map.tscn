@@ -10,53 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://d1q4jmlxxirbn" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
-[ext_resource type="Texture2D" uid="uid://cmtvoxr424xcr" path="res://src/assets/2D/enemy_idle1.png" id="6_pyc6v"]
-[ext_resource type="Texture2D" uid="uid://bnodyrak4squj" path="res://src/assets/2D/enemy_idle2.png" id="7_mttea"]
-[ext_resource type="Texture2D" uid="uid://clbvpsr4vdctb" path="res://src/assets/2D/enemy_jump.png" id="8_iivk4"]
-[ext_resource type="Texture2D" uid="uid://wunp0jkx5ery" path="res://src/assets/2D/enemy_walk1.png" id="9_8lty4"]
-[ext_resource type="Texture2D" uid="uid://d3r22qttlf6lx" path="res://src/assets/2D/enemy_walk2.png" id="10_hikp2"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
-[ext_resource type="Texture2D" uid="uid://dxwrjxc15gyh5" path="res://src/assets/2D/enemy_walk3.png" id="11_erll5"]
-[ext_resource type="Texture2D" uid="uid://d3blasulhtqsd" path="res://src/assets/2D/enemy_walk4.png" id="12_si7be"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x0i5t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_pyc6v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_mttea")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_iivk4")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_8lty4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_hikp2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_erll5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_si7be")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
-}]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -105,19 +59,11 @@ texture = ExtResource("1_edtax")
 position = Vector2(-2976.9998, 727)
 
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
-position = Vector2(2627, 854.00006)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" parent="Enemy" index="1" unique_id=483896026]
-visible = false
+position = Vector2(2395.9998, 827.99994)
 
 [node name="MovementController" parent="Enemy" index="4" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
 G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy" unique_id=577737739]
-sprite_frames = SubResource("SpriteFrames_x0i5t")
-animation = &"idle"
 
 [node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
 position = Vector2(345, 50)
