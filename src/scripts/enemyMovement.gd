@@ -59,6 +59,11 @@ func handleMovement(character: Character) -> void:
 		_find_path(character)
 		if path.size() > 1:
 			_setup_next_edge(character, path[0], path[1])
+		elif !headingRandom and path.size() == 1:
+			var posDiff = player.position.x - character.position.x
+			if posDiff < arrival_distance_x: 
+				posDiff = 0
+			_handle_lateral_movement(character, sign(posDiff))
 		else:
 			_handle_lateral_movement(character, 0)
 			headingRandom = false

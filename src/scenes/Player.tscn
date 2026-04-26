@@ -183,7 +183,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("playerShoot", "playerWalk", "playerDamage", "playerJump", "movement_controller", "animation_player", "gun")]
+[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("playerShoot", "playerWalk", "playerDamage", "playerJump", "movement_controller", "animation_player", "gun") groups=["Player"]]
 scale = Vector2(0.385, 0.385)
 collision_layer = 8
 collision_mask = 9
@@ -233,14 +233,6 @@ libraries/ = SubResource("AnimationLibrary_uo3qh")
 
 [node name="Timer" type="Timer" parent="." unique_id=297888288]
 
-[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
-visible = false
-position = Vector2(0, 155.84424)
-sprite_frames = SubResource("SpriteFrames_aycp6")
-animation = &"dust"
-frame = 5
-frame_progress = 1.0
-
 [node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=85745760]
 scale = Vector2(0.99999994, 0.99999994)
 stream = ExtResource("3_gbdvo")
@@ -261,6 +253,14 @@ playback_type = 1
 [node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=701741601]
 stream = ExtResource("2_fuuj7")
 playback_type = 1
+
+[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
+position = Vector2(75.324684, 155.84424)
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_aycp6")
+animation = &"dust"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
