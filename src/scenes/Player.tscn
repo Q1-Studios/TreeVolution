@@ -248,6 +248,8 @@ playback_type = 1
 position = Vector2(0, 155.84424)
 scale = Vector2(0.9999999, 0.9999999)
 stream = ExtResource("23_gbdvo")
+volume_db = 10.0
+area_mask = 3
 playback_type = 1
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=701741601]

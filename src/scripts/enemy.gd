@@ -99,8 +99,12 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 		Evolutions.Evolution.PLAYER_SPEED:
 			movement_controller.max_speed += 200
 			pass
-		Evolutions.Evolution.PISTOL_COOLDOWN:
+		Evolutions.Evolution.PISTOL_BULLET_SPEED:
 			movement_controller.jumpForce += 100
+			pass
+		Evolutions.Evolution.PISTOL_COOLDOWN:
+			var new_cooldown: float = max(0.01, gun.attack_cooldown - 0.05)
+			gun.attack_cooldown = new_cooldown
 			pass
 		Evolutions.Evolution.PLAYER_POLLEN_COOLDOWN:
 			var new_cooldown = max(0.5, pollen_summon_cooldown - 0.2)
@@ -118,7 +122,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pollen_heal_amount += 0.2
 			pollen_heal_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
-		Evolutions.Evolution.PISTOL_BULLET_DAMAGE, Evolutions.Evolution.PISTOL_BULLET_SPEED:
+		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
 			gun.bullet_damage += 5
 			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
 			PLAYER_MAX_HEALTH = new_health
@@ -189,5 +193,6 @@ func hit_player():
 	if !attack_animation_played && !sword_animation.is_playing():
 		sword_animation.visible = true
 		sword_animation.play("swordAttack")
+		if(!EnemySword.playing): EnemySword.play()
 		attack_animation_played = true
 	

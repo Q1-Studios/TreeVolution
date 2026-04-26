@@ -246,6 +246,7 @@ position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
 
 [node name="SwordAnimation" type="AnimatedSprite2D" parent="." unique_id=1758014741]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_h60vn")
 animation = &"swordAttack"
 speed_scale = 3.0
@@ -259,6 +260,8 @@ stream = ExtResource("20_pwbhv")
 
 [node name="Sword" type="AudioStreamPlayer2D" parent="." unique_id=1530663037]
 stream = ExtResource("21_2gt0t")
+volume_db = 8.054
+pitch_scale = 0.71
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=290164487]
 stream = ExtResource("22_v5chy")
