@@ -23,11 +23,11 @@ func _process(delta) -> void:
 		can_spawn_pollen=true
 
 func _handle_gun() -> void:
-	var direction = get_global_mouse_position() - gun.global_position
+	var direction = get_global_mouse_position()
 	gun.rotate_weapon(direction)
 	
 	if Input.is_action_pressed("shoot"):
-		gun.shoot(direction)
+		gun.shoot(direction, velocity)
 
 func spawn_pollen():
 	if Input.is_action_just_pressed("Pollen ability") && can_spawn_pollen:

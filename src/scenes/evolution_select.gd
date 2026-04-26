@@ -19,9 +19,6 @@ func init_evolution_boxes() -> void:
 	var all_evolutions = Evolutions.Evolution.values()
 	all_evolutions.shuffle()
 	
-	for evo in all_evolutions:
-		print("Evolution " + str(evo) + ": " + str(Evolutions.get_evolution_data(evo).readable_name))
-	
 	for index in range(3):
 		var evolution: Evolutions.Evolution = all_evolutions[index]
 		var evolution_box: EvolutionBox = evolution_box_container.get_child(index)

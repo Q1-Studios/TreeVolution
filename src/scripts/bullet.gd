@@ -1,6 +1,5 @@
 extends RigidBody2D
 
-var velocity: Vector2 = Vector2.ZERO
 var fired = false
 var bounce_amount: int = 1
 var size: float = 1.0
@@ -9,8 +8,8 @@ var damage: float = 0.0
 func spawn(_position: Vector2, _direction: float, _velocity: Vector2, _size: float):
 	position = _position
 	rotation = _direction
-	velocity = _velocity
 	size = _size
+	linear_velocity = _velocity
 	
 func set_damage(amount: float) -> void:
 	damage = amount
@@ -23,12 +22,6 @@ func set_bounces(amount: int):
 	
 func update_size() -> void:
 	scale = Vector2(size, size)
-	
-func move(delta: float) -> void:
-	# apply impulse only once
-	if !fired:
-		apply_central_impulse(velocity * delta)
-		fired = true
 	
 func check_for_collision() -> void:
 	
@@ -63,4 +56,3 @@ func _physics_process(delta: float) -> void:
 	
 	update_size()
 	check_for_collision()
-	move(delta)

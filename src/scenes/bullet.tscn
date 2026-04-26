@@ -8,12 +8,14 @@ rough = true
 bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4mbi"]
+radius = 11.0
 
 [node name="Bullet" type="RigidBody2D" unique_id=371956169 groups=["bullets"]]
 collision_layer = 2
 collision_mask = 24
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_a4mbi")
+linear_damp_mode = 1
 script = ExtResource("1_a4mbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=281310408]
