@@ -17,6 +17,10 @@ boot_splash/image="uid://bxexqw8647lj3"
 config/icon="uid://dkft5k751hrnp"
 boot_splash/minimum_display_time=500
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 Evolutions="*uid://bjqifjyoeungk"
