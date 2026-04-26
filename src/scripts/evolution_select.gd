@@ -27,9 +27,14 @@ func init_evolution_boxes() -> void:
 
 func display_confirm_btn(_button: BaseButton) -> void:
 	confirm_btn.visible = true
+	
+func display() -> void:
+	init_evolution_boxes()
+	visible = true
 
 func _on_cool_button_button_up() -> void:
 	var evolution_box: EvolutionBox = btn_group.get_pressed_button()
 	var evolution: Evolutions.Evolution = evolution_box.get_evolution()
 	print("Selected evolution: " + str(evolution))
 	evolution_selected.emit(evolution)
+	visible = false

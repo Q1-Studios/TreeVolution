@@ -3,11 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://d26055wco2ru" path="res://src/assets/2D/bgart/IMG-20260223-WA0006_0_blur.jpg" id="1_2ckrn"]
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
+[ext_resource type="Script" uid="uid://ds3xdeex4tmu5" path="res://src/scripts/map.gd" id="1_h7s7u"]
 [ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://d1q4jmlxxirbn" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="Texture2D" uid="uid://cmtvoxr424xcr" path="res://src/assets/2D/enemy_idle1.png" id="6_pyc6v"]
 [ext_resource type="Texture2D" uid="uid://bnodyrak4squj" path="res://src/assets/2D/enemy_idle2.png" id="7_mttea"]
@@ -74,11 +75,7 @@ func _ready() -> void:
 size = Vector2(452.99994, 33.612663)
 
 [node name="Node2D" type="Node2D" unique_id=1829873154]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=266633726]
-position = Vector2(33.999996, 53.940002)
-scale = Vector2(0.385, 0.385)
-zoom = Vector2(0.18, 0.18)
+script = ExtResource("1_h7s7u")
 
 [node name="VisualBackGround" type="Node2D" parent="." unique_id=1155806893]
 
@@ -105,10 +102,11 @@ scale = Vector2(1.415, 1.415)
 texture = ExtResource("1_edtax")
 
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
-position = Vector2(2.9999998, 727)
+position = Vector2(-2976.9998, 727)
 
 [node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
-position = Vector2(1063.9999, 801.99994)
+position = Vector2(2627, 854.00006)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="Enemy" index="1" unique_id=483896026]
 visible = false
@@ -318,6 +316,17 @@ onlyDown = true
 
 [node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
 visible = false
+offset_left = -3155.0
+offset_top = -1742.0
+offset_right = -1993.0
+offset_bottom = -1089.0
+scale = Vector2(5.5, 5.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=266633726]
+position = Vector2(33.999996, 53.940002)
+scale = Vector2(0.385, 0.385)
+zoom = Vector2(0.18, 0.18)
 
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
 

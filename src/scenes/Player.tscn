@@ -107,7 +107,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qfal1"]
-radius = 309.09088
+radius = 171.62845
 height = 1700.3344
 
 [sub_resource type="Animation" id="Animation_gjb54"]
@@ -167,8 +167,7 @@ polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147
 position = Vector2(-31.83445, 126.46459)
 scale = Vector2(0.87985724, 0.87985724)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"land"
-frame_progress = 0.6577392
+animation = &"walk"
 
 [node name="THE_PISS_STREAM2" parent="." unique_id=238068524 instance=ExtResource("2_qfal1")]
 position = Vector2(127.27272, 109.09091)
@@ -183,7 +182,7 @@ script = ExtResource("2_v14g5")
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1982930971]
-position = Vector2(18.18182, 155.84416)
+position = Vector2(-2.5973988, 148.05196)
 rotation = 0.15707964
 shape = SubResource("CapsuleShape2D_qfal1")
 

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cw2itwdnxfff5"]
 
-[ext_resource type="Script" uid="uid://cspewdpk16o64" path="res://src/scenes/evolution_select.gd" id="1_h2r2r"]
+[ext_resource type="Script" uid="uid://cspewdpk16o64" path="res://src/scripts/evolution_select.gd" id="1_h2r2r"]
 [ext_resource type="PackedScene" uid="uid://c7jg5d7xjt0s8" path="res://src/scenes/evolutionBox.tscn" id="1_pp4y5"]
 [ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="5_lnnja"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_246na"]
 
 [node name="EvolutionSelect" type="Control" unique_id=1243789143]
 layout_mode = 3
@@ -14,6 +16,16 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_h2r2r")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1036892534]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_246na")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2045624534]
 layout_mode = 1

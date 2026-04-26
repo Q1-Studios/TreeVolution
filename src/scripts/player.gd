@@ -29,7 +29,7 @@ func _handle_gun() -> void:
 	var direction = get_global_mouse_position()
 	gun.rotate_weapon(direction)
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_just_released("shoot"):
 		gun.shoot(direction, velocity)
 
 func spawn_pollen():

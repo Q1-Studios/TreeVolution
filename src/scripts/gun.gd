@@ -4,7 +4,7 @@ class_name GunController
 var Bullet = preload("res://src/scenes/bullet.tscn")
 
 @export_group("Weapon Stats")
-@export var attack_cooldown: float = 0.1
+@export var attack_cooldown: float = 0.5
 
 @export_group("Bullet Attributes")
 @export var bullet_damage: float = 3
@@ -40,7 +40,8 @@ func _get_bullet_arrangement() -> Array[int]:
 	var bullet_arrangement: Array[int] = []
 	for i in range(0, bullet_count):
 		var direction = -1 if i % 2 == 0 else 1
-		var value = ceil((float(i) / 3 ))
+		@warning_ignore("integer_division")
+		var value = 0 if i == 0 else (i / 3) + 1
 		bullet_arrangement.append(value * direction)
 	return bullet_arrangement
 

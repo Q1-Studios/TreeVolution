@@ -2,15 +2,21 @@ class_name Character
 extends CharacterBody2D
 
 
-var PLAYER_MAX_HEALTH: int = 100
-var health:int = 10
-var damage:int = 10
+var PLAYER_MAX_HEALTH: float = 100
+var health: float = 10
+var damage: float = 10
 
-var pollen_heal_amount:int = 1
-var pollen_damage_enemy_amount:int = 5
+var pollen_heal_amount: float = 1
+var pollen_damage_enemy_amount: float = 5
 var pollen_block_amount: int = 2
-var pollen_life_time:int = 3
-var pollen_summon_cooldown: int = 5
+var pollen_life_time: float = 3
+var pollen_summon_cooldown: float = 5
+
+var pollen_heal_upgrade_count: float = 0.5
+var pollen_damage_upgrade_count: float = 0.5
+var pollen_block_upgrade_count: float = 0.5
+
+const POLLEN_COLOR_UPGRADE_STEP: float = 0.1
 
 var pollen_list = [] # stores in what pollen areas wer are in
 var pollen_effect_can_happen: bool = true
@@ -21,29 +27,21 @@ var pollen_effect_can_happen: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	health = PLAYER_MAX_HEALTH
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-	
-func upgrade_pollen_heal_amount(upgrade_amount: int):
-	pollen_heal_amount += upgrade_amount
-
-func upgrade_pollen_damage_amount(upgrade_amount: int):
-	pollen_damage_enemy_amount += upgrade_amount
-
-func upgrade_pollen_block_amount(upgrade_amount: int):
-	pollen_block_amount += upgrade_amount
-
-func upgrade_pollen_summon_cooldown(upgrade_amount: int):
-	pollen_summon_cooldown -= upgrade_amount
 
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
 	temp_pollen.pollen_damage_enemy_amount = pollen_damage_enemy_amount
 	temp_pollen.pollen_life_time = pollen_life_time
 	temp_pollen.pollen_block_amount = pollen_block_amount
+	temp_pollen.pollen_damage_upgrade_count = pollen_damage_upgrade_count
+	temp_pollen.pollen_heal_upgrade_count = pollen_heal_upgrade_count
+	temp_pollen.pollen_block_upgrade_count = pollen_block_upgrade_count
 	temp_pollen.owner_call = self
 	return temp_pollen
 
@@ -52,7 +50,6 @@ func _physics_process(_delta: float) -> void:
 	if movement_controller:
 		movement_controller.handleMovement(self)
 		
-	var current_player_damage:int = 0
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 
@@ -73,40 +70,60 @@ func pollen_effect_cooldown():
 	pollen_effect_can_happen = true
 
 func apply_evolution_effects(evolution: Evolutions.Evolution):
-	# TODO: balancing
+	# TODO: balancing -> done :D
 	match evolution:
 		Evolutions.Evolution.PLAYER_HEALTH:
+			PLAYER_MAX_HEALTH += 20
 			pass
 		Evolutions.Evolution.PLAYER_SPEED:
+			movement_controller.max_speed += 200
 			pass
-		Evolutions.Evolution.PLAYER_JUMP:
+		Evolutions.Evolution.PISTOL_COOLDOWN:
+			var new_cooldown: float = max(0.01, gun.attack_cooldown - 0.05)
+			gun.attack_cooldown = new_cooldown
 			pass
 		Evolutions.Evolution.PLAYER_POLLEN_COOLDOWN:
+			var new_cooldown = max(0.5, pollen_summon_cooldown - 0.2)
+			pollen_summon_cooldown = new_cooldown
 			pass
 		Evolutions.Evolution.POLLEN_DAMAGE:
+			pollen_damage_enemy_amount += 0.2
+			pollen_damage_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.POLLEN_BLOCK:
+			pollen_block_amount += 1
+			pollen_block_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.POLLEN_HEAL:
+			pollen_heal_amount += 0.2
+			pollen_heal_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SIZE:
+			gun.bullet_size += 1.2
+			gun.bullet_velocity -= 75
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SPEED:
+			gun.bullet_velocity += 900
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
+			gun.bullet_damage += 2
+			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
+			PLAYER_MAX_HEALTH = new_health
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
+			gun.bullet_bounces += 2
+			gun.bullet_velocity -= 200 
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_COUNT:
-			gun
+			gun.bullet_count += 2
+			var new_damage: float = max(0.5, gun.bullet_damage - 1)
+			gun.bullet_damage = new_damage
 			pass
-
 
 # singaling
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		var bullet_damage: float = body.damage
-		print("Collided with bullet, took %s damage " % str(bullet_damage))
 		health -= bullet_damage
 		animation_player.play("damage_taken")
 
