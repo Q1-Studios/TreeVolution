@@ -50,10 +50,43 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_aycp6")
 }],
 "loop": true,
 "name": &"land",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -139,6 +172,7 @@ position = Vector2(-31.83445, 126.46459)
 scale = Vector2(0.87985724, 0.87985724)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
 animation = &"land"
+frame_progress = 0.6577392
 
 [node name="THE_PISS_STREAM" parent="." unique_id=399179884 instance=ExtResource("2_qfal1")]
 position = Vector2(127.27272, 109.09091)
