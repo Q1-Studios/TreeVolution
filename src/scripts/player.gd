@@ -3,6 +3,7 @@ extends Character
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+
 var can_spawn_pollen: bool = true
 var can_land: bool = false
 
@@ -48,8 +49,8 @@ func spawn_pollen():
 func start_pollen_cooldown():
 	timer = max_time
 	can_spawn_pollen = false
+	
 func play_animation() -> void:
-
 	if velocity.x > 0 && velocity.y == 0:
 		animated_sprite.flip_h = velocity.x < 0
 		animated_sprite.play("walk")

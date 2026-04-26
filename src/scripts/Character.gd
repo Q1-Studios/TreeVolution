@@ -64,7 +64,6 @@ func pollen_effect_trigger(pollen: Pollen):
 	if pollen.owner_call == self:
 		health += pollen.pollen_heal_amount
 		health = min(PLAYER_MAX_HEALTH, health)
-		print(health)
 	else:
 		health -= pollen_damage_enemy_amount
 	pollen_effect_cooldown()

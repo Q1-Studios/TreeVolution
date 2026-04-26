@@ -22,7 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if self && pollen_block_amount <= 0:
 		self.queue_free()
-		print("Sent")
 
 
 func _on_bullet_2d_body_entered(body: Node2D) -> void:
