@@ -1,3 +1,46 @@
 [gd_scene format=3 uid="uid://ofr4bbrify14"]
 
+[ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_1bg10"]
+[ext_resource type="Texture2D" uid="uid://d26055wco2ru" path="res://src/assets/2D/bgart/IMG-20260223-WA0006_0_blur.jpg" id="2_oll1y"]
+[ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="3_g3tly"]
+[ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="4_g3tly"]
+
 [node name="MainMenu" type="Node2D" unique_id=660273908]
+
+[node name="Img20260223Wa00060Blur" type="Sprite2D" parent="." unique_id=526419361]
+position = Vector2(703.99994, 328)
+scale = Vector2(0.34941363, 0.3494136)
+texture = ExtResource("2_oll1y")
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="." unique_id=210940096]
+position = Vector2(590, 346)
+scale = Vector2(0.29351848, 0.2935185)
+texture = ExtResource("3_g3tly")
+
+[node name="Label" type="Label" parent="." unique_id=129077086]
+offset_right = 1150.0
+offset_bottom = 320.0
+tooltip_text = "Read"
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("1_1bg10")
+theme_override_font_sizes/font_size = 110
+text = "TreeVollution"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="CoolButton2" parent="." unique_id=1613722498 instance=ExtResource("4_g3tly")]
+offset_left = 552.0
+offset_top = 438.0
+offset_right = 660.0
+offset_bottom = 501.0
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="CoolButton" parent="." unique_id=1660479895 instance=ExtResource("4_g3tly")]
+offset_left = 549.0
+offset_top = 357.0
+offset_right = 653.0
+offset_bottom = 420.0
+theme_override_font_sizes/font_size = 40
+text = "Play"
