@@ -259,7 +259,7 @@ jumpOnDown = true
 [node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=998308924 instance=ExtResource("9_si7be")]
 points = PackedVector2Array(-2325, -426, -3381, 1020)
 doubleJump = true
-timeTillDoubleJump = 0.15
+timeTillDoubleJump = 0.25
 
 [node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
 
