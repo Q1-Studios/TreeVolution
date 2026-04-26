@@ -69,6 +69,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
 text = "Confirm"
 
 [connection signal="button_up" from="VBoxContainer/ConfirmBtn" to="." method="_on_cool_button_button_up"]

@@ -12,11 +12,15 @@ func _physics_process(delta: float) -> void:
 	if !enabled:
 		return
 	
-	if health < 0:
-		queue_free()
 	play_animation()
 	pass
 
+func select_random_evolution() -> void:
+	var all_evolutions = Evolutions.Evolution.values()
+	var index: int = randi_range(0, all_evolutions.size() - 1)
+	var evolution: Evolutions.Evolution = all_evolutions[index];
+	print("Enemy chose evolution '%s'" % Evolutions.get_evolution_data(evolution).readable_name)
+	apply_evolution_effects(evolution);
 
 func play_animation() -> void:
 	if velocity.x > 0 && velocity.y == 0:

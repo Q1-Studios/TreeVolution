@@ -7,7 +7,7 @@ var Bullet = preload("res://src/scenes/bullet.tscn")
 @export var attack_cooldown: float = 0.5
 
 @export_group("Bullet Attributes")
-@export var bullet_damage: float = 3
+@export var bullet_damage: float = 15
 @export var bullet_count: int = 1
 @export var bullet_bounces: int = 1
 @export var bullet_size: float = 1

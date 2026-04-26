@@ -39,6 +39,70 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_yi2cj")
 toggle_mode = true
 script = ExtResource("1_7ntl0")
 
+[node name="Fixet" type="Control" parent="." unique_id=795924130]
+show_behind_parent = true
+layout_mode = 1
+anchor_right = 0.95600003
+anchor_bottom = 0.96800005
+offset_top = -1.0
+offset_right = 0.11291504
+offset_bottom = 0.015991211
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Fixet" unique_id=571744747]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0430001
+anchor_bottom = 1.059
+offset_left = 14.0
+offset_top = -2.9676514
+offset_right = 758.3582
+offset_bottom = 758.42957
+scale = Vector2(0.3, 0.3)
+size_flags_vertical = 4
+texture = ExtResource("2_7ntl0")
+expand_mode = 5
+stretch_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Fixet" unique_id=1365203076]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012
+anchor_right = 0.012
+offset_left = 13.847998
+offset_top = -19.0
+offset_right = 135.848
+offset_bottom = 103.0
+scale = Vector2(1.5, 1.5)
+size_flags_vertical = 0
+texture = ExtResource("3_8frw0")
+expand_mode = 5
+
+[node name="Title" type="Label" parent="Fixet" unique_id=526347983]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 124.0
+offset_top = 93.0
+offset_right = 285.328
+offset_bottom = 120.0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "Gruber"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Fixet" unique_id=1777586226]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 148.0
+offset_right = 264.0
+offset_bottom = 255.0
+theme_override_font_sizes/font_size = 12
+text = "Test test Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Broken" type="Control" parent="." unique_id=1702135868]
 visible = false
 show_behind_parent = true
@@ -54,8 +118,8 @@ mouse_filter = 1
 [node name="TextureRect2" type="TextureRect" parent="Broken" unique_id=241307912]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 6.3759995
-offset_right = 1089.7092
+offset_left = 15.376
+offset_right = 1098.7092
 offset_bottom = 1083.3333
 scale = Vector2(0.3, 0.3)
 size_flags_vertical = 4
@@ -81,10 +145,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.012
 anchor_right = 0.012
-offset_left = -43.912
-offset_top = -1.0
-offset_right = 78.088
-offset_bottom = 121.0
+offset_left = -35.912
+offset_top = -2.0
+offset_right = 86.088
+offset_bottom = 120.0
 scale = Vector2(1.5, 1.5)
 size_flags_vertical = 0
 texture = ExtResource("3_8frw0")
@@ -94,9 +158,9 @@ expand_mode = 5
 layout_mode = 1
 anchors_preset = -1
 offset_left = 134.0
-offset_top = 93.0
+offset_top = 101.0
 offset_right = 279.0
-offset_bottom = 120.0
+offset_bottom = 128.0
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 16
 text = "Gruber"
@@ -109,68 +173,6 @@ offset_left = 66.0
 offset_top = 160.0
 offset_right = 261.0
 offset_bottom = 267.0
-theme_override_font_sizes/font_size = 12
-text = "Test test Test"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Fixet" type="Control" parent="." unique_id=795924130]
-show_behind_parent = true
-layout_mode = 1
-anchor_right = 0.95600003
-anchor_bottom = 0.96800005
-offset_top = -1.0
-offset_right = 0.11291504
-offset_bottom = 0.015991211
-mouse_filter = 1
-
-[node name="TextureRect" type="TextureRect" parent="Fixet" unique_id=571744747]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 2.0
-offset_top = -2.9676514
-offset_right = 1085.3333
-offset_bottom = 1080.3656
-scale = Vector2(0.3, 0.3)
-size_flags_vertical = 4
-texture = ExtResource("2_7ntl0")
-expand_mode = 5
-stretch_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Fixet" unique_id=1365203076]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.012
-anchor_right = 0.012
-offset_left = -0.15199995
-offset_top = -17.0
-offset_right = 121.848
-offset_bottom = 105.0
-scale = Vector2(1.5, 1.5)
-size_flags_vertical = 0
-texture = ExtResource("3_8frw0")
-expand_mode = 5
-
-[node name="Title" type="Label" parent="Fixet" unique_id=526347983]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 113.0
-offset_top = 93.0
-offset_right = 274.328
-offset_bottom = 120.0
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 16
-text = "Gruber"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Description" type="Label" parent="Fixet" unique_id=1777586226]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 148.0
-offset_right = 249.0
-offset_bottom = 255.0
 theme_override_font_sizes/font_size = 12
 text = "Test test Test"
 horizontal_alignment = 1

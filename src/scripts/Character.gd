@@ -1,6 +1,8 @@
 class_name Character
 extends CharacterBody2D
 
+signal die(character: Character);
+
 var PLAYER_MAX_HEALTH: float = 100
 var health: float = 10
 var damage: float = 10
@@ -34,6 +36,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func reset() -> void:
+	health = PLAYER_MAX_HEALTH
+
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
 	temp_pollen.pollen_damage_enemy_amount = pollen_damage_enemy_amount
@@ -54,16 +59,26 @@ func _physics_process(_delta: float) -> void:
 		
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
+		
+func take_damage(amount: float) -> void:
+	var new_health: float = max(0.0, health - amount)
+	self.health = new_health
+	if health <= 0:
+		die.emit(self)
 
+func healing(amount) -> void:
+	var new_health = min(PLAYER_MAX_HEALTH, health + amount)
+	health = new_health
+		
 func pollen_effect_trigger(pollen: Pollen):
 	if !pollen_effect_can_happen:
 		return
 	pollen_effect_can_happen = false
 	if pollen.owner_call == self:
-		health += pollen.pollen_heal_amount
-		health = min(PLAYER_MAX_HEALTH, health)
+		healing(pollen.pollen_heal_amount)
 	else:
-		health -= pollen_damage_enemy_amount
+		take_damage(pollen.pollen_damage_enemy_amount)
+		
 	pollen_effect_cooldown()
 
 func pollen_effect_cooldown():
@@ -110,7 +125,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			gun.bullet_velocity += 900
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
-			gun.bullet_damage += 2
+			gun.bullet_damage += 5
 			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
 			PLAYER_MAX_HEALTH = new_health
 			pass
@@ -128,8 +143,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		var bullet_damage: float = body.damage
-		health -= bullet_damage
-		animation_player.play("damage_taken")
+		take_damage(bullet_damage)
 
 # area parameter -> pollen area
 func _on_pollen_detection_area_entered(area: Area2D) -> void:

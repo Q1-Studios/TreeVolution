@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d26055wco2ru" path="res://src/assets/2D/bgart/IMG-20260223-WA0006_0_blur.jpg" id="1_2ckrn"]
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
-[ext_resource type="Script" uid="uid://ds3xdeex4tmu5" path="res://src/scripts/map.gd" id="1_h7s7u"]
+[ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
 [ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
@@ -58,10 +58,13 @@ texture = ExtResource("1_edtax")
 [node name="Player" parent="." unique_id=1140108763 groups=["Polen"] instance=ExtResource("1_b4rpm")]
 position = Vector2(-2976.9998, 727)
 
-[node name="Enemy" parent="." unique_id=699392529 instance=ExtResource("5_jcr4r")]
+[node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player", "gun") instance=ExtResource("5_jcr4r")]
 position = Vector2(2395.9998, 827.99994)
+movement_controller = NodePath("MovementController")
+animation_player = NodePath("AnimationPlayer")
+gun = NodePath("Gun")
 
-[node name="MovementController" parent="Enemy" index="4" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
+[node name="MovementController" parent="Enemy" index="3" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
 G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
 
@@ -276,6 +279,9 @@ position = Vector2(33.999996, 53.940002)
 scale = Vector2(0.385, 0.385)
 zoom = Vector2(0.18, 0.18)
 
+[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="die" from="Enemy" to="." method="_on_enemy_die"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="." method="_on_evolution_selected"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
 
 [editable path="Enemy"]
