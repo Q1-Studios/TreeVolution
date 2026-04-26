@@ -12,7 +12,6 @@ var max_time: bool = 0.5
 
 signal hit
 
-var can_land = true
 func _ready() -> void:
 	super()
 	dust_sprite.stop()
