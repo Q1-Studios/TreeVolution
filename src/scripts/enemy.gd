@@ -71,7 +71,8 @@ func select_random_evolution() -> void:
 	apply_evolution_effects(evolution);
 	
 func apply_evolution_effects(evolution: Evolutions.Evolution):
-	# TODO: balancing -> done :D
+	# Evolutions on enemy do have different meaning since
+	# he brings a knife to a gunfight
 	match evolution:
 		Evolutions.Evolution.PLAYER_HEALTH:
 			PLAYER_MAX_HEALTH += 20
@@ -90,7 +91,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pollen_damage_enemy_amount += 0.2
 			pollen_damage_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
-		Evolutions.Evolution.PISTOL_BULLET_SIZE, Evolutions.Evolution.POLLEN_BLOCK, Evolutions.Evolution.PISTOL_BULLET_COUNT:
+		Evolutions.Evolution.PISTOL_BULLET_SIZE, Evolutions.Evolution.POLLEN_BLOCK:
 			pollen_block_amount += 1
 			pollen_block_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
@@ -98,11 +99,20 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pollen_heal_amount += 0.2
 			pollen_heal_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
-		Evolutions.Evolution.PISTOL_BULLET_DAMAGE, Evolutions.Evolution.PISTOL_BULLET_SPEED, Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
+		Evolutions.Evolution.PISTOL_BULLET_DAMAGE, Evolutions.Evolution.PISTOL_BULLET_SPEED:
 			gun.bullet_damage += 5
 			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
 			PLAYER_MAX_HEALTH = new_health
 			pass
+		Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
+			var new_sampling_time = max(0.1, movement_controller.sampling_time - 0.1)
+			movement_controller.sampling_time = new_sampling_time
+			pass 
+		Evolutions.Evolution.PISTOL_BULLET_COUNT:
+			var new_lineup_probability = max(0, movement_controller.lineup_probability - 0.02)
+			movement_controller.lineup_probability = new_lineup_probability
+			pass
+			
 	
 func take_damage(amount: float) -> void:
 	super(amount)
