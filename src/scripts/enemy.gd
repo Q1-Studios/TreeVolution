@@ -22,6 +22,10 @@ func select_random_evolution() -> void:
 	var evolution: Evolutions.Evolution = all_evolutions[index];
 	print("Enemy chose evolution '%s'" % Evolutions.get_evolution_data(evolution).readable_name)
 	apply_evolution_effects(evolution);
+	
+func take_damage(amount: float) -> void:
+	super(amount)
+	$AnimationPlayer.play("damage_taken")
 
 func play_animation() -> void:
 	if velocity.x > 0 && velocity.y == 0:
