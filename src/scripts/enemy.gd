@@ -4,30 +4,41 @@ class_name Enemy
 @onready var sword_animation = $SwordAnimation
 @onready var dust_sprite = $DustAnimation
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
+
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 @export var EnemyWalk:AudioStreamPlayer2D
 @export var EnemyJump:AudioStreamPlayer2D
 @export var EnemyDamage:AudioStreamPlayer2D
 @export var EnemySword:AudioStreamPlayer2D #Use when Attak if(!EnemySword.playing): EnemySword.play()
-			
+
+
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
 var timer: float = pollen_life_time
 var max_time: bool = 0.5
 
+var player_in_area: bool = false
 var wants_to_spawn_pollen: bool = false
+var current_attack_cooldown: float = 0.0
 
 var attack_animation_played: bool = false
 var dust_animation_played: bool = false
 
 signal hit
 
+func reset():
+	super()
+	player_in_area = false
+
 func _ready() -> void:
 	super()
 	sword_animation.hide()
 	dust_sprite.hide()
-
+	health_bar.value = health 
+	health_bar.max_value = PLAYER_MAX_HEALTH
+	
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if !enabled:
@@ -40,13 +51,22 @@ func _process(delta):
 	if wants_to_spawn_pollen && can_spawn_pollen:
 		spawn_pollen()
 	timer -= delta
+	
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen = true
 	wants_to_spawn_pollen = false
+	
+	if player_in_area and current_attack_cooldown <= 0:
+		hit_player()
+	elif current_attack_cooldown > 0:
+		current_attack_cooldown -= delta
+	
+	
 	if attack_animation_played && !sword_animation.is_playing():
 		sword_animation.hide()
 	if dust_animation_played && !dust_sprite.is_playing():
 		dust_sprite.hide()
+	health_bar.value = health
 
 func spawn_pollen() -> void:
 	timer = pollen_summon_cooldown
@@ -85,8 +105,12 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 		Evolutions.Evolution.PLAYER_SPEED:
 			movement_controller.max_speed += 200
 			pass
-		Evolutions.Evolution.PISTOL_COOLDOWN:
+		Evolutions.Evolution.PISTOL_BULLET_SPEED:
 			movement_controller.jumpForce += 100
+			pass
+		Evolutions.Evolution.PISTOL_COOLDOWN:
+			var new_cooldown: float = max(0.01, gun.attack_cooldown - 0.05)
+			gun.attack_cooldown = new_cooldown
 			pass
 		Evolutions.Evolution.PLAYER_POLLEN_COOLDOWN:
 			var new_cooldown = max(0.5, pollen_summon_cooldown - 0.2)
@@ -97,14 +121,14 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pollen_damage_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SIZE, Evolutions.Evolution.POLLEN_BLOCK:
-			pollen_block_amount += 1
+			pollen_block_amount += 10.2
 			pollen_block_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.POLLEN_HEAL:
 			pollen_heal_amount += 0.2
 			pollen_heal_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
-		Evolutions.Evolution.PISTOL_BULLET_DAMAGE, Evolutions.Evolution.PISTOL_BULLET_SPEED:
+		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
 			gun.bullet_damage += 5
 			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
 			PLAYER_MAX_HEALTH = new_health
@@ -161,9 +185,20 @@ func _on_bullet_blocker_body_entered(body: Node2D) -> void:
 		wants_to_spawn_pollen = true
 	else:
 		print("hitting")
-		emit_signal("hit", 2 * gun.bullet_damage)
-		attack_animation_played = false
-		if !attack_animation_played && !sword_animation.is_playing():
-			sword_animation.visible = true
-			sword_animation.play("swordAttack")
-			attack_animation_played = true
+		player_in_area = true
+
+
+func _on_bullet_blocker_and_sword_fighter_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		player_in_area = false
+	
+func hit_player():
+	emit_signal("hit", 2 * gun.bullet_damage)
+	current_attack_cooldown = gun.attack_cooldown
+	attack_animation_played = false
+	if !attack_animation_played && !sword_animation.is_playing():
+		sword_animation.visible = true
+		sword_animation.play("swordAttack")
+		if(!EnemySword.playing): EnemySword.play()
+		attack_animation_played = true
+	
