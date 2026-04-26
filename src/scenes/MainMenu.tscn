@@ -1,7 +1,7 @@
-[gd_scene format=3 ]
+[gd_scene format=3 uid="uid://b7bp210pawp0w"]
 
 [ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_1bg10"]
-[ext_resource type="Script" uid="uid://0jfhau6mg6of" path="res://src/scripts/main_menu.gd" id="1_6ekv6"]
+[ext_resource type="Script" path="res://src/scripts/main_menu.gd" id="1_6ekv6"]
 [ext_resource type="Texture2D" uid="uid://dph4e45yy8qy5" path="res://src/assets/2D/paintedover_final_v2_blur.png" id="1_oll1y"]
 [ext_resource type="Texture2D" uid="uid://c7fbfv1dkdvs5" path="res://src/assets/2D/sealartfinal/leaf.png" id="2_b83k2"]
 [ext_resource type="Texture2D" uid="uid://cta4enpbo7vj7" path="res://src/assets/2D/sealartfinal/mainmenu.png" id="3_oll1y"]

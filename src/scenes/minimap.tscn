@@ -1,0 +1,559 @@
+[gd_scene format=3 uid="uid://mocflckkhek5"]
+
+[ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_xbvw1"]
+[ext_resource type="Texture2D" uid="uid://xlqpprxv1bo2" path="res://src/assets/2D/sealartfinal/background.jpg" id="2_xuw58"]
+[ext_resource type="Texture2D" uid="uid://dk10x3nosexo1" path="res://src/assets/2D/sealartfinal/treelayer.png" id="3_23lrx"]
+[ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_vfyim"]
+[ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="5_hst5w"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="6_g71tb"]
+[ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="7_gfooc"]
+[ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="8_wg8h6"]
+[ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="9_ycsyl"]
+[ext_resource type="PackedScene" uid="uid://xbn37n0c34r8" path="res://src/scenes/Plattforms/platform_small.tscn" id="10_dmr00"]
+[ext_resource type="PackedScene" uid="uid://cmt3knxhp212j" path="res://src/scenes/Plattforms/Platform_Medium.tscn" id="11_6xer4"]
+[ext_resource type="PackedScene" uid="uid://dqv8cpvj7u453" path="res://src/scenes/Plattforms/Platform_Medium2.tscn" id="12_6lumy"]
+[ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="13_sn7q2"]
+[ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scripts/overlayCamera.gd" id="14_17d5m"]
+[ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="15_706aj"]
+[ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="16_pqiv2"]
+[ext_resource type="Script" uid="uid://dhn5togl1l4jw" path="res://src/scripts/camera.gd" id="17_w2478"]
+[ext_resource type="Script" path="res://src/scripts/interactive_music_manager.gd" id="18_1ppse"]
+[ext_resource type="Script" path="res://src/scripts/music_state_config.gd" id="19_8jykh"]
+[ext_resource type="AudioStream" uid="uid://0lwhetqsn641" path="res://src/assets/Music/maintheme-intro.ogg" id="20_yo7qr"]
+[ext_resource type="AudioStream" uid="uid://co7bsmcaestf6" path="res://src/assets/Music/maintheme-selection.ogg" id="21_vqjqj"]
+[ext_resource type="AudioStream" uid="uid://uv74wwpbvs24" path="res://src/assets/Music/maintheme-buildup.ogg" id="22_0qlom"]
+[ext_resource type="AudioStream" uid="uid://vo7giqlls38h" path="res://src/assets/Music/maintheme-fight.ogg" id="23_n8vvx"]
+
+[sub_resource type="GDScript" id="GDScript_f1v2q"]
+script/source = "extends Node2D
+
+const icon = preload(\"res://src/scenes/vertex.tscn\")
+var graph
+
+func _ready() -> void:
+	graph = AStar2D.new()
+	
+"
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_udcsr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyhn7"]
+size = Vector2(452.99994, 33.612663)
+
+[sub_resource type="Resource" id="Resource_x0i5t"]
+script = ExtResource("19_8jykh")
+stream = ExtResource("20_yo7qr")
+bpm = 156.0
+transition_beat_every = 16
+auto_transition = true
+auto_transition_to = 1
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_ee3yv"]
+script = ExtResource("19_8jykh")
+stream = ExtResource("21_vqjqj")
+loop = true
+bpm = 156.0
+transition_beat_every = 16
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_ngjjt"]
+script = ExtResource("19_8jykh")
+stream = ExtResource("22_0qlom")
+bpm = 156.0
+auto_transition = true
+auto_transition_to = 3
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[sub_resource type="Resource" id="Resource_qt34g"]
+script = ExtResource("19_8jykh")
+stream = ExtResource("23_n8vvx")
+loop = true
+bpm = 156.0
+metadata/_custom_type_script = "uid://cab8utlgsk2hl"
+
+[node name="Node2D" type="Node2D" unique_id=1829873154]
+script = ExtResource("1_xbvw1")
+
+[node name="Parallax_InBack" type="Node2D" parent="." unique_id=1711735863]
+
+[node name="Parallax2D2" type="Parallax2D" parent="Parallax_InBack" unique_id=1920472163]
+scroll_scale = Vector2(0.05, 0.05)
+
+[node name="Img20260223Wa0006" type="Sprite2D" parent="Parallax_InBack/Parallax2D2" unique_id=1918520174]
+position = Vector2(-77, -463)
+scale = Vector2(2.0246282, 2.0246282)
+texture = ExtResource("2_xuw58")
+
+[node name="Parallax2D" type="Parallax2D" parent="Parallax_InBack" unique_id=1555611666]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InBack/Parallax2D" unique_id=1741971416]
+position = Vector2(295, -73.00001)
+scale = Vector2(1.4721295, 1.4721296)
+texture = ExtResource("3_23lrx")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Parallax_InBack" unique_id=763402882]
+scroll_scale = Vector2(0.45, 0.45)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InBack/Parallax2D3" unique_id=1881909528]
+position = Vector2(-1228, 496.00003)
+scale = Vector2(1.5654628, 1.565463)
+texture = ExtResource("4_vfyim")
+
+[node name="Player" parent="." unique_id=1140108763 instance=ExtResource("5_hst5w")]
+position = Vector2(-5528, 727)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2059040765]
+scale = Vector2(36.52287, -0.80148745)
+zoom = Vector2(0.195, 0.19)
+limit_left = -8000
+limit_top = -3750
+limit_right = 6000
+limit_bottom = 1200
+
+[node name="Enemy" parent="." unique_id=699392529 node_paths=PackedStringArray("gun") instance=ExtResource("6_g71tb")]
+position = Vector2(4258, 828)
+gun = NodePath("Gun")
+
+[node name="MovementController" parent="Enemy" index="3" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
+G = NodePath("../../MapHolder/G")
+player = NodePath("../../Player")
+
+[node name="SwordAnimation" parent="Enemy" index="7" unique_id=1758014741]
+visible = false
+speed_scale = 1.0
+flip_h = false
+
+[node name="DustAnimation" parent="Enemy" index="12" unique_id=365116806]
+visible = false
+position = Vector2(149.25372, -62.686584)
+frame = 0
+frame_progress = 0.0
+
+[node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
+script = SubResource("GDScript_f1v2q")
+
+[node name="G" type="Node2D" parent="MapHolder" unique_id=929467085 node_paths=PackedStringArray("V", "E")]
+visible = false
+script = ExtResource("7_gfooc")
+V = NodePath("V")
+E = NodePath("E")
+
+[node name="V" type="Node2D" parent="MapHolder/G" unique_id=574635472]
+visible = false
+
+[node name="Icon" parent="MapHolder/G/V" unique_id=1343320165 instance=ExtResource("8_wg8h6")]
+position = Vector2(-4900, 1054)
+
+[node name="Icon3" parent="MapHolder/G/V" unique_id=1912305064 instance=ExtResource("8_wg8h6")]
+position = Vector2(-5515, 1036)
+
+[node name="Icon4" parent="MapHolder/G/V" unique_id=1736768641 instance=ExtResource("8_wg8h6")]
+position = Vector2(-6412, -499)
+
+[node name="Icon5" parent="MapHolder/G/V" unique_id=1826479029 instance=ExtResource("8_wg8h6")]
+position = Vector2(-6791, -505)
+
+[node name="Icon6" parent="MapHolder/G/V" unique_id=233652379 instance=ExtResource("8_wg8h6")]
+position = Vector2(-6455, 981)
+
+[node name="Icon7" parent="MapHolder/G/V" unique_id=2082886517 instance=ExtResource("8_wg8h6")]
+position = Vector2(-7558, 975)
+
+[node name="Icon8" parent="MapHolder/G/V" unique_id=186444431 instance=ExtResource("8_wg8h6")]
+position = Vector2(-5157, -1608)
+
+[node name="Icon9" parent="MapHolder/G/V" unique_id=1647291225 instance=ExtResource("8_wg8h6")]
+position = Vector2(-4679, -1615)
+
+[node name="Icon10" parent="MapHolder/G/V" unique_id=1226787756 instance=ExtResource("8_wg8h6")]
+position = Vector2(-3316, -1559)
+
+[node name="Icon11" parent="MapHolder/G/V" unique_id=111903019 instance=ExtResource("8_wg8h6")]
+position = Vector2(-2222, -598)
+
+[node name="Icon12" parent="MapHolder/G/V" unique_id=1737059216 instance=ExtResource("8_wg8h6")]
+position = Vector2(-4209, 240)
+
+[node name="Icon13" parent="MapHolder/G/V" unique_id=634674461 instance=ExtResource("8_wg8h6")]
+position = Vector2(-270, 208)
+
+[node name="Icon14" parent="MapHolder/G/V" unique_id=848484394 instance=ExtResource("8_wg8h6")]
+position = Vector2(-1472, -571)
+
+[node name="Icon15" parent="MapHolder/G/V" unique_id=472203940 instance=ExtResource("8_wg8h6")]
+position = Vector2(1189, -932)
+
+[node name="Icon16" parent="MapHolder/G/V" unique_id=15960793 instance=ExtResource("8_wg8h6")]
+position = Vector2(-150, -2397)
+
+[node name="Icon17" parent="MapHolder/G/V" unique_id=1193791116 instance=ExtResource("8_wg8h6")]
+position = Vector2(2003, -1657)
+
+[node name="Icon18" parent="MapHolder/G/V" unique_id=248677932 instance=ExtResource("8_wg8h6")]
+position = Vector2(309, -902)
+
+[node name="Icon20" parent="MapHolder/G/V" unique_id=1281822854 instance=ExtResource("8_wg8h6")]
+position = Vector2(4387, -951)
+
+[node name="Icon21" parent="MapHolder/G/V" unique_id=693662903 instance=ExtResource("8_wg8h6")]
+position = Vector2(5108, -2295)
+
+[node name="Icon22" parent="MapHolder/G/V" unique_id=1143848945 instance=ExtResource("8_wg8h6")]
+position = Vector2(1001, 982)
+
+[node name="Icon23" parent="MapHolder/G/V" unique_id=1468714745 instance=ExtResource("8_wg8h6")]
+position = Vector2(-4157, 1018)
+
+[node name="Icon28" parent="MapHolder/G/V" unique_id=255031591 instance=ExtResource("8_wg8h6")]
+position = Vector2(-3740, 245)
+
+[node name="Icon25" parent="MapHolder/G/V" unique_id=356362172 instance=ExtResource("8_wg8h6")]
+position = Vector2(6209, 1017)
+
+[node name="Icon26" parent="MapHolder/G/V" unique_id=1681323532 instance=ExtResource("8_wg8h6")]
+position = Vector2(2554, 980)
+
+[node name="Icon29" parent="MapHolder/G/V" unique_id=412746909 instance=ExtResource("8_wg8h6")]
+position = Vector2(-985, 1054)
+
+[node name="Icon30" parent="MapHolder/G/V" unique_id=1239051441 instance=ExtResource("8_wg8h6")]
+position = Vector2(-3068, 1000)
+
+[node name="Icon32" parent="MapHolder/G/V" unique_id=150165166 instance=ExtResource("8_wg8h6")]
+position = Vector2(2870, -1682)
+
+[node name="Icon31" parent="MapHolder/G/V" unique_id=1214453527 instance=ExtResource("8_wg8h6")]
+position = Vector2(4155, 1033)
+
+[node name="E" type="Node2D" parent="MapHolder/G" unique_id=285898098]
+visible = false
+
+[node name="horizontal" type="Node2D" parent="MapHolder/G/E" unique_id=774905292]
+
+[node name="Node2D" parent="MapHolder/G/E/horizontal" unique_id=1801558419 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-7572, 954, -6439, 951)
+
+[node name="Node2D2" parent="MapHolder/G/E/horizontal" unique_id=504929004 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-5501, 1023, -6439, 951)
+
+[node name="Node2D3" parent="MapHolder/G/E/horizontal" unique_id=1337265598 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-4879, 1042, -5491, 1014)
+
+[node name="Node2D4" parent="MapHolder/G/E/horizontal" unique_id=882982781 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-4879, 1042, -4179, 1004)
+
+[node name="Node2D5" parent="MapHolder/G/E/horizontal" unique_id=31200247 instance=ExtResource("9_ycsyl")]
+position = Vector2(156, 44)
+points = PackedVector2Array(-3291, 957, -4327, 986)
+
+[node name="Node2D6" parent="MapHolder/G/E/horizontal" unique_id=1199774457 instance=ExtResource("9_ycsyl")]
+position = Vector2(38, 31)
+points = PackedVector2Array(-3115, 984, -1023, 1037)
+
+[node name="Node2D8" parent="MapHolder/G/E/horizontal" unique_id=1249794620 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(984, 972, -1003, 1029)
+
+[node name="Node2D10" parent="MapHolder/G/E/horizontal" unique_id=2085034032 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(2565, 966, 1141, 970)
+
+[node name="Node2D12" parent="MapHolder/G/E/horizontal" unique_id=586817613 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(4028, 1020, 2565, 970)
+
+[node name="Node2D13" parent="MapHolder/G/E/horizontal" unique_id=21848765 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(2016, -1660, 2884, -1607)
+
+[node name="Node2D14" parent="MapHolder/G/E/horizontal" unique_id=1934914720 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(1224, -968, 347, -899)
+
+[node name="Node2D15" parent="MapHolder/G/E/horizontal" unique_id=1466311490 instance=ExtResource("9_ycsyl")]
+position = Vector2(23, 418)
+points = PackedVector2Array(-2223, -1056, -1494, -987)
+
+[node name="Node2D17" parent="MapHolder/G/E/horizontal" unique_id=557577857 instance=ExtResource("9_ycsyl")]
+position = Vector2(-14, 28)
+points = PackedVector2Array(-6327, -530, -6733, -491)
+
+[node name="Node2D16" parent="MapHolder/G/E/horizontal" unique_id=888548555 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-4664, -1601, -5123, -1593)
+
+[node name="Node2D9" parent="MapHolder/G/E/horizontal" unique_id=242285593 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-3751, 240, -4199, 226)
+
+[node name="Node2D18" parent="MapHolder/G/E/horizontal" unique_id=1683764804 instance=ExtResource("9_ycsyl")]
+position = Vector2(128, 11)
+points = PackedVector2Array(4028, 1020, 6201, 985)
+
+[node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
+
+[node name="Node2D10" parent="MapHolder/G/E/jump" unique_id=1352273827 instance=ExtResource("9_ycsyl")]
+position = Vector2(2553.4087, -2784.3699)
+scale = Vector2(4.099119, 4.099119)
+points = PackedVector2Array(-1435.7739, 295.51956, -1759.99, 283.32184)
+jump = true
+jumpOnDown = true
+
+[node name="Node2D9" parent="MapHolder/G/E/jump" unique_id=374713647 instance=ExtResource("9_ycsyl")]
+position = Vector2(844.2058, -920.566)
+scale = Vector2(2.0246282, 2.0246282)
+points = PackedVector2Array(552.0985, -365.71362, 153.01288, 35.841614)
+jump = true
+
+[node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=1373888671 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(96, 1440, -1128, 739)
+jump = true
+
+[node name="Node2D4" parent="MapHolder/G/E/jump" unique_id=435277123 instance=ExtResource("9_ycsyl")]
+position = Vector2(-7, 14)
+points = PackedVector2Array(-4879, 1042, -4031, 178)
+jump = true
+
+[node name="Node2D5" parent="MapHolder/G/E/jump" unique_id=705805455 instance=ExtResource("9_ycsyl")]
+position = Vector2(-848.68555, -197.16394)
+scale = Vector2(0.6305793, 0.9774718)
+points = PackedVector2Array(-3539, 1270, -4572, 491)
+jump = true
+
+[node name="Node2D6" parent="MapHolder/G/E/jump" unique_id=605199814 instance=ExtResource("9_ycsyl")]
+position = Vector2(369, -200)
+points = PackedVector2Array(-1443, 1260, -691, 499)
+jump = true
+
+[node name="Node2D8" parent="MapHolder/G/E/jump" unique_id=1871177193 instance=ExtResource("9_ycsyl")]
+position = Vector2(455, -226)
+points = PackedVector2Array(2376, -1441, 3927, -686)
+jump = true
+jumpOnDown = true
+
+[node name="doublejump" type="Node2D" parent="MapHolder/G/E" unique_id=2050723171]
+
+[node name="Node2D19" parent="MapHolder/G/E/doublejump" unique_id=1203173266 instance=ExtResource("9_ycsyl")]
+position = Vector2(2559.111, -363.09625)
+scale = Vector2(0.4379383, 0.42025316)
+points = PackedVector2Array(4173.8506, -1244.2588, 72.81592, 3283.9639)
+timeTillDoubleJump = 0.2
+onlyDown = true
+
+[node name="Node2D6" parent="MapHolder/G/E/doublejump" unique_id=397216863 instance=ExtResource("9_ycsyl")]
+position = Vector2(455, -226)
+points = PackedVector2Array(-5962, 1245, -6884, -205)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D7" parent="MapHolder/G/E/doublejump" unique_id=2006915056 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(-8449, 1447, -7728, -45)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D8" parent="MapHolder/G/E/doublejump" unique_id=1132018955 instance=ExtResource("9_ycsyl")]
+position = Vector2(455, -226)
+points = PackedVector2Array(-6836, -237, -5608, -1362)
+jump = true
+doubleJump = true
+timeTillDoubleJump = 0.2
+jumpOnDown = true
+
+[node name="Node2D9" parent="MapHolder/G/E/doublejump" unique_id=1917359101 instance=ExtResource("9_ycsyl")]
+position = Vector2(451, -134)
+points = PackedVector2Array(-2671, -411, -3600, -1381)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D10" parent="MapHolder/G/E/doublejump" unique_id=1968256985 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(-4976, 706, -7386, 22)
+doubleJump = true
+timeTillDoubleJump = 0.2
+jumpOnDown = true
+
+[node name="Node2D11" parent="MapHolder/G/E/doublejump" unique_id=1690284892 instance=ExtResource("9_ycsyl")]
+position = Vector2(883, -300)
+points = PackedVector2Array(-4666, 710, -3121, -259)
+doubleJump = true
+timeTillDoubleJump = 0.2
+jumpOnDown = true
+
+[node name="Node2D12" parent="MapHolder/G/E/doublejump" unique_id=765016621 instance=ExtResource("9_ycsyl")]
+position = Vector2(455, -226)
+points = PackedVector2Array(-737, 444, -1906, -317)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D13" parent="MapHolder/G/E/doublejump" unique_id=1641342044 instance=ExtResource("9_ycsyl")]
+position = Vector2(415, -255)
+points = PackedVector2Array(-697, 458, -182, -656)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D16" parent="MapHolder/G/E/doublejump" unique_id=613386076 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(1072, -1211, -1053, -1976)
+jump = true
+doubleJump = true
+timeTillDoubleJump = 0.2
+jumpOnDown = true
+
+[node name="Node2D17" parent="MapHolder/G/E/doublejump" unique_id=918306193 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(3487, -475, 4133, -1830)
+doubleJump = true
+timeTillDoubleJump = 0.2
+
+[node name="Node2D18" parent="MapHolder/G/E/doublejump" unique_id=1786938556 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(4157, -1822, 1943, -1179)
+jump = true
+doubleJump = true
+timeTillDoubleJump = 0.2
+jumpOnDown = true
+
+[node name="Node2D20" parent="MapHolder/G/E/doublejump" unique_id=1936319156 instance=ExtResource("9_ycsyl")]
+position = Vector2(910, -452)
+points = PackedVector2Array(-2511, -136, -1053, -1976)
+timeTillDoubleJump = 0.2
+onlyDown = true
+
+[node name="dropdown" type="Node2D" parent="MapHolder/G/E" unique_id=762121601]
+
+[node name="Platform" parent="MapHolder" unique_id=1869407090 instance=ExtResource("10_dmr00")]
+position = Vector2(-3985, 373)
+
+[node name="Platform2" parent="MapHolder" unique_id=1604902569 instance=ExtResource("11_6xer4")]
+position = Vector2(-2121, -445)
+
+[node name="Platform3" parent="MapHolder" unique_id=1845354370 instance=ExtResource("11_6xer4")]
+position = Vector2(2175, -1487)
+
+[node name="Platform4" parent="MapHolder" unique_id=1100546741 instance=ExtResource("11_6xer4")]
+position = Vector2(4507, -723)
+
+[node name="Platform6" parent="MapHolder" unique_id=285191050 instance=ExtResource("11_6xer4")]
+position = Vector2(525, -696)
+
+[node name="Platform7" parent="MapHolder" unique_id=1417003261 instance=ExtResource("10_dmr00")]
+position = Vector2(-200, -2230)
+
+[node name="Platform9" parent="MapHolder" unique_id=1109344891 instance=ExtResource("10_dmr00")]
+position = Vector2(-6586, -325)
+
+[node name="Platform10" parent="MapHolder" unique_id=427020323 instance=ExtResource("10_dmr00")]
+position = Vector2(-4931, -1420)
+
+[node name="Platform11" parent="MapHolder" unique_id=791728592 instance=ExtResource("10_dmr00")]
+position = Vector2(-3361, -1428)
+
+[node name="Platform12" parent="MapHolder" unique_id=1234770070 instance=ExtResource("10_dmr00")]
+position = Vector2(-227, 384)
+
+[node name="Platform13" parent="MapHolder" unique_id=1990226313 instance=ExtResource("10_dmr00")]
+position = Vector2(5266, -2059)
+
+[node name="Wall" type="StaticBody2D" parent="MapHolder" unique_id=141435454]
+visible = false
+position = Vector2(-8000, 1194)
+rotation = 1.5707964
+scale = Vector2(43.370003, 1.7190093)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Wall" unique_id=936521586]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Wall" unique_id=1037610406]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="Wall2" type="StaticBody2D" parent="MapHolder" unique_id=821288333]
+visible = false
+position = Vector2(6000, 1194)
+rotation = 1.5707964
+scale = Vector2(43.370003, 1.7190093)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Wall2" unique_id=1639817341]
+scale = Vector2(471.4917, 32.73527)
+texture = SubResource("PlaceholderTexture2D_udcsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Wall2" unique_id=2001623905]
+scale = Vector2(1.0371802, 1)
+shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="Floor2" parent="MapHolder" unique_id=1869937448 instance=ExtResource("12_6lumy")]
+position = Vector2(-9003, 1204)
+
+[node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("13_sn7q2")]
+visible = false
+offset_left = -3155.0
+offset_top = -2253.0002
+offset_right = -1993.0
+offset_bottom = -1600.0002
+scale = Vector2(5.5, 5.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="EvolutionSelect" unique_id=1138104003 node_paths=PackedStringArray("main_camera")]
+position = Vector2(573.63635, 316.72726)
+zoom = Vector2(0.19, 0.19)
+script = ExtResource("14_17d5m")
+main_camera = NodePath("../../Player/Camera2D")
+
+[node name="Parallax_InFront" type="Node2D" parent="." unique_id=516652516]
+visible = false
+
+[node name="Parallax2D4" type="Parallax2D" parent="Parallax_InFront" unique_id=1317835305]
+scroll_scale = Vector2(0.85, 0.85)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InFront/Parallax2D4" unique_id=2074645073]
+position = Vector2(4436, -132)
+scale = Vector2(1.678148, 1.6781482)
+texture = ExtResource("15_706aj")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Parallax_InFront" unique_id=917298786]
+scroll_scale = Vector2(0.85, 0.85)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InFront/Parallax2D5" unique_id=1869541599]
+position = Vector2(-4984, 857.9998)
+rotation = 0.9075712
+scale = Vector2(1.6155555, 1.6155556)
+texture = ExtResource("16_pqiv2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1521709923 node_paths=PackedStringArray("player", "enemy")]
+zoom = Vector2(0.175, 0.175)
+limit_bottom = 1200
+script = ExtResource("17_w2478")
+player = NodePath("../Player")
+enemy = NodePath("../Enemy")
+
+[node name="InteractiveMusicManager" type="Node" parent="." unique_id=1401012861 node_paths=PackedStringArray("audio_player")]
+script = ExtResource("18_1ppse")
+audio_player = NodePath("AudioStreamPlayer")
+state_data = Dictionary[int, ExtResource("19_8jykh")]({
+0: SubResource("Resource_x0i5t"),
+1: SubResource("Resource_ee3yv"),
+2: SubResource("Resource_ngjjt"),
+3: SubResource("Resource_qt34g")
+})
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InteractiveMusicManager" unique_id=1651661031]
+
+[connection signal="die" from="Player" to="." method="_on_player_die"]
+[connection signal="die" from="Enemy" to="." method="_on_enemy_die"]
+[connection signal="hit" from="Enemy" to="Player" method="_on_enemy_hit"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="." method="_on_evolution_selected"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
+[connection signal="evolution_selected" from="EvolutionSelect" to="InteractiveMusicManager" method="_on_evolution_select_evolution_selected"]
+
+[editable path="Enemy"]
