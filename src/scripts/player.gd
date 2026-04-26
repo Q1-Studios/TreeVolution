@@ -77,7 +77,6 @@ func take_damage(amount: float) -> void:
 	
 func play_animation() -> void:
 	if Input.is_action_pressed("moveRight") && !stun:
-		print("Walking")
 		if(!playerWalk.playing):
 			playerWalk.play()
 		model_container.scale.x = abs(model_container.scale.x)

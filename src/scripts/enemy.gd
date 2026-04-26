@@ -70,6 +70,40 @@ func select_random_evolution() -> void:
 	print("Enemy chose evolution '%s'" % Evolutions.get_evolution_data(evolution).readable_name)
 	apply_evolution_effects(evolution);
 	
+func apply_evolution_effects(evolution: Evolutions.Evolution):
+	# TODO: balancing -> done :D
+	match evolution:
+		Evolutions.Evolution.PLAYER_HEALTH:
+			PLAYER_MAX_HEALTH += 20
+			pass
+		Evolutions.Evolution.PLAYER_SPEED:
+			movement_controller.max_speed += 200
+			pass
+		Evolutions.Evolution.PISTOL_COOLDOWN:
+			movement_controller.jumpForce += 100
+			pass
+		Evolutions.Evolution.PLAYER_POLLEN_COOLDOWN:
+			var new_cooldown = max(0.5, pollen_summon_cooldown - 0.2)
+			pollen_summon_cooldown = new_cooldown
+			pass
+		Evolutions.Evolution.POLLEN_DAMAGE:
+			pollen_damage_enemy_amount += 0.2
+			pollen_damage_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_SIZE, Evolutions.Evolution.POLLEN_BLOCK, Evolutions.Evolution.PISTOL_BULLET_COUNT:
+			pollen_block_amount += 1
+			pollen_block_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
+			pass
+		Evolutions.Evolution.POLLEN_HEAL:
+			pollen_heal_amount += 0.2
+			pollen_heal_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
+			pass
+		Evolutions.Evolution.PISTOL_BULLET_DAMAGE, Evolutions.Evolution.PISTOL_BULLET_SPEED, Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
+			gun.bullet_damage += 5
+			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
+			PLAYER_MAX_HEALTH = new_health
+			pass
+	
 func take_damage(amount: float) -> void:
 	super(amount)
 	$AnimationPlayer.play("damage_taken")
