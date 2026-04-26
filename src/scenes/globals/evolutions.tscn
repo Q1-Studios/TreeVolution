@@ -24,7 +24,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_6gof4"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make Bullets more often"
+readable_name = "Rate of fire"
 icon = ExtResource("5_8wwsg")
 description = "Increase the rate of fire"
 color = Color(1, 0, 0, 1)
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_i02fx"]
 script = ExtResource("2_t8dfm")
-readable_name = "Pullen Burst Cooldown"
+readable_name = "Pollen Cooldown"
 icon = ExtResource("4_nocab")
 description = "Ddecrease the cooldown between pollen bursts"
 color = Color(0, 0, 1, 1)
@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_2ivhv"]
 script = ExtResource("2_t8dfm")
-readable_name = "Pollen Burst - Damage"
+readable_name = "Pollen Damage"
 icon = ExtResource("4_nocab")
 description = "Increases the damage from pollen burst to enemies "
 color = Color(0, 0, 1, 1)
@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_r7yx6"]
 script = ExtResource("2_t8dfm")
-readable_name = "Pollen Burst - Bullet Shield"
+readable_name = "Pollen Shield"
 icon = ExtResource("4_nocab")
 description = "Pollen burst blocks one additional bullet"
 color = Color(0, 0, 1, 1)
@@ -56,7 +56,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_8a6ol"]
 script = ExtResource("2_t8dfm")
-readable_name = "Pollen Burst - Heal"
+readable_name = "Pollen  Heal"
 icon = ExtResource("4_nocab")
 description = "Increase the heal rate received from a pollen burst"
 color = Color(0, 0, 1, 1)
@@ -64,7 +64,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_3j67i"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make Bullets bigger"
+readable_name = "Bigger bullets"
 icon = ExtResource("5_8wwsg")
 description = "Bigger bullets but slower velocity"
 color = Color(1, 0, 0, 1)
@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_8wwsg"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make Bullets faster"
+readable_name = "Faster Bullets"
 icon = ExtResource("5_8wwsg")
 description = "Increase velocity of bullets"
 color = Color(1, 0, 0, 1)
@@ -80,7 +80,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_lm6of"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make Bullets hurt"
+readable_name = "Bullet Damage"
 icon = ExtResource("5_8wwsg")
 description = "Increase bullet damage but reduce your overall health"
 color = Color(1, 0, 0, 1)
@@ -88,7 +88,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_kswtt"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make Bullets more bouncy"
+readable_name = "Bouncy Bullets"
 icon = ExtResource("5_8wwsg")
 description = "Adds +2 bounces to bullets but them slower and deal less damage"
 color = Color(1, 0, 0, 1)
@@ -96,7 +96,7 @@ metadata/_custom_type_script = "uid://by77gqfuyfqdf"
 
 [sub_resource type="Resource" id="Resource_j1fy0"]
 script = ExtResource("2_t8dfm")
-readable_name = "Make more Bullets"
+readable_name = "More Bullets"
 icon = ExtResource("5_8wwsg")
 description = "Adds +2 bullets per shot but decreases damage"
 color = Color(1, 0, 0, 1)
