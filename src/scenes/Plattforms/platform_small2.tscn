@@ -1,25 +1,25 @@
-[gd_scene format=3 uid="uid://xbn37n0c34r8"]
+[gd_scene format=3 uid="uid://dfjevy350j4yc"]
 
-[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_y8hpb"]
+[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_0kly6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a56ka"]
-atlas = ExtResource("1_y8hpb")
+atlas = ExtResource("1_0kly6")
 region = Rect2(2786.9194, 683.3002, 983.3252, 529.9541)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj618"]
-atlas = ExtResource("1_y8hpb")
+atlas = ExtResource("1_0kly6")
 region = Rect2(1307.3364, 661.85693, 1154.8711, 842.4126)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ah5d"]
-atlas = ExtResource("1_y8hpb")
+atlas = ExtResource("1_0kly6")
 region = Rect2(0, 0, 1863.002, 604.64557)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56fdq"]
-atlas = ExtResource("1_y8hpb")
+atlas = ExtResource("1_0kly6")
 region = Rect2(2826.7424, 119.64957, 943.5022, 542.2074)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kguvs"]
-atlas = ExtResource("1_y8hpb")
+atlas = ExtResource("1_0kly6")
 region = Rect2(308.6947, 661.85693, 1007.83167, 811.7794)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmp2b"]
@@ -57,6 +57,5 @@ scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_kguvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385200149]
-visible = false
 position = Vector2(14.499985, 3.500002)
 shape = SubResource("RectangleShape2D_fmp2b")

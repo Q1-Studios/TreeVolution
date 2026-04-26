@@ -6,23 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://dk10x3nosexo1" path="res://src/assets/2D/sealartfinal/treelayer.png" id="3_a4r01"]
 [ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
-[ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
-[ext_resource type="PackedScene" uid="uid://b4wbt8w1kexe0" path="res://src/scenes/Plattforms/Platform_Small.tscn" id="8_a4r01"]
+[ext_resource type="PackedScene" uid="uid://xbn37n0c34r8" path="res://src/scenes/Plattforms/Platform_Small.tscn" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://cmt3knxhp212j" path="res://src/scenes/Plattforms/Platform_Medium.tscn" id="9_335g5"]
+[ext_resource type="PackedScene" uid="uid://dqv8cpvj7u453" path="res://src/scenes/Plattforms/Platform_Medium2.tscn" id="10_hikp2"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 [ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
 [ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scripts/overlayCamera.gd" id="12_335g5"]
 [ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
 [ext_resource type="Script" uid="uid://dhn5togl1l4jw" path="res://src/scripts/camera.gd" id="14_a4r01"]
-[ext_resource type="Script" uid="uid://cab8utlgsk2hl" path="res://src/scripts/music_state_config.gd" id="15_iivk4"]
+[ext_resource type="Script" path="res://src/scripts/music_state_config.gd" id="15_iivk4"]
 [ext_resource type="AudioStream" uid="uid://0lwhetqsn641" path="res://src/assets/Music/maintheme-intro.ogg" id="16_8lty4"]
 [ext_resource type="AudioStream" uid="uid://co7bsmcaestf6" path="res://src/assets/Music/maintheme-selection.ogg" id="17_hikp2"]
 [ext_resource type="AudioStream" uid="uid://uv74wwpbvs24" path="res://src/assets/Music/maintheme-buildup.ogg" id="18_erll5"]
 [ext_resource type="AudioStream" uid="uid://vo7giqlls38h" path="res://src/assets/Music/maintheme-fight.ogg" id="19_si7be"]
-[ext_resource type="Script" uid="uid://ncgjnp308o3o" path="res://src/scripts/interactive_music_manager.gd" id="20_a4r01"]
+[ext_resource type="Script" path="res://src/scripts/interactive_music_manager.gd" id="20_a4r01"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -132,19 +130,6 @@ frame_progress = 0.0
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
 script = SubResource("GDScript_f1v2q")
 
-[node name="Floor" type="StaticBody2D" parent="MapHolder" unique_id=2038121272]
-position = Vector2(0, 1174)
-scale = Vector2(43.370003, 1.7190093)
-collision_mask = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="MapHolder/Floor" unique_id=408176823]
-scale = Vector2(471.4917, 32.73527)
-texture = SubResource("PlaceholderTexture2D_udcsr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/Floor" unique_id=1840679791]
-scale = Vector2(1.0371802, 1)
-shape = SubResource("RectangleShape2D_kyhn7")
-
 [node name="G" type="Node2D" parent="MapHolder" unique_id=929467085 node_paths=PackedStringArray("V", "E")]
 script = ExtResource("4_ahmr2")
 V = NodePath("V")
@@ -228,6 +213,9 @@ texture = SubResource("PlaceholderTexture2D_udcsr")
 scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
 
+[node name="Floor2" parent="MapHolder" unique_id=1869937448 instance=ExtResource("10_hikp2")]
+position = Vector2(-9003, 1204)
+
 [node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
 visible = false
 offset_left = -3155.0
@@ -263,7 +251,7 @@ rotation = 0.9075712
 scale = Vector2(1.6155555, 1.6155556)
 texture = ExtResource("13_pyc6v")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2059040765 node_paths=PackedStringArray("player", "enemy")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=767796953 node_paths=PackedStringArray("player", "enemy")]
 zoom = Vector2(0.175, 0.175)
 limit_bottom = 1200
 script = ExtResource("14_a4r01")
@@ -281,7 +269,6 @@ state_data = Dictionary[int, ExtResource("15_iivk4")]({
 })
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="InteractiveMusicManager" unique_id=1651661031]
-bus = &"Music"
 
 [connection signal="die" from="Player" to="." method="_on_player_die"]
 [connection signal="die" from="Enemy" to="." method="_on_enemy_die"]
