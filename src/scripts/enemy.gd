@@ -5,6 +5,7 @@ class_name Enemy
 
 var can_land = true
 func _ready() -> void:
+	super()
 	health = 100
 	
 func _physics_process(delta: float) -> void:

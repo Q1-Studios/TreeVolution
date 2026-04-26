@@ -14,6 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://cq71aqiaafib0" path="res://src/assets/2D/Player/player_walk2.png" id="8_ep4ku"]
 [ext_resource type="Texture2D" uid="uid://bywb4sjtgfi81" path="res://src/assets/2D/Player/player_walk3.png" id="9_1now0"]
 [ext_resource type="Texture2D" uid="uid://c4vtkkvps45bb" path="res://src/assets/2D/Player/player_walk4.png" id="10_68jbn"]
+[ext_resource type="Texture2D" uid="uid://cwj5f5mg1fdi6" path="res://src/assets/2D/LandingEffects/landing_1.png" id="15_1now0"]
+[ext_resource type="Texture2D" uid="uid://dvq8iygwgkxir" path="res://src/assets/2D/LandingEffects/landing_2.png" id="16_68jbn"]
+[ext_resource type="Texture2D" uid="uid://dq74t0yfc6r5l" path="res://src/assets/2D/LandingEffects/landing_3.png" id="17_3t6ey"]
+[ext_resource type="Texture2D" uid="uid://d17to01c0fcve" path="res://src/assets/2D/LandingEffects/landing_4.png" id="18_fuuj7"]
+[ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="19_gbdvo"]
+[ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="20_2nb6m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3t6ey"]
 animations = [{
@@ -148,6 +154,30 @@ _data = {
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aycp6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_1now0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_68jbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3t6ey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_fuuj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gbdvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2nb6m")
+}],
+"loop": false,
+"name": &"dust",
+"speed": 6.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player", "gun")]
 scale = Vector2(0.385, 0.385)
@@ -169,7 +199,7 @@ polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147
 position = Vector2(-31.83445, 126.46459)
 scale = Vector2(0.87985724, 0.87985724)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"walk"
+animation = &"land"
 
 [node name="THE_PISS_STREAM2" parent="." unique_id=238068524 instance=ExtResource("2_qfal1")]
 position = Vector2(127.27272, 109.09091)
@@ -197,8 +227,11 @@ libraries/ = SubResource("AnimationLibrary_uo3qh")
 [node name="Timer" type="Timer" parent="." unique_id=297888288]
 
 [node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
-position = Vector2(0, 1028.5714)
+position = Vector2(0, 155.84424)
 sprite_frames = SubResource("SpriteFrames_aycp6")
+animation = &"dust"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
