@@ -12,9 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 [ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
-[ext_resource type="Script" path="res://src/scenes/overlayCamera.gd" id="12_335g5"]
+[ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scenes/overlayCamera.gd" id="12_335g5"]
 [ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
-[ext_resource type="Script" path="res://src/scripts/camera.gd" id="14_a4r01"]
+[ext_resource type="Script" uid="uid://dhn5togl1l4jw" path="res://src/scripts/camera.gd" id="14_a4r01"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
