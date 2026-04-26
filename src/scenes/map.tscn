@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://cetum6xiv4va7"]
 
-[ext_resource type="Texture2D" uid="uid://d26055wco2ru" path="res://src/assets/2D/bgart/IMG-20260223-WA0006_0_blur.jpg" id="1_2ckrn"]
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
-[ext_resource type="Texture2D" uid="uid://c11lwfwwa6gn6" path="res://src/assets/2D/20240906_192505.jpg" id="1_edtax"]
-[ext_resource type="Script" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
-[ext_resource type="Texture2D" uid="uid://ddde1je58fddi" path="res://src/assets/2D/bgart/paintedover_final_v2_blur.png" id="2_k6avn"]
+[ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
+[ext_resource type="Texture2D" uid="uid://xlqpprxv1bo2" path="res://src/assets/2D/sealartfinal/background.jpg" id="2_agces"]
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
+[ext_resource type="Texture2D" uid="uid://dk10x3nosexo1" path="res://src/assets/2D/sealartfinal/treelayer.png" id="3_a4r01"]
+[ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
+[ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
+[ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
+[ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -31,29 +34,31 @@ size = Vector2(452.99994, 33.612663)
 [node name="Node2D" type="Node2D" unique_id=1829873154]
 script = ExtResource("1_h7s7u")
 
-[node name="VisualBackGround" type="Node2D" parent="." unique_id=1155806893]
+[node name="Parallax_InBack" type="Node2D" parent="." unique_id=1711735863]
 
-[node name="Parallax2D2" type="Parallax2D" parent="VisualBackGround" unique_id=1920472163]
+[node name="Parallax2D2" type="Parallax2D" parent="Parallax_InBack" unique_id=1920472163]
 scroll_scale = Vector2(0.05, 0.05)
 
-[node name="Img20260223Wa0006" type="Sprite2D" parent="VisualBackGround/Parallax2D2" unique_id=1918520174]
-position = Vector2(-560, -376)
+[node name="Img20260223Wa0006" type="Sprite2D" parent="Parallax_InBack/Parallax2D2" unique_id=1918520174]
+position = Vector2(-77, -463)
 scale = Vector2(2.0246282, 2.0246282)
-texture = ExtResource("1_2ckrn")
+texture = ExtResource("2_agces")
 
-[node name="Parallax2D" type="Parallax2D" parent="VisualBackGround" unique_id=1555611666]
+[node name="Parallax2D" type="Parallax2D" parent="Parallax_InBack" unique_id=1555611666]
 scroll_scale = Vector2(0.2, 0.2)
 
-[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="VisualBackGround/Parallax2D" unique_id=1741971416]
-position = Vector2(-545, -260)
-scale = Vector2(1.6155555, 1.6155556)
-texture = ExtResource("2_k6avn")
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InBack/Parallax2D" unique_id=1741971416]
+position = Vector2(295, -73.00001)
+scale = Vector2(1.4721295, 1.4721296)
+texture = ExtResource("3_a4r01")
 
-[node name="Sprite2D" type="Sprite2D" parent="VisualBackGround" unique_id=468748651]
-visibility_layer = 512
-position = Vector2(0, -500)
-scale = Vector2(1.415, 1.415)
-texture = ExtResource("1_edtax")
+[node name="Parallax2D3" type="Parallax2D" parent="Parallax_InBack" unique_id=763402882]
+scroll_scale = Vector2(0.45, 0.45)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InBack/Parallax2D3" unique_id=1881909528]
+position = Vector2(-1228, 496.00003)
+scale = Vector2(1.5654628, 1.565463)
+texture = ExtResource("4_335g5")
 
 [node name="Player" parent="." unique_id=1140108763 instance=ExtResource("1_b4rpm")]
 position = Vector2(-2976.9998, 727)
@@ -112,6 +117,11 @@ texture = SubResource("PlaceholderTexture2D_udcsr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapHolder/stuff2" unique_id=1501655221]
 scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MapHolder/stuff2" unique_id=1260381803]
+position = Vector2(-2.4036884, 0.33412647)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("8_a4r01")
 
 [node name="stuff3" type="StaticBody2D" parent="MapHolder" unique_id=646593541]
 position = Vector2(621, -903)
@@ -265,6 +275,25 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(33.999996, 53.940002)
 scale = Vector2(0.385, 0.385)
 zoom = Vector2(0.18, 0.18)
+
+[node name="Parallax_InFront" type="Node2D" parent="." unique_id=516652516]
+
+[node name="Parallax2D4" type="Parallax2D" parent="Parallax_InFront" unique_id=1317835305]
+scroll_scale = Vector2(0.85, 0.85)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InFront/Parallax2D4" unique_id=2074645073]
+position = Vector2(4436, -132)
+scale = Vector2(1.678148, 1.6781482)
+texture = ExtResource("12_8qsaa")
+
+[node name="Parallax2D5" type="Parallax2D" parent="Parallax_InFront" unique_id=917298786]
+scroll_scale = Vector2(0.85, 0.85)
+
+[node name="PaintedoverFinalV2Blur" type="Sprite2D" parent="Parallax_InFront/Parallax2D5" unique_id=1869541599]
+position = Vector2(-4984, 857.9998)
+rotation = 0.9075712
+scale = Vector2(1.6155555, 1.6155556)
+texture = ExtResource("13_pyc6v")
 
 [connection signal="die" from="Player" to="." method="_on_player_die"]
 [connection signal="die" from="Enemy" to="." method="_on_enemy_die"]

@@ -13,7 +13,9 @@ config_version=5
 config/name="Spring 2D Jam The Reckoning"
 run/main_scene="uid://cetum6xiv4va7"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="uid://drhnifrhvuhjd"
+boot_splash/image="uid://bxexqw8647lj3"
+config/icon="uid://dkft5k751hrnp"
+boot_splash/minimum_display_time=500
 
 [autoload]
 
