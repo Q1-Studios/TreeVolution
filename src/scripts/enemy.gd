@@ -14,6 +14,7 @@ var can_spawn_pollen: bool = true
 var can_land: bool = false
 var timer: float = pollen_life_time
 var max_time: bool = 0.5
+var wants_to_spawn_pollen = false
 
 signal hit
 
@@ -29,11 +30,17 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _process(delta):
-	if Input.is_action_just_pressed("enemyPollen") && can_spawn_pollen:
+	super(delta)
+	if wants_to_spawn_pollen && can_spawn_pollen:
 		spawn_pollen()
-		timer -= delta
+	timer -= delta
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen = true
+	
+	wants_to_spawn_pollen = false
+
+		
+
 		
 func spawn_pollen() -> void:
 	timer = pollen_summon_cooldown
@@ -42,7 +49,9 @@ func spawn_pollen() -> void:
 	var temp_pollen = pollen_obj.instantiate()
 	temp_pollen = create_pollen(temp_pollen)
 	get_tree().root.add_child(temp_pollen)
-	temp_pollen.global_position = player_position
+	temp_pollen.global_position = player_position 
+	temp_pollen.global_position[1] -= 400
+	temp_pollen.global_position[0] += sign($".".velocity[0])*300
 	await get_tree().create_timer(pollen_life_time).timeout
 	if temp_pollen:
 		temp_pollen.queue_free()
@@ -93,6 +102,7 @@ func _on_bullet_blocker_body_entered(body: Node2D) -> void:
 		return
 	if body.is_in_group("bullets"):
 		print("blocking")
+		wants_to_spawn_pollen = true
 	else:
 		print("hitting")
 		emit_signal("hit", 2*gun.bullet_damage)

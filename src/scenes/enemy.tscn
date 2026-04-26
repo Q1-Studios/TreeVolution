@@ -219,3 +219,4 @@ stream = ExtResource("22_v5chy")
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
 [connection signal="body_entered" from="BulletBlockerAndSwordFighter" to="." method="_on_bullet_blocker_body_entered"]
+[connection signal="body_exited" from="BulletBlockerAndSwordFighter" to="." method="_on_bullet_blocker_and_sword_fighter_body_exited"]
