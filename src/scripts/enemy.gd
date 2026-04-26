@@ -15,13 +15,18 @@ var can_spawn_pollen: bool = true
 var can_land: bool = false
 var timer: float = pollen_life_time
 var max_time: bool = 0.5
-var wants_to_spawn_pollen = false
+
+var wants_to_spawn_pollen: bool = false
+
+var attack_animation_played: bool = false
+var dust_animation_played: bool = false
 
 signal hit
 
 func _ready() -> void:
 	super()
-	dust_sprite.stop()
+	sword_animation.hide()
+	dust_sprite.hide()
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -37,12 +42,12 @@ func _process(delta):
 	timer -= delta
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen = true
-	
 	wants_to_spawn_pollen = false
+	if attack_animation_played && !sword_animation.is_playing():
+		sword_animation.hide()
+	if dust_animation_played && !dust_sprite.is_playing():
+		dust_sprite.hide()
 
-		
-
-		
 func spawn_pollen() -> void:
 	timer = pollen_summon_cooldown
 	can_spawn_pollen = false
@@ -118,16 +123,18 @@ func take_damage(amount: float) -> void:
 	super(amount)
 	$AnimationPlayer.play("damage_taken")
 	if(!EnemyDamage.playing):
-			EnemyDamage.play()
+		EnemyDamage.play()
 
 func play_animation() -> void:
 	if (velocity.x > 0 && velocity.y == 0) && !stun:
 		animated_sprite.flip_h = velocity.x < 0
+		sword_animation.flip_h = velocity.x < 0
 		animated_sprite.play("walk")
 		if(!EnemyWalk.playing):
 			EnemyWalk.play()
 	elif (velocity.x < 0 && velocity.y == 0) && !stun:
 		animated_sprite.flip_h = velocity.x < 0 
+		sword_animation.flip_h = velocity.x < 0
 		animated_sprite.play("walk")
 		if(!EnemyWalk.playing):
 			EnemyWalk.play()
@@ -137,7 +144,11 @@ func play_animation() -> void:
 			EnemyJump.play()
 	elif stun:
 		animated_sprite.play("land")
-		dust_sprite.play("dust")
+		dust_animation_played = false
+		if !dust_animation_played && !dust_sprite.is_playing():
+			dust_sprite.visible = true
+			dust_sprite.play("dust")
+			dust_animation_played = true
 	else:
 		animated_sprite.play("idle")
 
@@ -150,5 +161,9 @@ func _on_bullet_blocker_body_entered(body: Node2D) -> void:
 		wants_to_spawn_pollen = true
 	else:
 		print("hitting")
-		sword_animation.play("swordAttack")
-		emit_signal("hit", 2*gun.bullet_damage)
+		emit_signal("hit", 2 * gun.bullet_damage)
+		attack_animation_played = false
+		if !attack_animation_played && !sword_animation.is_playing():
+			sword_animation.visible = true
+			sword_animation.play("swordAttack")
+			attack_animation_played = true

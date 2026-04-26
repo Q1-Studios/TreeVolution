@@ -131,32 +131,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("13_40a6p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_neaov")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_fim43")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_6yjfe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_3s7ax")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_pwbhv")
-}],
-"loop": false,
-"name": &"dust",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
 radius = 1024.0
 
@@ -198,6 +172,32 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_40a6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_neaov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_fim43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6yjfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_3s7ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_pwbhv")
+}],
+"loop": false,
+"name": &"dust",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("EnemyWalk", "EnemyJump", "EnemyDamage", "EnemySword", "movement_controller", "animation_player")]
 scale = Vector2(0.335, 0.335)
 collision_layer = 16
@@ -237,12 +237,6 @@ scale = Vector2(1.0828563, 1.0159134)
 sprite_frames = SubResource("SpriteFrames_oj8xh")
 animation = &"land"
 
-[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
-visible = false
-position = Vector2(149.25372, -62.686584)
-sprite_frames = SubResource("SpriteFrames_q8yqk")
-animation = &"dust"
-
 [node name="BulletBlockerAndSwordFighter" type="Area2D" parent="." unique_id=1166516784]
 collision_layer = 0
 collision_mask = 10
@@ -252,9 +246,10 @@ position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
 
 [node name="SwordAnimation" type="AnimatedSprite2D" parent="." unique_id=1758014741]
-visible = false
 sprite_frames = SubResource("SpriteFrames_h60vn")
 animation = &"swordAttack"
+speed_scale = 3.0
+flip_h = true
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=711499393]
 stream = ExtResource("19_3s7ax")
@@ -267,6 +262,13 @@ stream = ExtResource("21_2gt0t")
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=290164487]
 stream = ExtResource("22_v5chy")
+
+[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
+position = Vector2(241.79105, -62.68658)
+sprite_frames = SubResource("SpriteFrames_q8yqk")
+animation = &"dust"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]

@@ -19,8 +19,11 @@ var max_time: float = 0.5
 var timer: float = pollen_life_time
 var on_ground: bool = true
 
+var dust_animation_played: bool = false
+
 func _ready() -> void:
 	super()
+	dust_sprite.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -30,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		
 	_handle_gun()
 	play_animation()
+	if dust_animation_played && !dust_sprite.is_playing():
+		dust_sprite.hide()
  
 
 func _process(delta) -> void:
@@ -94,7 +99,11 @@ func play_animation() -> void:
 		animated_sprite.play("airtime")
 	elif stun:
 		animated_sprite.play("land")
-		dust_sprite.play("dust")
+		dust_animation_played = false
+		if !dust_animation_played && !dust_sprite.is_playing():
+			dust_sprite.visible = true
+			dust_sprite.play("dust")
+			dust_animation_played = true
 	else:
 		animated_sprite.play("idle")
 
