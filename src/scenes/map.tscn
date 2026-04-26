@@ -131,6 +131,7 @@ script = SubResource("GDScript_f1v2q")
 [node name="Floor" type="StaticBody2D" parent="MapHolder" unique_id=2038121272]
 position = Vector2(0, 1174)
 scale = Vector2(43.370003, 1.7190093)
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="MapHolder/Floor" unique_id=408176823]
 scale = Vector2(471.4917, 32.73527)
@@ -141,6 +142,7 @@ scale = Vector2(1.0371802, 1)
 shape = SubResource("RectangleShape2D_kyhn7")
 
 [node name="stuff" type="StaticBody2D" parent="MapHolder" unique_id=28840447]
+visibility_layer = 3
 position = Vector2(-562, 382)
 scale = Vector2(1.2900001, 1.73)
 

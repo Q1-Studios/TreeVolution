@@ -53,7 +53,6 @@ func _physics_process(_delta: float) -> void:
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 
-
 func pollen_effect_trigger(pollen: Pollen):
 	if !pollen_effect_can_happen:
 		return
@@ -100,7 +99,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SIZE:
 			gun.bullet_size += 1.2
-			gun.bullet_velocity -= 75
+			gun.bullet_velocity -= 50
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SPEED:
 			gun.bullet_velocity += 900
