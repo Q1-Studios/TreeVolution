@@ -5,6 +5,11 @@ extends Character
 @onready var dust_sprite = $DustAnimation
 
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+@export var playerShoot:AudioStreamPlayer2D
+@export var playerWalk:AudioStreamPlayer2D
+@export var playerDamage:AudioStreamPlayer2D
+@export var playerJump:AudioStreamPlayer2D
+
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
@@ -38,6 +43,8 @@ func _handle_gun() -> void:
 	gun.rotate_weapon(direction)
 	
 	if Input.is_action_pressed("shoot"):
+		if(!playerShoot.playing):
+			playerShoot.play()
 		gun.shoot(direction, velocity)
 
 func spawn_pollen():
@@ -59,16 +66,27 @@ func start_pollen_cooldown():
 	
 func take_damage(amount: float) -> void:
 	super(amount)
+	if(!playerDamage.playing):
+		playerDamage.play()
 	$AnimationPlayer.play("damage_taken")
 	
 func play_animation() -> void:
 	if Input.is_action_pressed("moveRight") && !stun:
+		
+		print("Walking")
+		if(!playerWalk.playing):
+			playerWalk.play()
 		animated_sprite.flip_h = velocity.x < 0
 		animated_sprite.play("walk")
 	elif Input.is_action_pressed("moveLeft") && !stun:
+		
+		if(!playerWalk.playing):
+			playerWalk.play()
 		animated_sprite.flip_h = velocity.x < 0 
 		animated_sprite.play("walk")
 	elif Input.is_action_just_pressed("jump") && !stun:
+		if(!playerJump.playing):
+			playerJump.play()
 		animated_sprite.play("jump")
 	elif velocity.y < 0:
 		animated_sprite.play("airtime")

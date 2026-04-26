@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://ofr4bbrify14"]
 
 [ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_1bg10"]
-[ext_resource type="Texture2D" uid="uid://xlqpprxv1bo2" path="res://src/assets/2D/sealartfinal/background.jpg" id="1_6ekv6"]
+[ext_resource type="Texture2D" uid="uid://dph4e45yy8qy5" path="res://src/assets/2D/paintedover_final_v2_blur.png" id="1_oll1y"]
 [ext_resource type="Texture2D" uid="uid://c7fbfv1dkdvs5" path="res://src/assets/2D/sealartfinal/leaf.png" id="2_b83k2"]
 [ext_resource type="Texture2D" uid="uid://cta4enpbo7vj7" path="res://src/assets/2D/sealartfinal/mainmenu.png" id="3_oll1y"]
-[ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_cbw1n"]
 [ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="4_g3tly"]
 
 [node name="MainMenu" type="Node2D" unique_id=660273908]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1930154008]
-position = Vector2(349.99997, 196.99998)
-scale = Vector2(0.7120787, 0.71207863)
-texture = ExtResource("1_6ekv6")
+position = Vector2(580.0423, 327.49997)
+scale = Vector2(0.30949423, 0.3069444)
+texture = ExtResource("1_oll1y")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1399419118]
 self_modulate = Color(0.7302159, 0.730216, 0.73021597, 1)
@@ -78,27 +77,22 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="CoolButton2" parent="." unique_id=1613722498 instance=ExtResource("4_g3tly")]
-offset_left = 552.0
-offset_top = 438.0
-offset_right = 660.0
-offset_bottom = 501.0
+offset_left = 547.0
+offset_top = 397.0
+offset_right = 663.0
+offset_bottom = 460.0
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [node name="CoolButton" parent="." unique_id=1660479895 instance=ExtResource("4_g3tly")]
-offset_left = 549.0
-offset_top = 357.0
-offset_right = 653.0
-offset_bottom = 420.0
+offset_left = 546.0
+offset_top = 306.0
+offset_right = 657.0
+offset_bottom = 369.0
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="Mainmenu" type="Sprite2D" parent="." unique_id=1466742494]
-position = Vector2(574.99994, 179)
+position = Vector2(601.00006, 577.00006)
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("3_oll1y")
-
-[node name="Shrinelayer" type="Sprite2D" parent="." unique_id=1575799926]
-position = Vector2(-12.000004, 493)
-scale = Vector2(0.36527777, 0.36527777)
-texture = ExtResource("4_cbw1n")
