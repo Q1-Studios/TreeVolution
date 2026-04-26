@@ -22,6 +22,8 @@ const POLLEN_COLOR_UPGRADE_STEP: float = 0.1
 var pollen_list = [] # stores in what pollen areas wer are in
 var pollen_effect_can_happen: bool = true
 
+var high_fall: bool = false
+
 @export var enabled: bool = true
 @export var movement_controller : MovementController
 @export var animation_player : AnimationPlayer
@@ -55,7 +57,16 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	if movement_controller:
-		movement_controller.handleMovement(self)
+		if !high_fall:
+			movement_controller.handleMovement(self)
+			if velocity.y > 6000:
+				print(velocity.y)
+		else:
+			print("wewew")
+			await get_tree().create_timer(0.2).timeout
+			high_fall = true
+			
+
 		
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
@@ -69,6 +80,15 @@ func take_damage(amount: float) -> void:
 func healing(amount) -> void:
 	var new_health = min(PLAYER_MAX_HEALTH, health + amount)
 	health = new_health
+	
+func handle_high_fall() -> bool:
+	if velocity.y > 6000 && is_on_floor():
+		high_fall = true
+		print(2)
+		return high_fall
+	else:
+		high_fall = false
+		return high_fall
 		
 func pollen_effect_trigger(pollen: Pollen):
 	if !pollen_effect_can_happen:
@@ -135,7 +155,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_COUNT:
 			gun.bullet_count += 2
-			var new_damage: float = max(0.5, gun.bullet_damage - 3)
+			var new_damage: float = max(0.5, gun.bullet_damage - 1)
 			gun.bullet_damage = new_damage
 			pass
 
@@ -144,6 +164,7 @@ func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		var bullet_damage: float = body.damage
 		take_damage(bullet_damage)
+		
 
 # area parameter -> pollen area
 func _on_pollen_detection_area_entered(area: Area2D) -> void:
