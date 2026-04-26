@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
 [ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
 [ext_resource type="Texture2D" uid="uid://xlqpprxv1bo2" path="res://src/assets/2D/sealartfinal/background.jpg" id="2_agces"]
-[ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Texture2D" uid="uid://dk10x3nosexo1" path="res://src/assets/2D/sealartfinal/treelayer.png" id="3_a4r01"]
 [ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
@@ -70,12 +69,6 @@ gun = NodePath("Gun")
 [node name="MovementController" parent="Enemy" index="3" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
 G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
-
-[node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
-position = Vector2(-3810, -5129)
-
-[node name="Pollen2" parent="." unique_id=719815752 instance=ExtResource("3_3tm0b")]
-position = Vector2(-4551, -5137)
 
 [node name="MapHolder" type="Node2D" parent="." unique_id=781003022]
 script = SubResource("GDScript_f1v2q")

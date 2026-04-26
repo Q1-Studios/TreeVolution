@@ -5,6 +5,7 @@ class_name Enemy
 
 var can_land = true
 func _ready() -> void:
+	super()
 	health = 100
 	
 func _physics_process(delta: float) -> void:
@@ -40,3 +41,9 @@ func play_animation() -> void:
 		animated_sprite.play("land")
 	else:
 		animated_sprite.play("idle")
+
+
+func _on_bullet_blocker_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("bullets"):
+		return
+	
