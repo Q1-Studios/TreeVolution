@@ -44,6 +44,7 @@ size = Vector2(452.99994, 33.612663)
 script = ExtResource("15_iivk4")
 stream = ExtResource("16_8lty4")
 bpm = 156.0
+transition_beat_every = 16
 auto_transition = true
 auto_transition_to = 1
 metadata/_custom_type_script = "uid://cab8utlgsk2hl"
@@ -53,6 +54,7 @@ script = ExtResource("15_iivk4")
 stream = ExtResource("17_hikp2")
 loop = true
 bpm = 156.0
+transition_beat_every = 16
 metadata/_custom_type_script = "uid://cab8utlgsk2hl"
 
 [sub_resource type="Resource" id="Resource_ngjjt"]
