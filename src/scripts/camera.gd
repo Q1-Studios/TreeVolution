@@ -11,7 +11,6 @@ extends Camera2D
 @export var tracking_speed := 4.0
 
 func _process(delta: float) -> void:
-	# Safety check: If either the player or enemy dies/is removed, stop tracking
 	if not is_instance_valid(player) or not is_instance_valid(enemy):
 		return
 		
