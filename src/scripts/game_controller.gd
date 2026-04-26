@@ -8,6 +8,10 @@ var player_spawn: Vector2
 var enemy_spawn: Vector2
 
 func _ready() -> void:
+	player.apply_evolution_effects(Evolutions.Evolution.PISTOL_BULLET_COUNT)
+	player.apply_evolution_effects(Evolutions.Evolution.PISTOL_BULLET_COUNT)
+	player.apply_evolution_effects(Evolutions.Evolution.PISTOL_BULLET_COUNT)
+	player.apply_evolution_effects(Evolutions.Evolution.PISTOL_BULLET_COUNT)
 	player_spawn = player.global_position
 	enemy_spawn = enemy.global_position
 	display_evolution_select()

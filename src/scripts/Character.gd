@@ -168,7 +168,8 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 # singaling
 func _on_bullet_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
-		var bullet_damage: float = body.damage
+		var bullet: Bullet = body as Bullet
+		var bullet_damage: float = bullet.get_damage()
 		take_damage(bullet_damage)
 
 

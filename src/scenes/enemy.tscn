@@ -150,11 +150,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
 radius = 1024.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player")]
+[node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("EnemyWalk", "EnemyJump", "EnemyDamage", "EnemySword", "movement_controller", "animation_player")]
 scale = Vector2(0.335, 0.335)
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_k24wl")
+EnemyWalk = NodePath("Walk")
+EnemyJump = NodePath("Jump")
+EnemyDamage = NodePath("Damage")
+EnemySword = NodePath("Sword")
 movement_controller = NodePath("MovementController")
 animation_player = NodePath("AnimationPlayer")
 
