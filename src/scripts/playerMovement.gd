@@ -4,7 +4,6 @@ extends MovementController
 
 func handleMovement(player: Character) -> void:
 	super(player)
-
 	
 	_handle_lateral_movement(player)
 	_handle_jump(player)
