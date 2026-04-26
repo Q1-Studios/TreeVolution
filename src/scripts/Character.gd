@@ -32,15 +32,21 @@ var stun: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = PLAYER_MAX_HEALTH
+	health = get_max_health()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+	
+func get_max_health() -> float:
+	return PLAYER_MAX_HEALTH
+	
+func set_max_health(amount: float) -> void:
+	PLAYER_MAX_HEALTH = amount
 
 func reset() -> void:
-	health = PLAYER_MAX_HEALTH
+	health = get_max_health()
 
 func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.pollen_heal_amount = pollen_heal_amount
@@ -82,7 +88,7 @@ func take_damage(amount: float) -> void:
 		die.emit(self)
 
 func healing(amount) -> void:
-	var new_health = min(PLAYER_MAX_HEALTH, health + amount)
+	var new_health = min(get_max_health(), health + amount)
 	health = new_health
 	
 func handle_high_fall() -> bool:
@@ -118,7 +124,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 	# TODO: balancing -> done :D
 	match evolution:
 		Evolutions.Evolution.PLAYER_HEALTH:
-			PLAYER_MAX_HEALTH += 20
+			set_max_health(get_max_health() + 20)
 			pass
 		Evolutions.Evolution.PLAYER_SPEED:
 			movement_controller.max_speed += 200
@@ -152,8 +158,8 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
 			gun.bullet_damage += 5
-			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
-			PLAYER_MAX_HEALTH = new_health
+			var new_health: float = max(20, get_max_health() - 10)
+			set_max_health(new_health)
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
 			gun.bullet_bounces += 2

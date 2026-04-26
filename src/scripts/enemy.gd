@@ -12,7 +12,7 @@ class_name Enemy
 @export var EnemyDamage:AudioStreamPlayer2D
 @export var EnemySword:AudioStreamPlayer2D #Use when Attak if(!EnemySword.playing): EnemySword.play()
 
-
+var ENEMY_MAX_HEALTH = 200
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
@@ -36,8 +36,16 @@ func _ready() -> void:
 	super()
 	sword_animation.hide()
 	dust_sprite.hide()
+	health = get_max_health()
 	health_bar.value = health 
-	health_bar.max_value = PLAYER_MAX_HEALTH
+	health_bar.max_value = get_max_health()
+	
+
+func get_max_health() -> float:
+	return ENEMY_MAX_HEALTH
+
+func set_max_health(amount: float) -> void:
+	ENEMY_MAX_HEALTH = amount
 	
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -100,7 +108,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 	# he brings a knife to a gunfight
 	match evolution:
 		Evolutions.Evolution.PLAYER_HEALTH:
-			PLAYER_MAX_HEALTH += 20
+			set_max_health(get_max_health() + 20)
 			pass
 		Evolutions.Evolution.PLAYER_SPEED:
 			movement_controller.max_speed += 200
@@ -121,7 +129,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pollen_damage_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_SIZE, Evolutions.Evolution.POLLEN_BLOCK:
-			pollen_block_amount += 10.2
+			pollen_block_amount += 1
 			pollen_block_upgrade_count += POLLEN_COLOR_UPGRADE_STEP
 			pass
 		Evolutions.Evolution.POLLEN_HEAL:
@@ -130,8 +138,8 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_DAMAGE:
 			gun.bullet_damage += 5
-			var new_health: float = max(20, PLAYER_MAX_HEALTH - 10)
-			PLAYER_MAX_HEALTH = new_health
+			var new_health: float = max(20, get_max_health() - 10)
+			set_max_health(new_health)
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_BOUNCES:
 			var new_sampling_time = max(0.1, movement_controller.sampling_time - 0.1)
