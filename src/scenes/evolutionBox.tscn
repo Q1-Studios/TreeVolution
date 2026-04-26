@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c7jg5d7xjt0s8"]
 
 [ext_resource type="Script" uid="uid://dvksdp6phqlyj" path="res://src/scripts/evolution_box.gd" id="1_7ntl0"]
+[ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_40nq7"]
 [ext_resource type="Texture2D" uid="uid://b3c7n0a7tf8tp" path="res://src/assets/2D/stone_full.png" id="2_7ntl0"]
 [ext_resource type="Texture2D" uid="uid://cqc6dqggba3fk" path="res://src/assets/2D/stone_upper.png" id="2_cp8hd"]
 [ext_resource type="Texture2D" uid="uid://ckcvko4invenw" path="res://src/assets/2D/player_evo.png" id="3_8frw0"]
@@ -15,6 +16,7 @@ border_width_bottom = 8
 
 [sub_resource type="Theme" id="Theme_67laq"]
 Label/font_sizes/font_size = 48
+Label/fonts/font = ExtResource("1_40nq7")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_weetq")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp8hd"]
@@ -83,10 +85,10 @@ layout_mode = 1
 anchors_preset = -1
 offset_left = 124.0
 offset_top = 93.0
-offset_right = 285.328
+offset_right = 287.0
 offset_bottom = 120.0
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "Gruber"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -100,7 +102,6 @@ offset_bottom = 255.0
 theme_override_font_sizes/font_size = 12
 text = "Test test Test"
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Broken" type="Control" parent="." unique_id=1702135868]
@@ -157,12 +158,12 @@ expand_mode = 5
 [node name="Title" type="Label" parent="Broken" unique_id=1586684918]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 134.0
-offset_top = 101.0
-offset_right = 279.0
-offset_bottom = 128.0
+offset_left = 133.0
+offset_top = 94.0
+offset_right = 286.0
+offset_bottom = 121.0
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "Gruber"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -176,7 +177,6 @@ offset_bottom = 267.0
 theme_override_font_sizes/font_size = 12
 text = "Test test Test"
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 3
 
 [connection signal="toggled" from="." to="." method="_on_button_toggled"]

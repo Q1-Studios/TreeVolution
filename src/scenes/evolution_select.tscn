@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cspewdpk16o64" path="res://src/scripts/evolution_select.gd" id="1_h2r2r"]
 [ext_resource type="PackedScene" uid="uid://c7jg5d7xjt0s8" path="res://src/scenes/evolutionBox.tscn" id="1_pp4y5"]
+[ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="2_244bg"]
 [ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="5_lnnja"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_246na"]
@@ -18,7 +19,7 @@ size_flags_vertical = 3
 script = ExtResource("1_h2r2r")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1036892534]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 0.7411765)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,18 +30,20 @@ texture = SubResource("CanvasTexture_246na")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2045624534]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.83000004
-offset_bottom = 0.19995117
+anchor_bottom = 1.0
+offset_top = 26.0
+offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 48
+theme_override_constants/separation = 28
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=259037597]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_244bg")
 theme_override_font_sizes/font_size = 72
 text = "Choose your evolution"
 horizontal_alignment = 1

@@ -1,30 +1,40 @@
 [gd_scene format=3 uid="uid://ymcd63ealp1i"]
 
 [ext_resource type="Texture2D" uid="uid://br7vfgrncq317" path="res://src/assets/2D/button.png" id="1_hki57"]
+[ext_resource type="FontFile" uid="uid://cyesy882i1bp6" path="res://src/assets/scabber-font/Scabber-q2Mn0.ttf" id="1_rmigu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hki57"]
-content_margin_left = 12.0
-content_margin_top = 4.0
-content_margin_right = 12.0
-content_margin_bottom = 4.0
 texture = ExtResource("1_hki57")
+expand_margin_left = 12.0
+expand_margin_top = 8.0
+expand_margin_right = 12.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rmigu"]
 texture = ExtResource("1_hki57")
+expand_margin_left = 12.0
+expand_margin_top = 8.0
+expand_margin_right = 12.0
+expand_margin_bottom = 8.0
 modulate_color = Color(0.41215247, 0.41215247, 0.41215247, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4inyj"]
 texture = ExtResource("1_hki57")
+expand_margin_left = 12.0
+expand_margin_top = 8.0
+expand_margin_right = 12.0
+expand_margin_bottom = 8.0
 modulate_color = Color(0.8217887, 0.82178867, 0.82178867, 1)
 
 [node name="CoolButton" type="Button" unique_id=1613722498]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1095.0
+offset_right = -1086.0
 offset_bottom = -617.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_rmigu")
 theme_override_styles/normal = SubResource("StyleBoxTexture_hki57")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_rmigu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_4inyj")
