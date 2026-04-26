@@ -12,7 +12,7 @@ extends MovementController
 @export var sampling_time := 1.0
 @export var lineup_probability := 0.2
 @export var lineup_waiting_time := 0.5
-@export var probability_to_go_somewhere_random = 0.1
+@export var probability_to_go_somewhere_random = 0.0
 
 
 
