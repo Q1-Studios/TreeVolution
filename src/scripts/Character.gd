@@ -135,7 +135,7 @@ func apply_evolution_effects(evolution: Evolutions.Evolution):
 			pass
 		Evolutions.Evolution.PISTOL_BULLET_COUNT:
 			gun.bullet_count += 2
-			var new_damage: float = max(0.5, gun.bullet_damage - 1)
+			var new_damage: float = max(0.5, gun.bullet_damage - 3)
 			gun.bullet_damage = new_damage
 			pass
 
