@@ -1,75 +1,61 @@
-[gd_scene format=3 uid="uid://b4wbt8w1kexe0"]
+[gd_scene format=3 uid="uid://xbn37n0c34r8"]
 
-[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_u7uey"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ah5d"]
-atlas = ExtResource("1_u7uey")
-region = Rect2(0, 0, 1863.002, 604.64557)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abskg"]
-atlas = ExtResource("1_u7uey")
-region = Rect2(1913.8735, 1461.383, 1681.7617, 548.33386)
+[ext_resource type="Texture2D" uid="uid://bltighifykiv" path="res://src/assets/2D/sealartfinal/platforms.png" id="1_y8hpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a56ka"]
-atlas = ExtResource("1_u7uey")
+atlas = ExtResource("1_y8hpb")
 region = Rect2(2786.9194, 683.3002, 983.3252, 529.9541)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mj618"]
-atlas = ExtResource("1_u7uey")
+atlas = ExtResource("1_y8hpb")
 region = Rect2(1307.3364, 661.85693, 1154.8711, 842.4126)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ah5d"]
+atlas = ExtResource("1_y8hpb")
+region = Rect2(0, 0, 1863.002, 604.64557)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_56fdq"]
-atlas = ExtResource("1_u7uey")
+atlas = ExtResource("1_y8hpb")
 region = Rect2(2826.7424, 119.64957, 943.5022, 542.2074)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kguvs"]
-atlas = ExtResource("1_u7uey")
+atlas = ExtResource("1_y8hpb")
 region = Rect2(308.6947, 661.85693, 1007.83167, 811.7794)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k7la"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmp2b"]
 size = Vector2(671, 103)
 
-[node name="Platform" type="StaticBody2D" unique_id=1869407090]
+[node name="Platform_Small" type="StaticBody2D" unique_id=1633645022]
 
-[node name="Sprites" type="Node2D" parent="." unique_id=1881091623]
-
-[node name="CenterPieceExtension_II" type="Sprite2D" parent="Sprites" unique_id=1150752516]
-visible = false
-position = Vector2(687.0601, 6.249995)
-scale = Vector2(0.21605964, 0.21605961)
-texture = SubResource("AtlasTexture_7ah5d")
-
-[node name="CenterPieceExtensionI" type="Sprite2D" parent="Sprites" unique_id=2118070945]
-visible = false
-position = Vector2(360.00003, -1.1920929e-07)
-scale = Vector2(0.22350995, 0.22350994)
-texture = SubResource("AtlasTexture_abskg")
+[node name="Sprites" type="Node2D" parent="." unique_id=106451697]
+position = Vector2(0, 1174)
+scale = Vector2(20448.596, 56.272236)
 
 [node name="NormalNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=2023069519]
-position = Vector2(260, 6)
-scale = Vector2(0.22350995, 0.22350994)
+position = Vector2(0.012714809, -20.756239)
+scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_a56ka")
 
 [node name="GrasNuppnRechts" type="Sprite2D" parent="Sprites" unique_id=1061231953]
-position = Vector2(275, 6.9999995)
-scale = Vector2(0.22350995, 0.22350994)
+position = Vector2(0.013448354, -20.738468)
+scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_mj618")
 
 [node name="CenterPiece" type="Sprite2D" parent="Sprites" unique_id=1800225942]
-position = Vector2(1, -1.000061)
-scale = Vector2(0.22350995, 0.22350994)
+position = Vector2(4.8903108e-05, -20.880634)
+scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_7ah5d")
 
 [node name="NormalNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=557159961]
-position = Vector2(-243, 1.9999847)
-scale = Vector2(0.22350995, 0.22350994)
+position = Vector2(-0.011883454, -20.827322)
+scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_56fdq")
 
 [node name="GrasNuppnLinks" type="Sprite2D" parent="Sprites" unique_id=1136029136]
-position = Vector2(-244.00003, 2.9999542)
-scale = Vector2(0.22350995, 0.22350994)
+position = Vector2(-0.01193236, -20.809551)
+scale = Vector2(1.0930332e-05, 0.0039719394)
 texture = SubResource("AtlasTexture_kguvs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2075489562]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=385200149]
 position = Vector2(14.499985, 3.500002)
-shape = SubResource("RectangleShape2D_8k7la")
+shape = SubResource("RectangleShape2D_fmp2b")
