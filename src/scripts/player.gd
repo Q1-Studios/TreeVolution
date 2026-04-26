@@ -15,6 +15,9 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	super(delta)
+	if !enabled:
+		return
+		
 	_handle_gun()
 	play_animation()
  

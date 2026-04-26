@@ -1,7 +1,6 @@
 class_name Character
 extends CharacterBody2D
 
-
 var PLAYER_MAX_HEALTH: float = 100
 var health: float = 10
 var damage: float = 10
@@ -21,6 +20,7 @@ const POLLEN_COLOR_UPGRADE_STEP: float = 0.1
 var pollen_list = [] # stores in what pollen areas wer are in
 var pollen_effect_can_happen: bool = true
 
+@export var enabled: bool = true
 @export var movement_controller : MovementController
 @export var animation_player : AnimationPlayer
 @export var gun: GunController
@@ -45,8 +45,10 @@ func create_pollen(temp_pollen: Pollen) -> Pollen:
 	temp_pollen.owner_call = self
 	return temp_pollen
 
-
 func _physics_process(_delta: float) -> void:
+	if !enabled:
+		return
+	
 	if movement_controller:
 		movement_controller.handleMovement(self)
 		
@@ -67,6 +69,9 @@ func pollen_effect_trigger(pollen: Pollen):
 func pollen_effect_cooldown():
 	await get_tree().create_timer(1).timeout
 	pollen_effect_can_happen = true
+	
+func set_enabled(_enabled: bool) -> void:
+	self.enabled = _enabled
 
 func apply_evolution_effects(evolution: Evolutions.Evolution):
 	# TODO: balancing -> done :D

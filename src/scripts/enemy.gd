@@ -8,6 +8,10 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	super(delta)
+	
+	if !enabled:
+		return
+	
 	if health < 0:
 		queue_free()
 	play_animation()
