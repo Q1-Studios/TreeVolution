@@ -5,6 +5,7 @@ extends Character
 @onready var animated_sprite = $ModelContainer/PlayerMovementAnimation
 @onready var dust_sprite = $DustAnimation
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+@onready var health_bar = $HealthBar
 
 @export var playerShoot:AudioStreamPlayer2D
 @export var playerWalk:AudioStreamPlayer2D
@@ -24,6 +25,8 @@ var dust_animation_played: bool = false
 func _ready() -> void:
 	super()
 	dust_sprite.hide()
+	health_bar.value = health 
+	health_bar.max_value = PLAYER_MAX_HEALTH
 
 
 func _physics_process(delta: float) -> void:
@@ -44,6 +47,7 @@ func _process(delta) -> void:
 		spawn_pollen()
 	if(timer <= 0 && !can_spawn_pollen):
 		can_spawn_pollen = true
+	health_bar.value = health
 
 func _handle_gun() -> void:
 	var mouse_pos = get_global_mouse_position()

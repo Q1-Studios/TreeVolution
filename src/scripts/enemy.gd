@@ -4,12 +4,15 @@ class_name Enemy
 @onready var sword_animation = $SwordAnimation
 @onready var dust_sprite = $DustAnimation
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var health_bar = $HealthBar
+
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
 @export var EnemyWalk:AudioStreamPlayer2D
 @export var EnemyJump:AudioStreamPlayer2D
 @export var EnemyDamage:AudioStreamPlayer2D
 @export var EnemySword:AudioStreamPlayer2D #Use when Attak if(!EnemySword.playing): EnemySword.play()
-			
+
+
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
@@ -33,7 +36,9 @@ func _ready() -> void:
 	super()
 	sword_animation.hide()
 	dust_sprite.hide()
-
+	health_bar.value = health 
+	health_bar.max_value = PLAYER_MAX_HEALTH
+	
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if !enabled:
@@ -61,6 +66,7 @@ func _process(delta):
 		sword_animation.hide()
 	if dust_animation_played && !dust_sprite.is_playing():
 		dust_sprite.hide()
+	health_bar.value = health
 
 func spawn_pollen() -> void:
 	timer = pollen_summon_cooldown

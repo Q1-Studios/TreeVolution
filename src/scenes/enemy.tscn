@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://b2vr0u0udk8de" path="res://src/assets/2D/swordAnimation/sword_8.png" id="26_2xt3g"]
 [ext_resource type="Texture2D" uid="uid://cv1vdtirmdidj" path="res://src/assets/2D/swordAnimation/sword_9.png" id="27_w03d4"]
 [ext_resource type="Texture2D" uid="uid://cmikahpaehjt0" path="res://src/assets/2D/swordAnimation/sword_10.png" id="28_61pxc"]
+[ext_resource type="Texture2D" uid="uid://b0kiugt5swfhb" path="res://src/assets/2D/healthBar/over.png" id="33_ufj06"]
+[ext_resource type="Texture2D" uid="uid://cmpkkv7m03uvf" path="res://src/assets/2D/healthBar/progress.png" id="34_2xt3g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
 radius = 264.93506
@@ -272,6 +274,14 @@ sprite_frames = SubResource("SpriteFrames_q8yqk")
 animation = &"dust"
 frame = 5
 frame_progress = 1.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1257733221]
+offset_left = -388.0597
+offset_top = -1456.7163
+offset_right = 401.9403
+offset_bottom = -1248.7163
+texture_over = ExtResource("33_ufj06")
+texture_progress = ExtResource("34_2xt3g")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
