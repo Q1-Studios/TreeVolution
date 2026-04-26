@@ -2,12 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c0tou1pyce784" path="res://src/scripts/player.gd" id="1_7x01q"]
 [ext_resource type="Texture2D" uid="uid://ci3ivlghlfvcn" path="res://src/assets/2D/Player/player_idle1.png" id="2_awtg0"]
-[ext_resource type="AudioStream" uid="uid://dn5ojbsm1smhx" path="res://src/assets/Sounds/walk.wav" id="2_fuuj7"]
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="2_qfal1"]
 [ext_resource type="Script" uid="uid://dmmqq118mbydm" path="res://src/scripts/playerMovement.gd" id="2_v14g5"]
 [ext_resource type="Texture2D" uid="uid://6gygpjifx6j4" path="res://src/assets/2D/Player/player_idle2.png" id="3_aycp6"]
-[ext_resource type="AudioStream" uid="uid://b80krx6ko4v3p" path="res://src/assets/Sounds/damage.wav" id="3_gbdvo"]
-[ext_resource type="AudioStream" uid="uid://baxeqypkalbq" path="res://src/assets/Sounds/jump.wav" id="4_2nb6m"]
 [ext_resource type="Texture2D" uid="uid://b2kfgx7wu3sqn" path="res://src/assets/2D/Player/player_idle3.png" id="4_ccvdx"]
 [ext_resource type="Script" uid="uid://dqkai3yi40ep0" path="res://src/scripts/stat_controller.gd" id="5_gjb54"]
 [ext_resource type="Texture2D" uid="uid://befv1w6llqm1j" path="res://src/assets/2D/Player/player_jumpup.png" id="5_pi0vf"]
@@ -17,13 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cq71aqiaafib0" path="res://src/assets/2D/Player/player_walk2.png" id="8_ep4ku"]
 [ext_resource type="Texture2D" uid="uid://bywb4sjtgfi81" path="res://src/assets/2D/Player/player_walk3.png" id="9_1now0"]
 [ext_resource type="Texture2D" uid="uid://c4vtkkvps45bb" path="res://src/assets/2D/Player/player_walk4.png" id="10_68jbn"]
-[ext_resource type="Texture2D" uid="uid://cwj5f5mg1fdi6" path="res://src/assets/2D/LandingEffects/landing_1.png" id="15_1now0"]
-[ext_resource type="Texture2D" uid="uid://dvq8iygwgkxir" path="res://src/assets/2D/LandingEffects/landing_2.png" id="16_68jbn"]
-[ext_resource type="Texture2D" uid="uid://dq74t0yfc6r5l" path="res://src/assets/2D/LandingEffects/landing_3.png" id="17_3t6ey"]
-[ext_resource type="Texture2D" uid="uid://d17to01c0fcve" path="res://src/assets/2D/LandingEffects/landing_4.png" id="18_fuuj7"]
-[ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="19_gbdvo"]
-[ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="20_2nb6m"]
-[ext_resource type="AudioStream" uid="uid://clqpgduhwhpwy" path="res://src/assets/Sounds/shootSound.wav" id="23_gbdvo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3t6ey"]
 animations = [{
@@ -158,59 +148,32 @@ _data = {
 }
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aycp6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("15_1now0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_68jbn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_3t6ey")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_fuuj7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_gbdvo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_2nb6m")
-}],
-"loop": false,
-"name": &"dust",
-"speed": 6.0
-}]
 
-[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("playerShoot", "playerWalk", "playerDamage", "playerJump", "movement_controller", "animation_player", "gun") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1140108763 node_paths=PackedStringArray("movement_controller", "animation_player", "gun")]
 scale = Vector2(0.385, 0.385)
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_7x01q")
-playerShoot = NodePath("Shoot")
-playerWalk = NodePath("Walk")
-playerDamage = NodePath("Damage")
-playerJump = NodePath("Jump")
+enabled = null
 movement_controller = NodePath("MovementController")
 animation_player = NodePath("AnimationPlayer")
-gun = NodePath("THE_PISS_STREAM2")
+gun = NodePath("ModelContainer/THE_PISS_STREAM2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=212941889]
 position = Vector2(-77.92208, 140.25972)
 scale = Vector2(0.8991934, 0.8991934)
 polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147, 797.4027, 70.129875, 974.0261, -10.389616, 984.4158, -88.311714, 984.4158, -298.70135, 779.2209, -311.68835, 625.9741, -231.16887, 298.70135, -210.38965, 212.98705, -103.896126, -28.571434, -77.9221, -332.4676, -57.14287, -672.7274, 23.376623, -935.0651, 155.84418, -929.8703, 493.5066, -812.9872, 410.38968, -451.94812, 309.09097, -296.10394, 335.065, -275.32474, 285.71432, -184.41562)
 
-[node name="THE_PISS_STREAM2" parent="." unique_id=238068524 instance=ExtResource("2_qfal1")]
-scale = Vector2(0.9999998, 0.9999998)
-
 [node name="ModelContainer" type="Node2D" parent="." unique_id=437818947]
+
+[node name="THE_PISS_STREAM2" parent="ModelContainer" unique_id=238068524 instance=ExtResource("2_qfal1")]
+scale = Vector2(0.9999998, 0.9999998)
 
 [node name="PlayerMovementAnimation" type="AnimatedSprite2D" parent="ModelContainer" unique_id=1249482178]
 position = Vector2(-31.834446, 126.464584)
 scale = Vector2(0.8798571, 0.8798571)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"land"
+animation = &"walk"
 
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643]
 script = ExtResource("2_v14g5")
@@ -233,34 +196,9 @@ libraries/ = SubResource("AnimationLibrary_uo3qh")
 
 [node name="Timer" type="Timer" parent="." unique_id=297888288]
 
-[node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=85745760]
-scale = Vector2(0.99999994, 0.99999994)
-stream = ExtResource("3_gbdvo")
-playback_type = 1
-
-[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=138057490]
-position = Vector2(0, 155.84424)
-scale = Vector2(0.9999999, 0.9999999)
-stream = ExtResource("4_2nb6m")
-playback_type = 1
-
-[node name="Shoot" type="AudioStreamPlayer2D" parent="." unique_id=877395559]
-position = Vector2(0, 155.84424)
-scale = Vector2(0.9999999, 0.9999999)
-stream = ExtResource("23_gbdvo")
-playback_type = 1
-
-[node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=701741601]
-stream = ExtResource("2_fuuj7")
-playback_type = 1
-
 [node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
-position = Vector2(75.324684, 155.84424)
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(0, 1028.5714)
 sprite_frames = SubResource("SpriteFrames_aycp6")
-animation = &"dust"
-frame = 5
-frame_progress = 1.0
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]

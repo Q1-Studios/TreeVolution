@@ -1,10 +1,17 @@
 class_name Player
 extends Character
 
-@onready var animated_sprite = $PlayerMovementAnimation
+@onready var model_container = $ModelContainer
+@onready var animated_sprite = $ModelContainer/PlayerMovementAnimation
 @onready var dust_sprite = $DustAnimation
-
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+
+@export var playerShoot:AudioStreamPlayer2D
+@export var playerWalk:AudioStreamPlayer2D
+@export var playerDamage:AudioStreamPlayer2D
+@export var playerJump:AudioStreamPlayer2D
+
+const WEAPON_RADIUS: float = 900.0
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
@@ -12,8 +19,11 @@ var max_time: float = 0.5
 var timer: float = pollen_life_time
 var on_ground: bool = true
 
+var dust_animation_played: bool = false
+
 func _ready() -> void:
 	super()
+	dust_sprite.hide()
 
 
 func _physics_process(delta: float) -> void:
@@ -23,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		
 	_handle_gun()
 	play_animation()
+	if dust_animation_played && !dust_sprite.is_playing():
+		dust_sprite.hide()
  
 
 func _process(delta) -> void:
@@ -34,11 +46,16 @@ func _process(delta) -> void:
 		can_spawn_pollen = true
 
 func _handle_gun() -> void:
-	var direction = get_global_mouse_position()
-	gun.rotate_weapon(direction)
+	var mouse_pos = get_global_mouse_position()
+	var player_center = global_position
+	var angle = player_center.angle_to_point(mouse_pos)
+	gun.position = Vector2(cos(angle), sin(angle)) * WEAPON_RADIUS
+	gun.rotate_weapon(mouse_pos)
 	
 	if Input.is_action_pressed("shoot"):
-		gun.shoot(direction, velocity)
+		if(!playerShoot.playing):
+			playerShoot.play()
+		gun.shoot(mouse_pos, velocity)
 
 func spawn_pollen():
 	timer = pollen_summon_cooldown
@@ -59,21 +76,37 @@ func start_pollen_cooldown():
 	
 func take_damage(amount: float) -> void:
 	super(amount)
+	if(!playerDamage.playing):
+		playerDamage.play()
 	$AnimationPlayer.play("damage_taken")
 	
 func play_animation() -> void:
 	if Input.is_action_pressed("moveRight") && !stun:
-		animated_sprite.flip_h = velocity.x < 0
+		if(!playerWalk.playing):
+			playerWalk.play()
+		model_container.scale.x = abs(model_container.scale.x)
 		animated_sprite.play("walk")
 	elif Input.is_action_pressed("moveLeft") && !stun:
-		animated_sprite.flip_h = velocity.x < 0 
+		if(!playerWalk.playing):
+			playerWalk.play()
+		model_container.scale.x = -abs(model_container.scale.x)
 		animated_sprite.play("walk")
 	elif Input.is_action_just_pressed("jump") && !stun:
+		if(!playerJump.playing):
+			playerJump.play()
 		animated_sprite.play("jump")
 	elif velocity.y < 0:
 		animated_sprite.play("airtime")
 	elif stun:
 		animated_sprite.play("land")
-		dust_sprite.play("dust")
+		dust_animation_played = false
+		if !dust_animation_played && !dust_sprite.is_playing():
+			dust_sprite.visible = true
+			dust_sprite.play("dust")
+			dust_animation_played = true
 	else:
 		animated_sprite.play("idle")
+
+
+func _on_enemy_hit(damage) -> void:
+	take_damage(damage)

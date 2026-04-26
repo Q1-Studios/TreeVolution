@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cetum6xiv4va7"]
 
 [ext_resource type="PackedScene" uid="uid://ke7q6souawdw" path="res://src/scenes/Player.tscn" id="1_b4rpm"]
-[ext_resource type="Script" uid="uid://stgaaeh7ep63" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
+[ext_resource type="Script" path="res://src/scripts/game_controller.gd" id="1_h7s7u"]
 [ext_resource type="Texture2D" uid="uid://xlqpprxv1bo2" path="res://src/assets/2D/sealartfinal/background.jpg" id="2_agces"]
 [ext_resource type="Texture2D" uid="uid://dk10x3nosexo1" path="res://src/assets/2D/sealartfinal/treelayer.png" id="3_a4r01"]
 [ext_resource type="Texture2D" uid="uid://b3hus4enno2wb" path="res://src/assets/2D/sealartfinal/shrinelayer.png" id="4_335g5"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://brc7ddgot4gf2" path="res://src/assets/2D/sealartfinal/platformtexture.png" id="8_a4r01"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 [ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
+[ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scenes/overlayCamera.gd" id="12_335g5"]
 [ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
+[ext_resource type="Script" uid="uid://dhn5togl1l4jw" path="res://src/scripts/camera.gd" id="14_a4r01"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
@@ -264,10 +266,11 @@ offset_bottom = -1089.0
 scale = Vector2(5.5, 5.5)
 metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=266633726]
-position = Vector2(33.999996, 53.940002)
-scale = Vector2(0.385, 0.385)
-zoom = Vector2(0.18, 0.18)
+[node name="Camera2D" type="Camera2D" parent="EvolutionSelect" unique_id=1138104003 node_paths=PackedStringArray("main_camera")]
+position = Vector2(573.63635, 316.72726)
+zoom = Vector2(0.19, 0.19)
+script = ExtResource("12_335g5")
+main_camera = NodePath("../../Camera2D")
 
 [node name="Parallax_InFront" type="Node2D" parent="." unique_id=516652516]
 
@@ -288,8 +291,16 @@ rotation = 0.9075712
 scale = Vector2(1.6155555, 1.6155556)
 texture = ExtResource("13_pyc6v")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2059040765 node_paths=PackedStringArray("player", "enemy")]
+zoom = Vector2(0.175, 0.175)
+limit_bottom = 1200
+script = ExtResource("14_a4r01")
+player = NodePath("../Player")
+enemy = NodePath("../Enemy")
+
 [connection signal="die" from="Player" to="." method="_on_player_die"]
 [connection signal="die" from="Enemy" to="." method="_on_enemy_die"]
+[connection signal="hit" from="Enemy" to="Player" method="_on_enemy_hit"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="." method="_on_evolution_selected"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
 

@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Bullet
 
 @onready var despawn_timer: Timer = $DespawnTimer
 

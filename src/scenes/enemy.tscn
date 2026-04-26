@@ -18,6 +18,20 @@
 [ext_resource type="Texture2D" uid="uid://d17to01c0fcve" path="res://src/assets/2D/LandingEffects/landing_4.png" id="16_6yjfe"]
 [ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="17_3s7ax"]
 [ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="18_pwbhv"]
+[ext_resource type="AudioStream" uid="uid://dn5ojbsm1smhx" path="res://src/assets/Sounds/walk.wav" id="19_3s7ax"]
+[ext_resource type="Texture2D" uid="uid://oduxma6v7eg" path="res://src/assets/2D/swordAnimation/sword_1.png" id="19_ekrrv"]
+[ext_resource type="AudioStream" uid="uid://dwf6n6rjxaud" path="res://src/assets/Sounds/enemyJump.wav" id="20_pwbhv"]
+[ext_resource type="Texture2D" uid="uid://dmiy8ntpu6itt" path="res://src/assets/2D/swordAnimation/sword_2.png" id="20_r3pmu"]
+[ext_resource type="AudioStream" uid="uid://yut23l6xr0vp" path="res://src/assets/Sounds/sword.wav" id="21_2gt0t"]
+[ext_resource type="Texture2D" uid="uid://clw27ixjqs8h6" path="res://src/assets/2D/swordAnimation/sword_3.png" id="21_s1l6c"]
+[ext_resource type="Texture2D" uid="uid://bltqqds5cvod8" path="res://src/assets/2D/swordAnimation/sword_4.png" id="22_qxtnn"]
+[ext_resource type="AudioStream" uid="uid://b80krx6ko4v3p" path="res://src/assets/Sounds/damage.wav" id="22_v5chy"]
+[ext_resource type="Texture2D" uid="uid://2h5hi4alrqll" path="res://src/assets/2D/swordAnimation/sword_5.png" id="23_0e4by"]
+[ext_resource type="Texture2D" uid="uid://v4wnlp0jkdeb" path="res://src/assets/2D/swordAnimation/sword_6.png" id="24_ld4em"]
+[ext_resource type="Texture2D" uid="uid://cgyaj8e6273qf" path="res://src/assets/2D/swordAnimation/sword_7.png" id="25_ufj06"]
+[ext_resource type="Texture2D" uid="uid://b2vr0u0udk8de" path="res://src/assets/2D/swordAnimation/sword_8.png" id="26_2xt3g"]
+[ext_resource type="Texture2D" uid="uid://cv1vdtirmdidj" path="res://src/assets/2D/swordAnimation/sword_9.png" id="27_w03d4"]
+[ext_resource type="Texture2D" uid="uid://cmikahpaehjt0" path="res://src/assets/2D/swordAnimation/sword_10.png" id="28_61pxc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
 radius = 264.93506
@@ -117,6 +131,47 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
+radius = 1024.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h60vn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_ekrrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_r3pmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_s1l6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_qxtnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_0e4by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ld4em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ufj06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_2xt3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_w03d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_61pxc")
+}],
+"loop": false,
+"name": &"swordAttack",
+"speed": 20.0
+}]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8yqk"]
 animations = [{
 "frames": [{
@@ -143,14 +198,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q8yqk"]
-radius = 1024.0
-
-[node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player")]
+[node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("EnemyWalk", "EnemyJump", "EnemyDamage", "EnemySword", "movement_controller", "animation_player")]
 scale = Vector2(0.335, 0.335)
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_k24wl")
+EnemyWalk = NodePath("Walk")
+EnemyJump = NodePath("Jump")
+EnemyDamage = NodePath("Damage")
+EnemySword = NodePath("Sword")
 movement_controller = NodePath("MovementController")
 animation_player = NodePath("AnimationPlayer")
 
@@ -181,20 +237,40 @@ scale = Vector2(1.0828563, 1.0159134)
 sprite_frames = SubResource("SpriteFrames_oj8xh")
 animation = &"land"
 
-[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
-position = Vector2(149.25372, -62.686584)
-sprite_frames = SubResource("SpriteFrames_q8yqk")
-animation = &"dust"
-
-[node name="BulletBlocker" type="Area2D" parent="." unique_id=1166516784]
+[node name="BulletBlockerAndSwordFighter" type="Area2D" parent="." unique_id=1166516784]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 10
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBlocker" unique_id=1075329362]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletBlockerAndSwordFighter" unique_id=1075329362]
 position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
+
+[node name="SwordAnimation" type="AnimatedSprite2D" parent="." unique_id=1758014741]
+sprite_frames = SubResource("SpriteFrames_h60vn")
+animation = &"swordAttack"
+speed_scale = 3.0
+flip_h = true
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=711499393]
+stream = ExtResource("19_3s7ax")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=1713266439]
+stream = ExtResource("20_pwbhv")
+
+[node name="Sword" type="AudioStreamPlayer2D" parent="." unique_id=1530663037]
+stream = ExtResource("21_2gt0t")
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=290164487]
+stream = ExtResource("22_v5chy")
+
+[node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=365116806]
+position = Vector2(241.79105, -62.68658)
+sprite_frames = SubResource("SpriteFrames_q8yqk")
+animation = &"dust"
+frame = 5
+frame_progress = 1.0
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
-[connection signal="body_entered" from="BulletBlocker" to="." method="_on_bullet_blocker_body_entered"]
+[connection signal="body_entered" from="BulletBlockerAndSwordFighter" to="." method="_on_bullet_blocker_body_entered"]

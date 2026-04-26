@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name GunController
 
-var Bullet = preload("res://src/scenes/bullet.tscn")
+var Bullet_Scene = preload("res://src/scenes/bullet.tscn")
 
 @export_group("Weapon Stats")
 @export var attack_cooldown: float = 0.5
@@ -13,8 +13,11 @@ var Bullet = preload("res://src/scenes/bullet.tscn")
 @export var bullet_size: float = 1
 @export var bullet_velocity: float = 1500
 
+@onready var sprite = $Sprite2D
+
+const MAX_BULLET_SPREAD: float = PI/4
+
 var can_shoot: bool = true;
-const MULTI_BULLET_OFFSET: float = PI/18 # 10 degrees
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,32 +39,25 @@ func _start_shooting_cooldown() -> void:
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_shoot = true
 		
-func _get_bullet_arrangement() -> Array[int]:
-	var bullet_arrangement: Array[int] = []
-	for i in range(0, bullet_count):
-		var direction = -1 if i % 2 == 0 else 1
-		@warning_ignore("integer_division")
-		var value = 0 if i == 0 else (i / 3) + 1
-		bullet_arrangement.append(value * direction)
-	return bullet_arrangement
+func _get_bullet_arrangement() -> Array[float]:
+	var offsets: Array[float] = []
+	
+	if bullet_count == 1:
+		offsets.append(0.0)
+		return offsets
+	
+	for i in range(bullet_count):
+		var step = float(i) / float(bullet_count - 1)
+		var offset = lerp(-MAX_BULLET_SPREAD, MAX_BULLET_SPREAD, step)
+		offsets.append(offset)
+	return offsets
 
 func _spawn_bullets(direction: Vector2, character_velocity: Vector2) -> void:
-	var dir = direction - global_position
+	var base_angle = (direction - global_position).angle()
 
-	for arrangement in _get_bullet_arrangement():
-		# get offset for each bullet
-		var offset = MULTI_BULLET_OFFSET * arrangement
-		
-		# clamp bullet rotation between +60° and -60°
-		var angle = dir.angle()
-		var is_aiming_left = dir.dot(Vector2.LEFT) > 0
-		
-		# calculate bullet rotation (max between +60° and -60°)
-		var dir_mult = -1 if is_aiming_left else 1
-		var clamp_angle_base = Vector2.LEFT.angle() if is_aiming_left else Vector2.RIGHT.angle()
-		var min_bullet_rotation = dir_mult * clamp_angle_base - PI/3
-		var max_bullet_rotation = dir_mult * clamp_angle_base + PI/3
-		var bullet_rotation = clamp(angle + offset, min_bullet_rotation, max_bullet_rotation)
+	for offset in _get_bullet_arrangement():
+		# get roation for each bullet
+		var bullet_rotation = base_angle + offset
 		
 		# calculate bullet velocity
 		var base_velocity = Vector2(bullet_velocity, 0).rotated(bullet_rotation)
@@ -72,7 +68,7 @@ func _spawn_bullets(direction: Vector2, character_velocity: Vector2) -> void:
 			# ensure that player does not catch up to bullet
 			final_velocity = base_velocity
 
-		var bullet = Bullet.instantiate()
+		var bullet = Bullet_Scene.instantiate()
 		bullet.spawn($Muzzle.global_position, bullet_rotation, final_velocity, bullet_size)
 		bullet.set_bounces(bullet_bounces)
 		bullet.set_damage(bullet_damage)
