@@ -1,6 +1,7 @@
 extends Character
 class_name Enemy
 
+@onready var sword_animation = $SwordAnimation
 @onready var dust_sprite = $DustAnimation
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
@@ -105,4 +106,5 @@ func _on_bullet_blocker_body_entered(body: Node2D) -> void:
 		wants_to_spawn_pollen = true
 	else:
 		print("hitting")
+		sword_animation.play("swordAttack")
 		emit_signal("hit", 2*gun.bullet_damage)

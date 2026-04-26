@@ -235,6 +235,7 @@ libraries/ = SubResource("AnimationLibrary_uo3qh")
 [node name="Timer" type="Timer" parent="." unique_id=297888288]
 
 [node name="DustAnimation" type="AnimatedSprite2D" parent="." unique_id=1597754963]
+visible = false
 position = Vector2(0, 155.84424)
 sprite_frames = SubResource("SpriteFrames_aycp6")
 animation = &"dust"
