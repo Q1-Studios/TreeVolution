@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="19_gbdvo"]
 [ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="20_2nb6m"]
 [ext_resource type="AudioStream" uid="uid://clqpgduhwhpwy" path="res://src/assets/Sounds/shootSound.wav" id="23_gbdvo"]
+[ext_resource type="Texture2D" uid="uid://b0kiugt5swfhb" path="res://src/assets/2D/healthBar/over.png" id="25_r8itr"]
+[ext_resource type="Texture2D" uid="uid://cmpkkv7m03uvf" path="res://src/assets/2D/healthBar/progress.png" id="26_xi4xi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3t6ey"]
 animations = [{
@@ -210,7 +212,7 @@ scale = Vector2(0.9999998, 0.9999998)
 position = Vector2(-31.834446, 126.464584)
 scale = Vector2(0.8798571, 0.8798571)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"land"
+animation = &"walk"
 
 [node name="MovementController" type="Node2D" parent="." unique_id=886685643]
 script = ExtResource("2_v14g5")
@@ -263,6 +265,14 @@ sprite_frames = SubResource("SpriteFrames_aycp6")
 animation = &"dust"
 frame = 5
 frame_progress = 1.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=461652493]
+offset_left = -400.0
+offset_top = -862.33765
+offset_right = 400.0
+offset_bottom = -745.4545
+texture_over = ExtResource("25_r8itr")
+texture_progress = ExtResource("26_xi4xi")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
