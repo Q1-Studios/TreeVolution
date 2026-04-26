@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c8t1dliv5np68" path="res://src/scenes/Pollen.tscn" id="3_3tm0b"]
 [ext_resource type="Script" uid="uid://dqu5cy7br5u0v" path="res://src/scripts/graph.gd" id="4_ahmr2"]
 [ext_resource type="PackedScene" uid="uid://dw2mlohk64blx" path="res://src/scenes/vertex.tscn" id="5_ahmr2"]
-[ext_resource type="PackedScene" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
+[ext_resource type="PackedScene" uid="uid://b8q85wbvjmkca" path="res://src/scenes/enemy.tscn" id="5_jcr4r"]
 [ext_resource type="PackedScene" uid="uid://duvl2qtrf3tg" path="res://src/scenes/edge.tscn" id="6_f1v2q"]
 [ext_resource type="PackedScene" uid="uid://cw2itwdnxfff5" path="res://src/scenes/evolution_select.tscn" id="10_jcr4r"]
 
@@ -67,9 +67,6 @@ position = Vector2(1063.9999, 801.99994)
 [node name="MovementController" parent="Enemy" index="4" unique_id=450551184 node_paths=PackedStringArray("G", "player")]
 G = NodePath("../../MapHolder/G")
 player = NodePath("../../Player")
-
-[node name="Pollen" parent="." unique_id=241079387 instance=ExtResource("3_3tm0b")]
-position = Vector2(345, 50)
 
 [node name="Pollen2" parent="." unique_id=719815752 instance=ExtResource("3_3tm0b")]
 position = Vector2(-4551, -5137)
@@ -174,6 +171,9 @@ position = Vector2(-1799, -394)
 [node name="Icon13" parent="MapHolder/G/V" unique_id=177313336 instance=ExtResource("5_ahmr2")]
 position = Vector2(-1026, 1016)
 
+[node name="Icon15" parent="MapHolder/G/V" unique_id=912330715 instance=ExtResource("5_ahmr2")]
+position = Vector2(-444, 1014)
+
 [node name="E" type="Node2D" parent="MapHolder/G" unique_id=285898098]
 
 [node name="horizontal" type="Node2D" parent="MapHolder/G/E" unique_id=774905292]
@@ -194,7 +194,7 @@ points = PackedVector2Array(-3278, 1052, -1378, 1017)
 points = PackedVector2Array(-1375, 1017, -1044, 1024)
 
 [node name="Node2D4" parent="MapHolder/G/E/horizontal" unique_id=1181709164 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1029, 1009, 122, 1005)
+points = PackedVector2Array(-428, 1003, 72, 1018)
 
 [node name="Node2D5" parent="MapHolder/G/E/horizontal" unique_id=228297962 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(548, 1015, 1933, 1032)
@@ -211,6 +211,10 @@ points = PackedVector2Array(-773, 258, -355, 244)
 [node name="Node2D7" parent="MapHolder/G/E/horizontal" unique_id=96252070 instance=ExtResource("6_f1v2q")]
 points = PackedVector2Array(70, 1011, 520, 1006)
 
+[node name="Node2D18" parent="MapHolder/G/E/horizontal" unique_id=1594976266 instance=ExtResource("6_f1v2q")]
+points = PackedVector2Array(-419, 998, -1009, 1033)
+closed = true
+
 [node name="jump" type="Node2D" parent="MapHolder/G/E" unique_id=1070406386]
 
 [node name="Node2D7" parent="MapHolder/G/E/jump" unique_id=52779588 instance=ExtResource("6_f1v2q")]
@@ -222,7 +226,7 @@ points = PackedVector2Array(-1388, 1035, -756, 246)
 jump = true
 
 [node name="Node2D11" parent="MapHolder/G/E/jump" unique_id=1328148926 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-771, 241, -1165, -416)
+points = PackedVector2Array(-335, 265, -1165, -416)
 jump = true
 
 [node name="Node2D9" parent="MapHolder/G/E/jump" unique_id=1773679512 instance=ExtResource("6_f1v2q")]
@@ -253,14 +257,12 @@ points = PackedVector2Array(937, -1063, 1963, 994)
 onlyDown = true
 
 [node name="Node2D18" parent="MapHolder/G/E/dropdown" unique_id=2024860064 instance=ExtResource("6_f1v2q")]
-points = PackedVector2Array(-1032, 1020, -1169, -404)
+points = PackedVector2Array(-1032, 1020, -1187, -362)
 onlyDown = true
 
 [node name="EvolutionSelect" parent="." unique_id=1243789143 instance=ExtResource("10_jcr4r")]
 visible = false
 
-[connection signal="area_entered" from="Pollen" to="Player" method="_on_pollen_detection_area_entered"]
-[connection signal="area_exited" from="Pollen" to="Player" method="_on_pollen_detection_area_exited"]
 [connection signal="evolution_selected" from="EvolutionSelect" to="Player" method="_on_evolution_selected"]
 
 [editable path="Enemy"]
