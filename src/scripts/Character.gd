@@ -23,6 +23,7 @@ var pollen_list = [] # stores in what pollen areas wer are in
 var pollen_effect_can_happen: bool = true
 
 var high_fall: bool = false
+var stun: bool = false
 
 @export var enabled: bool = true
 @export var movement_controller : MovementController
@@ -55,19 +56,38 @@ func create_pollen(temp_pollen: Pollen) -> Pollen:
 func _physics_process(_delta: float) -> void:
 	if !enabled:
 		return
-	
+	check_stun()
 	if movement_controller:
-		if !high_fall:
+		if !stun:
 			movement_controller.handleMovement(self)
 		else:
-			await get_tree().create_timer(0.2).timeout
-			high_fall = true
+			await get_tree().create_timer(0.5).timeout
+			stun = false
+			high_fall = false
 			
-
-		
 	for pollen in pollen_list:
 		pollen_effect_trigger(pollen)
 		
+
+func check_stun():
+	if velocity.y > 6000:
+		high_fall = true
+		print(velocity.y)
+	if high_fall && is_on_floor():
+		stun = true
+		print(stun)
+
+"""
+if velocity greater 6000 we are in free fall -> high_fall true
+we then land on floor -> is on floor = true
+stun = is on floor + highfall
+
+fucntion:
+	check velocity and store high fall
+
+when not stun -> we set highfall to false
+after pause we cam set stun to false
+"""
 func take_damage(amount: float) -> void:
 	var new_health: float = max(0.0, health - amount)
 	self.health = new_health

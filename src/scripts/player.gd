@@ -58,19 +58,17 @@ func take_damage(amount: float) -> void:
 	$AnimationPlayer.play("damage_taken")
 	
 func play_animation() -> void:
-	if velocity.x > 0 && velocity.y == 0:
+	if Input.is_action_pressed("moveRight") && !stun:
 		animated_sprite.flip_h = velocity.x < 0
 		animated_sprite.play("walk")
-	elif velocity.x < 0 && velocity.y == 0:
+	elif Input.is_action_pressed("moveLeft") && !stun:
 		animated_sprite.flip_h = velocity.x < 0 
 		animated_sprite.play("walk")
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump") && !stun:
 		animated_sprite.play("jump")
-		can_land = true
 	elif velocity.y < 0:
 		animated_sprite.play("airtime")
-	elif can_land && is_on_floor():
+	elif stun:
 		animated_sprite.play("land")
-		can_land = false
 	else:
 		animated_sprite.play("idle")
