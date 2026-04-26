@@ -12,6 +12,9 @@ extends MovementController
 @export var sampling_time := 1.0
 @export var lineup_probability := 0.2
 @export var lineup_waiting_time := 0.5
+@export var probability_to_go_somewhere_random = 0.1
+
+
 
 @onready var graph: AStar2D = G.graph
 @onready var edges: Dictionary[String, Edge] = G.edgeMap
@@ -32,6 +35,11 @@ var positionBuffer:Queue = Queue.new()
 
 var rng = RandomNumberGenerator.new()
 var lineupTimer = 0.0
+var headingRandom = false
+var randomNode = -1
+
+func _ready() -> void:
+	airAcceleration = 1000 # cheating Enemy
 
 func handleMovement(character: Character) -> void:
 	super(character)
@@ -53,6 +61,8 @@ func handleMovement(character: Character) -> void:
 			_setup_next_edge(character, path[0], path[1])
 		else:
 			_handle_lateral_movement(character, 0)
+			headingRandom = false
+			randomNode = -1
 				
 	if is_traversing and lineupTimer <= 0:
 		move_to_next_point(character)
@@ -62,6 +72,12 @@ func handleMovement(character: Character) -> void:
 func _find_path(character: Character) -> void:
 	var startingNode = graph.get_closest_point(character.position)
 	var goalNode = graph.get_closest_point(positionBuffer.peek().position)
+	
+	if headingRandom:
+		goalNode = randomNode
+	elif rng.randf() < probability_to_go_somewhere_random && startingNode != goalNode:
+		goalNode = graph.get_point_ids()[rng.randi_range(0, graph.get_point_count()-1)]
+		
 
 	if startingNode == -1 or goalNode == -1:
 		print("Can't find a path")

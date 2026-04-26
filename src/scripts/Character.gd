@@ -59,10 +59,7 @@ func _physics_process(_delta: float) -> void:
 	if movement_controller:
 		if !high_fall:
 			movement_controller.handleMovement(self)
-			if velocity.y > 6000:
-				print(velocity.y)
 		else:
-			print("wewew")
 			await get_tree().create_timer(0.2).timeout
 			high_fall = true
 			

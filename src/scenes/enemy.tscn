@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d1q4jmlxxirbn"]
+[gd_scene format=3 uid="uid://b8q85wbvjmkca"]
 
 [ext_resource type="Script" uid="uid://cm0df5lawbi2b" path="res://src/scripts/enemy.gd" id="1_k24wl"]
 [ext_resource type="Texture2D" uid="uid://chj8sjhep7vfh" path="res://src/assets/2D/Enemy/enemy_Idle_1.png" id="3_0jpkj"]
@@ -14,8 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://ckmfdw3qxkv50" path="res://src/assets/2D/Enemy/e_walking_5.png" id="10_oj8xh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
-radius = 337.66238
-height = 1833.7667
+radius = 264.93506
+height = 1952.104
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp4d7"]
 radius = 339.0
@@ -112,7 +112,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=699392529 node_paths=PackedStringArray("movement_controller", "animation_player")]
-scale = Vector2(0.385, 0.385)
+scale = Vector2(0.25, 0.25)
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_k24wl")
@@ -120,14 +120,14 @@ movement_controller = NodePath("MovementController")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624332015]
-position = Vector2(200, -181.81818)
+position = Vector2(12.987014, -148.05197)
 shape = SubResource("CapsuleShape2D_k24wl")
 
 [node name="Bullet_Detection" type="Area2D" parent="." unique_id=575113254]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet_Detection" unique_id=1587372262]
-position = Vector2(192.2078, -166.23376)
+position = Vector2(18.181824, -257.14288)
 shape = SubResource("CapsuleShape2D_vp4d7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1341906022]
@@ -141,7 +141,7 @@ position = Vector2(163.63637, -727.27264)
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1066894353]
-position = Vector2(400.8076, -264.28152)
+position = Vector2(132.46754, -142.85715)
 scale = Vector2(1.0828563, 1.0159134)
 sprite_frames = SubResource("SpriteFrames_oj8xh")
 animation = &"idle"
