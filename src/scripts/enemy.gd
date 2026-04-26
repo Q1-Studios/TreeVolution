@@ -7,7 +7,7 @@ class_name Enemy
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
-var timer: bool = pollen_life_time
+var timer: float = pollen_life_time
 var max_time: bool = 0.5
 
 signal hit
@@ -27,7 +27,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("enemyPollen") && can_spawn_pollen:
 		spawn_pollen()
 		timer -= delta
-
+	if(timer <= 0 && !can_spawn_pollen):
+		can_spawn_pollen = true
 		
 func spawn_pollen() -> void:
 	timer = pollen_summon_cooldown

@@ -194,6 +194,11 @@ collision_mask = 10
 position = Vector2(0, -216)
 shape = SubResource("CircleShape2D_q8yqk")
 
+[node name="DustAnimation2" type="AnimatedSprite2D" parent="." unique_id=1325447238]
+position = Vector2(149.25372, -62.68658)
+sprite_frames = SubResource("SpriteFrames_q8yqk")
+animation = &"dust"
+
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
