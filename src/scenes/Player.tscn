@@ -135,10 +135,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uo3qh"]
@@ -167,7 +167,7 @@ polygon = PackedVector2Array(319.48056, 2.5974033, 267.5325, 638.9611, 228.57147
 position = Vector2(-31.83445, 126.46459)
 scale = Vector2(0.87985724, 0.87985724)
 sprite_frames = SubResource("SpriteFrames_3t6ey")
-animation = &"walk"
+animation = &"airtime"
 
 [node name="THE_PISS_STREAM2" parent="." unique_id=238068524 instance=ExtResource("2_qfal1")]
 position = Vector2(127.27272, 109.09091)

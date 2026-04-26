@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d1q4jmlxxirbn"]
 
 [ext_resource type="Script" uid="uid://cm0df5lawbi2b" path="res://src/scripts/enemy.gd" id="1_k24wl"]
-[ext_resource type="Texture2D" uid="uid://biphx5mw4jf3l" path="res://src/assets/2D/Player/frame0001.png" id="1_vp4d7"]
 [ext_resource type="PackedScene" uid="uid://yjcon4nkrc51" path="res://src/scenes/gun.tscn" id="3_t8r1r"]
 [ext_resource type="Script" uid="uid://cbush3ilkxncm" path="res://src/scripts/enemyMovement.gd" id="3_x0mr8"]
 [ext_resource type="Texture2D" uid="uid://cmtvoxr424xcr" path="res://src/assets/2D/enemy_idle1.png" id="4_0jpkj"]
@@ -19,43 +18,6 @@ height = 1432.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vp4d7"]
 radius = 339.0
 height = 1564.0
-
-[sub_resource type="Animation" id="Animation_k24wl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2rcgh"]
-resource_name = "damage_taken"
-length = 0.53333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_onv2g"]
-_data = {
-&"RESET": SubResource("Animation_k24wl"),
-&"damage_taken": SubResource("Animation_2rcgh")
-}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oj8xh"]
 animations = [{
@@ -96,6 +58,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_k24wl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2rcgh"]
+resource_name = "damage_taken"
+length = 0.36666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onv2g"]
+_data = {
+&"RESET": SubResource("Animation_k24wl"),
+&"damage_taken": SubResource("Animation_2rcgh")
+}
+
 [node name="Enemy" type="CharacterBody2D" unique_id=699392529]
 scale = Vector2(0.385, 0.385)
 collision_layer = 16
@@ -113,9 +112,6 @@ collision_mask = 2
 position = Vector2(53, 0)
 shape = SubResource("CapsuleShape2D_vp4d7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1341906022]
-libraries/ = SubResource("AnimationLibrary_onv2g")
-
 [node name="MovementController" type="Node2D" parent="." unique_id=450551184]
 script = ExtResource("3_x0mr8")
 
@@ -123,16 +119,12 @@ script = ExtResource("3_x0mr8")
 position = Vector2(163.63637, -727.27264)
 scale = Vector2(0.9999999, 0.9999999)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483896026]
-visible = false
-position = Vector2(-314, 87)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("1_vp4d7")
-flip_h = true
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1066894353]
 position = Vector2(410.38962, 101.2987)
 sprite_frames = SubResource("SpriteFrames_oj8xh")
 animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1341906022]
+libraries/ = SubResource("AnimationLibrary_onv2g")
 
 [connection signal="body_entered" from="Bullet_Detection" to="." method="_on_bullet_detection_body_entered"]
