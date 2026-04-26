@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://d17to01c0fcve" path="res://src/assets/2D/LandingEffects/landing_4.png" id="16_6yjfe"]
 [ext_resource type="Texture2D" uid="uid://dkys1ubheblst" path="res://src/assets/2D/LandingEffects/landing_5.png" id="17_3s7ax"]
 [ext_resource type="Texture2D" uid="uid://bpuls1aeuq5yl" path="res://src/assets/2D/LandingEffects/landing_6.png" id="18_pwbhv"]
+[ext_resource type="AudioStream" uid="uid://dn5ojbsm1smhx" path="res://src/assets/Sounds/walk.wav" id="19_3s7ax"]
+[ext_resource type="AudioStream" uid="uid://dwf6n6rjxaud" path="res://src/assets/Sounds/enemyJump.wav" id="20_pwbhv"]
+[ext_resource type="AudioStream" uid="uid://yut23l6xr0vp" path="res://src/assets/Sounds/sword.wav" id="21_2gt0t"]
+[ext_resource type="AudioStream" uid="uid://b80krx6ko4v3p" path="res://src/assets/Sounds/damage.wav" id="22_v5chy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k24wl"]
 radius = 264.93506
@@ -198,6 +202,18 @@ shape = SubResource("CircleShape2D_q8yqk")
 position = Vector2(149.25372, -62.68658)
 sprite_frames = SubResource("SpriteFrames_q8yqk")
 animation = &"dust"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="." unique_id=711499393]
+stream = ExtResource("19_3s7ax")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=1713266439]
+stream = ExtResource("20_pwbhv")
+
+[node name="Sword" type="AudioStreamPlayer2D" parent="." unique_id=1530663037]
+stream = ExtResource("21_2gt0t")
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=290164487]
+stream = ExtResource("22_v5chy")
 
 [connection signal="area_entered" from="Bullet_Detection" to="." method="_on_pollen_detection_area_entered"]
 [connection signal="area_exited" from="Bullet_Detection" to="." method="_on_pollen_detection_area_exited"]

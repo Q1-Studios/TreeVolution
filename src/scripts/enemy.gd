@@ -4,6 +4,11 @@ class_name Enemy
 @onready var dust_sprite = $DustAnimation
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var pollen_obj = preload("res://src/scenes/Pollen.tscn")
+@export var EnemyWalk:AudioStreamPlayer2D
+@export var EnemyJump:AudioStreamPlayer2D
+@export var EnemyDamage:AudioStreamPlayer2D
+@export var EnemySword:AudioStreamPlayer2D #Use when Attak if(!EnemySword.playing): EnemySword.play()
+			
 
 var can_spawn_pollen: bool = true
 var can_land: bool = false
@@ -58,16 +63,24 @@ func select_random_evolution() -> void:
 func take_damage(amount: float) -> void:
 	super(amount)
 	$AnimationPlayer.play("damage_taken")
+	if(!EnemyDamage.playing):
+			EnemyDamage.play()
 
 func play_animation() -> void:
 	if (velocity.x > 0 && velocity.y == 0) && !stun:
 		animated_sprite.flip_h = velocity.x < 0
 		animated_sprite.play("walk")
+		if(!EnemyWalk.playing):
+			EnemyWalk.play()
 	elif (velocity.x < 0 && velocity.y == 0) && !stun:
 		animated_sprite.flip_h = velocity.x < 0 
 		animated_sprite.play("walk")
+		if(!EnemyWalk.playing):
+			EnemyWalk.play()
 	elif velocity.y < 0:
 		animated_sprite.play("jump")
+		if(!EnemyJump.playing):
+			EnemyJump.play()
 	elif stun:
 		animated_sprite.play("land")
 		dust_sprite.play("dust")
