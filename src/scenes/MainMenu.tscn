@@ -79,24 +79,24 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="CoolButton2" parent="." unique_id=1613722498 instance=ExtResource("4_g3tly")]
-offset_left = 547.0
-offset_top = 397.0
-offset_right = 663.0
-offset_bottom = 460.0
+offset_left = 855.5333
+offset_top = 307.05005
+offset_right = 971.5333
+offset_bottom = 370.05005
 theme_override_font_sizes/font_size = 40
 text = "Quit"
 
 [node name="CoolButton" parent="." unique_id=1660479895 instance=ExtResource("4_g3tly")]
-offset_left = 546.0
-offset_top = 306.0
-offset_right = 657.0
-offset_bottom = 369.0
+offset_left = 566.5333
+offset_top = 310.05005
+offset_right = 677.5333
+offset_bottom = 373.05005
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="Mainmenu" type="Sprite2D" parent="." unique_id=1466742494]
-position = Vector2(601.00006, 577.00006)
-scale = Vector2(0.465, 0.465)
+position = Vector2(766.5333, 262.05)
+scale = Vector2(0.26305556, 0.26305556)
 texture = ExtResource("3_oll1y")
 
 [connection signal="button_up" from="CoolButton2" to="." method="_on_cool_button_2_button_up"]
