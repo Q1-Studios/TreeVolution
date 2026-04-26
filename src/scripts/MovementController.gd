@@ -16,6 +16,7 @@ extends Node
 @export var maxSpeedInAir := 400
 @export var airAcceleration := 75.0
 @export var autoAirDeceleration := 35.0
+@export var coyote_time := 0.15
 
 @export_group("La Physics")
 @export var gravitationalConstant = 150.0
@@ -26,15 +27,21 @@ extends Node
 var used_double_Jump = !allowDoubleJump
 var is_grounded = true
 var previous_direction = 0
+var coyote_timer = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 func handleMovement(player: Character) -> void:
+	var delta = player.get_physics_process_delta_time()
 	if player.is_on_floor():
 		is_grounded = true
 		used_double_Jump = !allowDoubleJump
+		coyote_timer = coyote_time
+		
+	elif coyote_time > 0.0:
+		coyote_time -= delta
 	else:
 		is_grounded = false
 	

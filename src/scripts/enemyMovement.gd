@@ -137,7 +137,7 @@ func move_to_next_point(character: Character) -> void:
 			
 	var dist_x = abs(character.position.x - current_target_pos.x)
 	
-	if dist_x <= arrival_distance_x  and is_grounded: #and dist_y <= arrival_distance_y
+	if dist_x <= arrival_distance_x  and is_grounded and character.velocity.length() < acceleration: #and dist_y <= arrival_distance_y
 		is_traversing = false
 		if rng.randf() < lineup_probability:
 			lineupTimer = lineup_waiting_time
