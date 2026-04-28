@@ -16,12 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://bk3cnodn8vt4o" path="res://src/assets/2D/sealartfinal/leaf1.png" id="12_8qsaa"]
 [ext_resource type="Script" uid="uid://dltmumma0xhrk" path="res://src/scripts/overlayCamera.gd" id="12_335g5"]
 [ext_resource type="Texture2D" uid="uid://c2352n2sx8riy" path="res://src/assets/2D/sealartfinal/leaf2.png" id="13_pyc6v"]
-[ext_resource type="Script" path="res://src/scripts/music_state_config.gd" id="15_iivk4"]
+[ext_resource type="Script" uid="uid://cab8utlgsk2hl" path="res://src/scripts/music_state_config.gd" id="15_iivk4"]
 [ext_resource type="AudioStream" uid="uid://0lwhetqsn641" path="res://src/assets/Music/maintheme-intro.ogg" id="16_8lty4"]
 [ext_resource type="AudioStream" uid="uid://co7bsmcaestf6" path="res://src/assets/Music/maintheme-selection.ogg" id="17_hikp2"]
 [ext_resource type="AudioStream" uid="uid://uv74wwpbvs24" path="res://src/assets/Music/maintheme-buildup.ogg" id="18_erll5"]
 [ext_resource type="AudioStream" uid="uid://vo7giqlls38h" path="res://src/assets/Music/maintheme-fight.ogg" id="19_si7be"]
-[ext_resource type="Script" path="res://src/scripts/interactive_music_manager.gd" id="20_a4r01"]
+[ext_resource type="Script" uid="uid://ncgjnp308o3o" path="res://src/scripts/interactive_music_manager.gd" id="20_a4r01"]
 
 [sub_resource type="GDScript" id="GDScript_f1v2q"]
 script/source = "extends Node2D
