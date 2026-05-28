@@ -14,7 +14,7 @@ config/name="TreeVolution"
 config/tags=PackedStringArray("game", "jam")
 run/main_scene="res://src/scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/image="uid://bxexqw8647lj3"
+boot_splash/image="uid://do6txxrni56f7"
 config/icon="uid://dkft5k751hrnp"
 boot_splash/minimum_display_time=500
 
