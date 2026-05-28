@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cta4enpbo7vj7" path="res://src/assets/2D/sealartfinal/mainmenu.png" id="3_oll1y"]
 [ext_resource type="PackedScene" uid="uid://ymcd63ealp1i" path="res://src/scenes/cool_button.tscn" id="4_g3tly"]
 
-[node name="MainMenu" type="Node2D" unique_id=660273908]
+[node name="MainMenu" type="Node2D" unique_id=660273908 node_paths=PackedStringArray("web_restart_info")]
 script = ExtResource("1_6ekv6")
+web_restart_info = NodePath("WebRestartInfo")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1930154008]
 position = Vector2(580.0423, 327.49997)
@@ -98,6 +99,23 @@ text = "Play"
 position = Vector2(766.5333, 262.05)
 scale = Vector2(0.26305556, 0.26305556)
 texture = ExtResource("3_oll1y")
+
+[node name="WebRestartInfo" type="ColorRect" parent="." unique_id=56229803]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="WebRestartInfo" unique_id=1973250832]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("1_1bg10")
+theme_override_font_sizes/font_size = 24
+text = "You have quit the game.
+Reload the tab to restart it."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_up" from="CoolButton2" to="." method="_on_cool_button_2_button_up"]
 [connection signal="button_up" from="CoolButton" to="." method="_on_play_button_button_up"]
