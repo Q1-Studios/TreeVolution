@@ -33,7 +33,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_cbarn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"airtime",
 "speed": 5.0
 }, {
@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_ccvdx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -55,7 +55,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_pi0vf")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jump",
 "speed": 10.0
 }, {
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_aycp6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"land",
 "speed": 1.0
 }, {
@@ -113,7 +113,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_68jbn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -180,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("20_2nb6m")
 }],
-"loop": false,
+"loop": 0,
 "name": &"dust",
 "speed": 6.0
 }]
